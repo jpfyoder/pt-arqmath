@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Pass all arguments to arqmath
+if [ $# -lt 1 ]
+then
+	python index_arqmath.py --help
+else
+	python index_arqmath.py $@
+fi
+
