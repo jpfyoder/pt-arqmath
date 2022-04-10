@@ -32,7 +32,7 @@ def generate_XML_post_docs(file_name, formula_index=False, debug_out=False ):
     # **Warning: tag attribute names converted to lower case by default in BSoup
     tagsToRemove = ['p','a','body','html']
 
-    print(">> Reading: ", file_name )
+    print(">> Reading File: ", file_name )
     with open(file_name) as xml_file:
         soup = bsoup(xml_file, 'lxml')
         rows = soup('row')
@@ -44,7 +44,7 @@ def generate_XML_post_docs(file_name, formula_index=False, debug_out=False ):
             votes = row['score']
 
             # Parent post for answers ('none' for questions)
-            parentno = 'none'
+            parentno = 'qpost'
             if row[ 'posttypeid' ] == '2':  
                 parentno = row['parentid'] 
 
@@ -170,34 +170,64 @@ def batch_query( engine, query_list ):
 
     return engine( queries )
 
+def verbose_hit_summary( result ):
+
+    result.reset_index()
+    for ( index, row ) in result.iterrows():
+        print('QUERY (' + row['qid'] + '): ', row['query'])
+        score = "{:.2f}".format( row['score'] )
+        
+        print('RANK:', index, 'Score:', score)
+        print('Docid:',row['docid'], 'Post-no:', row['docno'], 'Parent-no:',row['parentno'],'Votes:', row['votes'] )
+        if row['parentno'] == 'qpost':
+            print('QUESTION TITLE:', row['title'])
+        else:
+            print('ANSWER:')
+
+        print(row['text'])
+        print('  TAGS:',row['tags'])
+        print('  FORMULA IDS:',row['mathnos'])
+        print('')
+
+def show_result( result, field_names=[], show_table=True, show_hits=False ):
+    if show_table:
+        if field_names == []:
+            print( result, '\n' )
+        else:
+            print( result[ field_names ], '\n' )
+
+    if show_hits:
+        verbose_hit_summary( result )
+
 def test_retrieval( post_index, math_index, model, tokens, debug=False ):
+    titles = [ 'qid', 'docid', 'docno', 'title', 'rank', 'score', 'query' ]
+    tags = [ 'qid', 'docid', 'docno', 'tags', 'rank', 'score' , 'query']
+    votes = [ 'qid', 'docid', 'docno', 'votes', 'rank', 'score' , 'query']
+    parentno = [ 'qid', 'docid', 'docno', 'parentno', 'rank', 'score' , 'query']
+    mathnos  = [ 'qid', 'docid', 'docno', 'mathnos', 'rank', 'score', 'query' ]
 
     if post_index != None:
         print("[ Testing post index retrieval ]")
         
         posts_engine = search_engine( post_index, 
                 model, 
-                metadata_keys = [ 'title' ],
-                #[ 'docno', 'text', 'mathnos', 'parentno' ], 
+                metadata_keys=['docno','title', 'text', 'tags', 'votes', 'parentno', 'mathnos' ],
                 token_pipeline=tokens )
         
-        print( query( posts_engine, '+simplified +proof' ) )
-        print('')
-        print( batch_query( posts_engine, ['simplified proof', 'proof' ] )['title'] )
-        print('')
-        
-        print( query( posts_engine, '+dungeons' ) )
-        print('')
+        result = query( posts_engine, '+simplified +proof' )
+        show_result( result, mathnos, show_hits=True )
+        # Added 'writing' to test matching tags, 'mean' in title field  for post number '1'
+        show_result( batch_query( posts_engine, ['simplified proof', 'proof', 'writing', 'mean', 'qpost', 'proof -qpost' ] ), 
+                parentno, show_hits=True )
+        show_result ( query( posts_engine, 'simplified' ), show_hits=True  )
     
     if math_index != None:
         print("[ Testing math index retrieval ]")
         
         math_engine = search_engine( math_index, model, ['docno', 'text', 'postno', 'parentno' ], token_pipeline=tokens )
-        print( query( math_engine, '+sqrt +2' ) )
-        print( '' )
-        print( batch_query( math_engine, [ 'sqrt 2', '2' ] ) )
+        show_result( query( math_engine, '+sqrt +2' ), show_hits=True )
+        show_result( batch_query( math_engine, [ 'sqrt 2', '2' ] ), show_hits=True )
 
-        print( '' )
     print( 'Test complete.' )
 
 
