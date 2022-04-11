@@ -188,7 +188,7 @@ def verbose_hit_summary( result, math_index=False ):
                 print('ANSWER')
         else:
             # Formula document
-            print('Docid:',row['docid'], 'Post-no:', row['docno'], 'Parent-no:',row['parentno'])
+            print('Docid:',row['docid'], 'Formula-no:', row['docno'],  'Post-no:', row['postno'], 'Parent-no:',row['parentno'])
 
         print('TEXT:',row['text'])
 
@@ -243,6 +243,7 @@ def test_retrieval( post_index, math_index, model, tokens, debug=False ):
         math_engine = search_engine( math_index, model, ['docno', 'text', 'postno', 'parentno' ], token_pipeline=tokens )
         show_result( query( math_engine, '+sqrt +2' ), show_hits=True, math=True )
         show_result( batch_query( math_engine, [ 'sqrt 2', '2' ] ), show_hits=True, math=True )
+        show_result( batch_query( math_engine, [ 'sqrt 2 -qpost' ] ), show_hits=True, math=True )
 
     print( 'Test complete.' )
 
