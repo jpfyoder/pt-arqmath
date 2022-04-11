@@ -1,0 +1,844 @@
+id	topic_id	thread_id	type	formula
+q_1	A.201	3666538	question	n\times n
+q_2	A.202	3739651	question	D
+q_3	A.202	3739651	question	F \subset D \subset E
+q_4	A.202	3739651	question	E
+q_5	A.202	3739651	question	F
+q_6	A.202	3739651	question	[E:F]
+q_7	A.202	3739651	question	F \subset E \tag 1
+q_8	A.202	3739651	question	[E:F] < \infty; \tag 2
+q_9	A.202	3739651	question	R
+q_10	A.202	3739651	question	F \subset R \subset E, \tag 3
+q_11	A.202	3739651	question	R
+q_12	A.203	3813416	title	-(-x)= x
+q_13	A.203	3813416	question	+(+x) = +x
+q_14	A.203	3813416	question	-(-x) = +x
+q_15	A.203	3813416	question	-x
+q_16	A.203	3813416	question	-(-x)
+q_17	A.203	3813416	question	-x = 5
+q_18	A.203	3813416	question	-(-x) = -5
+q_19	A.203	3813416	question	(-x)*(-x)=x
+q_20	A.204	3835592	question	X, Y, Z
+q_21	A.204	3835592	question	X, Y
+q_22	A.204	3835592	question	Z
+q_23	A.204	3835592	question	X
+q_24	A.204	3835592	question	Z
+q_25	A.204	3835592	question	\pi, \pi': X\rightarrow Y
+q_26	A.204	3835592	question	\delta :  Y\rightarrow Y\times_Z Y
+q_27	A.204	3835592	question	(\pi, \pi'): X\rightarrow Y\times_Z Y.
+q_28	A.204	3835592	question	\pi, \pi'
+q_29	A.204	3835592	question	\pi, \pi'
+q_30	A.205	3537843	question	x^n=n^x
+q_31	A.205	3537843	question	\in
+q_32	A.205	3537843	question	x^n=n^x
+q_33	A.206	3600466	title	\left(1+\frac{1}{n}\right)^n
+q_34	A.206	3600466	question	\lim_{n \rightarrow \infty} \left(1+\frac{1}{n}\right)^n=e
+q_35	A.206	3600466	question	\lim_{n \rightarrow \infty} \left(1+\frac{1}{n}\right)^n=e
+q_36	A.207	3584984	title	\sum_{k \geq 0}k!/N^k
+q_37	A.207	3584984	question	f(N)
+q_38	A.207	3584984	question	 f(N) \sim \sum_{k \geq 0}\frac{k!}{N^k} 
+q_39	A.207	3584984	question	\sim
+q_40	A.207	3584984	question	f
+q_41	A.207	3584984	question	g
+q_42	A.207	3584984	question	f \sim g \implies f = O(g) \text{ and } f=\Omega(g)
+q_43	A.207	3584984	question	N
+q_44	A.207	3584984	question	 f(N) \sim 1 + \frac{1}{N} + \frac{1}{2N^2} + \frac{1}{6N^3} + O\bigg(\frac{1}{N^4}\bigg) 
+q_45	A.207	3584984	question	 (N \text{ choose } r) \sim \frac{N^r}{r!} 
+q_46	A.208	3599793	title	H_n^{(k)}
+q_47	A.208	3599793	question	H_n^{(k)}=\sum_{i=1}^n \frac{1}{i^k}
+q_48	A.208	3599793	question	H_n^{(k)}=n^{-k}    \left(-\frac{n}{k-1}+\frac{1}{2}-\frac{k}{12    n}+O\left(\frac{1}{n^3}\right)\right)    +\zeta (k)
+q_49	A.209	3496045	title	\int_0^\infty e^{-hx^2}\;\mathrm{d}x
+q_50	A.209	3496045	question	h>0
+q_51	A.209	3496045	question	\frac{\sqrt{\pi}}{2\sqrt{h}}
+q_52	A.210	3499694	title	x(1-x) \leq \frac14
+q_53	A.210	3499694	question	x \in \mathbb{R}
+q_54	A.210	3499694	question	f(x) = x(1-x)
+q_55	A.210	3499694	question	x= \frac12
+q_56	A.210	3499694	question	f''(\frac12) < 0
+q_57	A.210	3499694	question	x(1-x) \leq \frac14 = f(\frac12)
+q_58	A.211	3507554	title	\int\sqrt{x^2\sqrt{x^3\sqrt{x^4\sqrt{x^5\sqrt{x^6\sqrt{x^7\sqrt{x^8\ldots}}}}}}}\,dx
+q_59	A.211	3507554	question	\int\sqrt{x\cdot \sqrt[3]{x\cdot \sqrt[4]{x\cdot\sqrt[5]{x\ldots } }}}\,dx\tag{1}
+q_60	A.211	3507554	question	\int\sqrt{x^2\sqrt{x^3\sqrt{x^4\sqrt{x^5\sqrt{x^6\sqrt{x^7\sqrt{x^8\ldots}}}}}}}\,dx\tag{2}
+q_61	A.211	3507554	question	x^{e-2}
+q_62	A.211	3507554	question	\int x^\frac{2}{2}\cdot x^\frac{3}{4}\cdot x^\frac{4}{8}\cdot x^\frac{5}{16}\ldots\,dx
+q_63	A.211	3507554	question	\int x^{\frac{2}{2}+\frac{3}{4}+\frac{4}{8}+\frac{5}{16}+\ldots}
+q_64	A.211	3507554	question	\sum^{\infty}_{n=1}\frac{n+1}{2^n}\tag{3} 
+q_65	A.211	3507554	question	\sum^{\infty}_{n=1}\frac{n}{2^n}+\sum^{\infty}_{n=1}\frac{1}{2^n} 
+q_66	A.211	3507554	question	n=1
+q_67	A.211	3507554	question	x^3,x>0
+q_68	A.211	3507554	question	\sum^{\infty}_{n=1}\frac{n}{2^n}
+q_69	A.211	3507554	question	\sum^{\infty}_{n=1}\frac{n}{2^n}
+q_70	A.212	3570972	question	f(x)=\sum_{n=0}^{\infty}(2n+1)(2x)^{2n}
+q_71	A.212	3570972	question	f(1/4)
+q_72	A.212	3570972	question	f(1/4)=\sum_{n=0}^{\infty}\frac{2n+1}{2^{2n}}
+q_73	A.213	3632074	title	\sum_{x=1}^{\infty} \frac{(x-1)}{2^{x}}
+q_74	A.213	3632074	question	\sum_{x=1}^{\infty} \frac{(x-1)}{2^{x}}
+q_75	A.214	3700299	title	\int\limits_{-\infty}^\infty e^{-\pi x^2}dx = 1
+q_76	A.214	3700299	question	\int\limits_{-\infty}^\infty e^{-\pi x^2}dx = 1
+q_77	A.214	3700299	question	\int\limits_{-\infty}^\infty e^{-\pi x^2}dx = \lim\limits_{t\to\infty}\int\limits_{-t}^t e^{-\pi x^2}dx
+q_78	A.214	3700299	question	e^{-\pi x^2}
+q_79	A.214	3700299	question	\int\limits_{-\infty}^\infty e^{-\pi x^2}dx = \lim\limits_{t\to\infty}\int\limits_{-t}^t e^{-\pi x^2}dx = 2\lim\limits_{t\to\infty}\int\limits_0^t e^{-\pi x^2}dx
+q_80	A.214	3700299	question	\lim\limits_{t\to\infty}\int\limits_0^t e^{-\pi x^2}dx=\frac{1}{2}
+q_81	A.214	3700299	question	e^{-x^2}
+q_82	A.214	3700299	question	\frac{1}{2}
+q_83	A.214	3700299	question	|\int\limits_0^t e^{-\pi x^2}dx-\frac{1}{2}| = |\int\limits_0^t\sum\limits_{n=0}^\infty\frac{\pi^n\cdot x^{2n}}{n!}dx - \frac{1}{2}| = |\sum\limits_{n=0}^\infty\frac{\pi^n\cdot t^{2n+1}}{n!\cdot(n+1)}-\frac{1}{2}|
+q_84	A.214	3700299	question	t\to\infty
+q_85	A.215	3792530	question	f(x)
+q_86	A.215	3792530	question	f'(x)
+q_87	A.215	3792530	question	f(x)
+q_88	A.215	3792530	question	A
+q_89	A.215	3792530	question	f'(x)
+q_90	A.215	3792530	question	A=\bigcup_{n=1}^{\infty}A_n
+q_91	A.215	3792530	question	A_n
+q_92	A.215	3792530	question	n=n_0
+q_93	A.215	3792530	question	A_{n_0}
+q_94	A.215	3792530	question	(p, q)
+q_95	A.215	3792530	question	I
+q_96	A.215	3792530	question	(p, q)
+q_97	A.215	3792530	question	I \cap A_{n_0} \neq \phi
+q_98	A.215	3792530	question	A_{n_0}
+q_99	A.215	3792530	question	(p, q)
+q_100	A.215	3792530	question	A_{n_0}
+q_101	A.215	3792530	question	(p, q)
+q_102	A.215	3792530	question	f'(x)
+q_103	A.215	3792530	question	(p, q)
+q_104	A.216	3836576	title	\lim\limits_{t \to + \infty} \int_0^{+ \infty} \frac{ \mathrm d x}{e^x+ \sin tx} 
+q_105	A.216	3836576	question	\lim_{t \to + \infty} \int_0^{+ \infty} \frac{ \mathrm d x}{e^x+ \sin (tx)}
+q_106	A.216	3836576	question	t >0
+q_107	A.216	3836576	question	t >0
+q_108	A.216	3836576	question	e^x + \sin tx > e^x-1 > x>0
+q_109	A.216	3836576	question	x \to + \infty
+q_110	A.216	3836576	question	e^{-x}
+q_111	A.216	3836576	question	t=2n \pi
+q_112	A.216	3836576	question	2 \pi
+q_113	A.216	3836576	question	\int_0^{+ \infty} \frac{ \mathrm d x}{e^x+ \sin (2n \pi x)} = \sum_{k=0}^\infty \int_{k /n}^{(k+1) /n} \frac{ \mathrm d x}{e^x+ \sin (2n \pi x)}
+q_114	A.216	3836576	question	u = 2n \pi x
+q_115	A.216	3836576	question	\begin{align}\sum_{k=0}^\infty \frac{1}{2n \pi} \int_{2k \pi}^{(2k+2) \pi} \frac{ \mathrm d u}{e^{u/2n \pi}+ \sin (u)} &\ge \sum_{k=0}^\infty \frac{1}{2n \pi} \int_{2k \pi}^{(2k+2) \pi} \frac{ \mathrm d u}{e^{(2k+2) \pi/2n \pi}+ \sin (u)} \\&= \sum_{k=0}^\infty \frac{1}{2n \pi} \int_{2k \pi}^{(2k+2) \pi} \frac{ \mathrm d u}{e^{(k+1)/n}+ \sin (u)}\end{align}
+q_116	A.216	3836576	question	u=(2k+2) \pi
+q_117	A.216	3836576	question	2 \pi
+q_118	A.216	3836576	question	C>1
+q_119	A.216	3836576	question	\int_0^{2 \pi} \frac{ \mathrm d u}{C+ \sin (u)} = \frac{2 \pi}{\sqrt{C^2-1}}
+q_120	A.216	3836576	question	\begin{align}\sum_{k=0}^\infty \frac{1}{2n \pi} \int_{2k \pi}^{(2k+2) \pi} \frac{ \mathrm d u}{e^{(k+1)/n}+ \sin (u)} &= \sum_{k=0}^\infty \frac{1}{2n \pi} \frac{2 \pi}{\sqrt{e^{2(k+1)/n} -1 }} \\&= \frac{1}{n} \sum_{k=0}^\infty \frac{1}{\sqrt{e^{2(k+1)/n} -1 }}\end{align}
+q_121	A.216	3836576	question	\int_0^{+ \infty} \frac{ \mathrm d x}{e^x+ \sin (2n \pi x)} \ge \frac{1}{n} \sum_{k=0}^\infty \frac{1}{\sqrt{e^{2(k+1)/n} -1 }}
+q_122	A.216	3836576	question	n \to \infty
+q_123	A.216	3836576	question	\int_0^{+ \infty} \frac{\mathrm d y}{\sqrt{e^{2y}-1}} = \frac{\pi}{2}
+q_124	A.216	3836576	question	\pi/2
+q_125	A.216	3836576	question	+ \infty
+q_126	A.216	3836576	question	t
+q_127	A.216	3836576	question	1
+q_128	A.216	3836576	question	2
+q_129	A.216	3836576	question	\pi/2
+q_130	A.217	3867098	question	x^2/a^2 + y^2/b^2 = 1
+q_131	A.217	3867098	question	(a\cos\theta, b\sin \theta)
+q_132	A.217	3867098	question	(a\cos\theta, -b\sin \theta)
+q_133	A.217	3867098	question	\theta
+q_134	A.217	3867098	question	\theta
+q_135	A.218	3544191	question	 R(m, n) \leq R(m-1, n)+R(m, n-1) 
+q_136	A.218	3544191	question	R(m,2)=m
+q_137	A.218	3544191	question	R(2,n)=n
+q_138	A.218	3544191	question	R(m, n) \leq\left(\begin{array}{c}{m+n-2} \\ {m-1}\end{array}\right)
+q_139	A.219	3553394	question	\dbinom{n+r+1}{r}=\sum_{k=0}^{r}\dbinom{n+k}{k}
+q_140	A.220	3807773	title	\sum_{k=0}^{n} \binom{x+k}{k}=\binom{x+n+1}{n}
+q_141	A.220	3807773	question	\sum_{k=0}^{n} \binom{x+k}{k}=\binom{x+n+1}{n}
+q_142	A.221	3866364	title	2
+q_143	A.221	3866364	question	n
+q_144	A.221	3866364	question	f(n)
+q_145	A.221	3866364	question	2
+q_146	A.221	3866364	question	n
+q_147	A.221	3866364	question	2
+q_148	A.221	3866364	question	2 \times 22^2 + \frac{222}{2}
+q_149	A.221	3866364	question	g(n) = \text{max}_{1 \le m \le n} f(m).
+q_150	A.221	3866364	question	f(1) = 2
+q_151	A.221	3866364	question	1 = \frac 22
+q_152	A.221	3866364	question	f(11) = 3
+q_153	A.221	3866364	question	11 = \frac{22}{2}
+q_154	A.221	3866364	question	f(n)
+q_155	A.221	3866364	question	g(n)
+q_156	A.221	3866364	question	n
+q_157	A.221	3866364	question	n
+q_158	A.221	3866364	question	2^k + n'
+q_159	A.221	3866364	question	n' < 2^k
+q_160	A.221	3866364	question	2^k
+q_161	A.221	3866364	question	n
+q_162	A.221	3866364	question	f(n) \le f(k) + 1 + f(n')
+q_163	A.221	3866364	question	\ell(n) = \lfloor \log_2 n \rfloor
+q_164	A.221	3866364	question	g(n) \le \sum_{k=1}^{\ell(n)} \left( g(k) + 1 \right).
+q_165	A.221	3866364	question	\ell(n) \ell^2(n) \ell^3(n) \dots
+q_166	A.221	3866364	question	f(14885392687) \le 36
+q_167	A.221	3866364	question	\ell(14885392687) = 33
+q_168	A.221	3866364	question	g(n) = O(\log n)
+q_169	A.221	3866364	question	2
+q_170	A.221	3866364	question	4
+q_171	A.221	3866364	question	N
+q_172	A.222	3925202	title	11
+q_173	A.222	3925202	question	11
+q_174	A.222	3925202	question	(x+x^2/2!+x^3/3!+...)^4
+q_175	A.222	3925202	question	(e^x-1)^4
+q_176	A.223	3859728	title	\sum_{i=0}^n {n+i\choose i}\frac{1}{2^i} = 2^n
+q_177	A.223	3859728	question	\displaystyle\sum_{i=0}^n {n+i\choose i}\frac{1}{2^i} = 2^n
+q_178	A.223	3859728	question	2^n
+q_179	A.223	3859728	question	n
+q_180	A.223	3859728	question	B_i
+q_181	A.223	3859728	question	{n+i\choose i}\frac{1}{2^i}
+q_182	A.223	3859728	question	{n+i\choose i}
+q_183	A.223	3859728	question	n+i
+q_184	A.223	3859728	question	i
+q_185	A.223	3859728	question	i
+q_186	A.223	3859728	question	n+i
+q_187	A.223	3859728	question	{n+i\choose i}
+q_188	A.223	3859728	question	i
+q_189	A.224	3779318	title	\varepsilon
+q_190	A.224	3779318	title	\delta
+q_191	A.224	3779318	question	f(x)
+q_192	A.224	3779318	question	f(x) = 1
+q_193	A.224	3779318	question	x<1
+q_194	A.224	3779318	question	x>2
+q_195	A.224	3779318	question	f(x) = 100
+q_196	A.224	3779318	question	x = 1.5
+q_197	A.224	3779318	question	f(x)
+q_198	A.224	3779318	question	\varepsilon
+q_199	A.224	3779318	question	\delta
+q_200	A.224	3779318	question	\delta
+q_201	A.224	3779318	question	0.5
+q_202	A.224	3779318	question	f(x)
+q_203	A.224	3779318	question	x = 1.5
+q_204	A.224	3779318	question	\delta
+q_205	A.224	3779318	question	f(x)
+q_206	A.224	3779318	question	x = 1.5
+q_207	A.224	3779318	question	\varepsilon
+q_208	A.224	3779318	question	\delta
+q_209	A.224	3779318	question	f(x)
+q_210	A.224	3779318	question	x_0
+q_211	A.224	3779318	question	\varepsilon
+q_212	A.224	3779318	question	\delta
+q_213	A.224	3779318	question	|f(x) - f(x_0)|<\varepsilon
+q_214	A.224	3779318	question	x
+q_215	A.224	3779318	question	f
+q_216	A.224	3779318	question	|x-x_0|<\delta
+q_217	A.225	3814866	question	\alpha,\beta
+q_218	A.225	3814866	question	\alpha^3-3\alpha^2+5\alpha-17=0\tag{1}
+q_219	A.225	3814866	question	\beta^3-3\beta^2+5\beta+11=0\tag{2}
+q_220	A.225	3814866	question	\alpha+\beta
+q_221	A.225	3814866	question	\alpha_1+\alpha_2+\alpha_3=3
+q_222	A.225	3814866	question	\beta_1+\beta_2+\beta_3=3
+q_223	A.225	3814866	question	\alpha_1+\alpha_2+\alpha_3+\beta_1+\beta_2+\beta_3=6
+q_224	A.226	3836908	title	x^{x^y}=y
+q_225	A.226	3836908	question	x^{x^y}=y
+q_226	A.226	3836908	question	(1/e^e,1/e)=(e^{-e},e^{-1})
+q_227	A.226	3836908	question	x^y=y
+q_228	A.226	3836908	question	(x,y)=\left(t^{1/t},t\right),\qquad0<t<\infty.
+q_229	A.226	3836908	question	(0,0)
+q_230	A.226	3836908	question	(0,1)
+q_231	A.226	3836908	question	0,1,x,x^x,x^{x^x},x^{x^{x^x}},\ldots
+q_232	A.226	3836908	question	x^{x^y}=y
+q_233	A.226	3836908	question	x
+q_234	A.226	3836908	question	e^{-e}
+q_235	A.227	3638119	title	1+2+3... =-\frac{1}{12}
+q_236	A.227	3638119	question	1+2+3...=-\dfrac{1}{12}
+q_237	A.227	3638119	question	 \frac{x(x+1)}{2} 
+q_238	A.227	3638119	question	1+2+3...
+q_239	A.227	3638119	question	x
+q_240	A.227	3638119	question	n
+q_241	A.227	3638119	question	y
+q_242	A.227	3638119	question	n
+q_243	A.227	3638119	question	 \sum^{n}_{i=1}1+2+3...=\frac{x(x+1)}{2} 
+q_244	A.227	3638119	question	x=0,-1
+q_245	A.227	3638119	question	-1
+q_246	A.227	3638119	question	0
+q_247	A.227	3638119	question	x
+q_248	A.227	3638119	question	 \int_{-1}^{0} \frac{x(x+1)}{2}\:dx=-\frac{1}{12} 
+q_249	A.227	3638119	question	x
+q_250	A.228	3639669	question	\quad f(x)=\int_{0 }^{+\infty}cos\left(\frac{t^3}{3}+xt\right) d t
+q_251	A.228	3639669	question	F(x, y)=\int_{-\infty}^{+\infty} f(t+x) f(t+y) d t
+q_252	A.229	3707293	question	\int_{0}^{1}\big\lbrace\frac{1}{x}\big\rbrace \big\lbrace\frac{1}{1-x}\big\rbrace \big\lbrace1-\frac{1}{x}\big\rbrace dx
+q_253	A.229	3707293	question	\big\lbrace x\big\rbrace
+q_254	A.229	3707293	question	x
+q_255	A.229	3707293	question	\int_{0}^{a}f(x)dx=\int_{0}^{a}f(a-x)dx
+q_256	A.230	3885662	question	c
+q_257	A.230	3885662	question	n_1, …, n_c
+q_258	A.230	3885662	question	R(n_1, …, n_c)
+q_259	A.230	3885662	question	R(n_1, ..., n_c)
+q_260	A.230	3885662	question	R(n_1,n_2,..n_c) 
+q_261	A.230	3885662	question	R(n_2,n_1,..n_c) 
+q_262	A.230	3885662	question	 {n_1,n_2,..n_c}
+q_263	A.230	3885662	question	R(m,n)=R(n,m)
+q_264	A.231	3585900	question	\frac{1}{א_0}
+q_265	A.231	3585900	question	\lim_{x\to\infty} \frac{1}{x} =0
+q_266	A.231	3585900	question	\infty
+q_267	A.231	3585900	question	א_0
+q_268	A.232	3707334	question	||\cdot||
+q_269	A.232	3707334	question	\mathbb{R}^n
+q_270	A.232	3707334	question	 \left\lVert A \right\rVert = \max_{\mathbf v\not =0}\frac{\left\lVert A\mathbf v \right\rVert}{\left\lVert \mathbf v \right\rVert} \qquad for \quad A \in \mathbb{R}^{n\times n}.
+q_271	A.232	3707334	question	\left\lVert A \right\rVert =\max_{\Vert \mathbf w\Vert = 1}\Vert A \mathbf w\Vert.
+q_272	A.232	3707334	question	\mathbf v= \frac{\left\Vert\mathbf v\right\rVert\mathbf v}{\left\Vert\mathbf v\right\rVert}=\mathbf w\left\Vert\mathbf v\right\rVert 
+q_273	A.232	3707334	question	\mathbf w= \frac{\mathbf v}{||\mathbf v||}
+q_274	A.232	3707334	question	||\mathbf w||=1
+q_275	A.232	3707334	question	 \left\lVert A \right\rVert = \max_{v\not =0}\frac{\left\lVert A\mathbf v \right\rVert}{\left\lVert \mathbf v \right\rVert}= \max_{v\not =0}\frac{\left\lVert A(\mathbf w\left\Vert\mathbf v\right\rVert )\right\rVert}{\left\lVert \mathbf v \right\rVert}=\max_{\mathbf v\not=0}\frac{||\mathbf v||}{||\mathbf v||}\Vert A \mathbf w\Vert.
+q_276	A.232	3707334	question	\left\lVert A \right\rVert =\max_{\Vert \mathbf w\Vert = 1}\Vert A \mathbf w\Vert \quad for \quad \mathbf w \in \mathbb{R}^n .
+q_277	A.232	3707334	question	\left\lVert A \right\rVert =\max_{\Vert \mathbf w\Vert = 1}\Vert A \mathbf w\Vert \quad for \quad \mathbf w \in \mathbb{R}^n \setminus \{\mathbf 0\} .
+q_278	A.232	3707334	question	\mathbf w=\mathbf 0
+q_279	A.232	3707334	question	||\mathbf w||=0
+q_280	A.232	3707334	question	||\mathbf w||=1.
+q_281	A.233	3793517	title	f\in C^\infty(M)
+q_282	A.233	3793517	question	p\in M
+q_283	A.233	3793517	question	M
+q_284	A.233	3793517	question	p\in M
+q_285	A.233	3793517	question	v:C^\infty(M)\to \mathbb{R}
+q_286	A.233	3793517	question	p
+q_287	A.233	3793517	question	\begin{align*} v(fg) = f(p)vg + g(p)vf \end{align*}
+q_288	A.233	3793517	question	f,g\in C^\infty(M)
+q_289	A.233	3793517	question	M=\mathbb{R}^n
+q_290	A.233	3793517	question	\mathbb{R}^n
+q_291	A.233	3793517	question	f\in C^\infty(M)
+q_292	A.233	3793517	question	\gamma:J\to M
+q_293	A.233	3793517	question	f\in C^\infty(M)
+q_294	A.233	3793517	question	\begin{align*} \left.\frac{d}{dt}(f\circ \gamma)(t)\right|_{t=0}. \end{align*}
+q_295	A.233	3793517	question	\mathbb{R}^n
+q_296	A.233	3793517	question	f\in C^\infty(M)
+q_297	A.234	3580206	question	f
+q_298	A.234	3580206	question	f(Z)
+q_299	A.234	3580206	question	Z = \{a \in X : f'(a) = 0\}
+q_300	A.234	3580206	question	Z
+q_301	A.234	3580206	question	f
+q_302	A.235	3831521	title	ax^2 + bx + c = y^2
+q_303	A.235	3831521	question	ax^2 + bx + c = y^2
+q_304	A.235	3831521	question	X = 2ax + b
+q_305	A.235	3831521	question	Y = 2y
+q_306	A.235	3831521	question	X^2 - dY^2 = n
+q_307	A.235	3831521	question	n = b^2 - 4ac
+q_308	A.235	3831521	question	d = a
+q_309	A.235	3831521	question	X^2 - dY^2 = n
+q_310	A.236	3781547	question	\boldsymbol{\alpha}=(\alpha_1,\ldots,\alpha_K)
+q_311	A.236	3781547	question	 D(x_1, \ldots, x_K) = \frac{1}{\mathrm{B}(\boldsymbol\alpha)} \prod_{i=1}^K x_i^{\alpha_i - 1} 
+q_312	A.236	3781547	question	 \mathrm{B}(\boldsymbol\alpha) = \frac{\prod_{i=1}^K \Gamma(\alpha_i)}{\Gamma\left(\sum_{i=1}^K \alpha_i\right)}. 
+q_313	A.236	3781547	question	K = 2
+q_314	A.236	3781547	question	\alpha_1 = \alpha_2 = 1
+q_315	A.236	3781547	question	 D(x_1, x_2) = 1/\mathrm{B(\boldsymbol\alpha)} 
+q_316	A.236	3781547	question	 \mathrm{B}(\boldsymbol\alpha) = \Gamma(1)^2 / \Gamma(2) = 1 
+q_317	A.236	3781547	question	D(x_1, x_2) = 1
+q_318	A.236	3781547	question	x_1, x_2
+q_319	A.236	3781547	question	D(x_1, x_2)
+q_320	A.236	3781547	question	1
+q_321	A.236	3781547	question	R^2
+q_322	A.236	3781547	question	x_i \ge 0
+q_323	A.236	3781547	question	x_1 + x_2 = 1
+q_324	A.236	3781547	question	(0, 1)
+q_325	A.236	3781547	question	(1, 0)
+q_326	A.236	3781547	question	\sqrt{2}
+q_327	A.236	3781547	question	\sqrt{2}
+q_328	A.236	3781547	question	1
+q_329	A.236	3781547	question	K=3
+q_330	A.236	3781547	question	\sqrt{2}
+q_331	A.236	3781547	question	B(\boldsymbol\alpha) = 1/\Gamma(3) = 1/2
+q_332	A.237	3680480	question	p \land \lnot q \to r
+q_333	A.237	3680480	question	p \land \lnot q \to r \land q
+q_334	A.237	3680480	question	(p \to r) \leftrightarrow (q \to r)
+q_335	A.237	3680480	question	p \land \lnot q \land r
+q_336	A.238	3707961	question	R
+q_337	A.238	3707961	question	A
+q_338	A.238	3707961	question	R
+q_339	A.238	3707961	question	a,b,c \in A
+q_340	A.238	3707961	question	a R a
+q_341	A.238	3707961	question	a R b
+q_342	A.238	3707961	question	b R a
+q_343	A.238	3707961	question	a R b
+q_344	A.238	3707961	question	b R c
+q_345	A.238	3707961	question	aRc
+q_346	A.238	3707961	question	R
+q_347	A.238	3707961	question	R
+q_348	A.238	3707961	question	R
+q_349	A.238	3707961	question	\sim
+q_350	A.238	3707961	question	\sim
+q_351	A.238	3707961	question	a,b,c \in A
+q_352	A.238	3707961	question	a \sim a
+q_353	A.238	3707961	question	\sim
+q_354	A.238	3707961	question	a\sim b
+q_355	A.238	3707961	question	b \sim a
+q_356	A.238	3707961	question	\sim
+q_357	A.238	3707961	question	a\sim b
+q_358	A.238	3707961	question	b \sim c
+q_359	A.238	3707961	question	a\sim c
+q_360	A.238	3707961	question	\sim
+q_361	A.238	3707961	question	\sim
+q_362	A.238	3707961	question	\sim
+q_363	A.238	3707961	question	\sim
+q_364	A.238	3707961	question	\sim
+q_365	A.238	3707961	question	\sim
+q_366	A.238	3707961	question	R
+q_367	A.238	3707961	question	R
+q_368	A.239	3865731	question	R
+q_369	A.239	3865731	question	(x, y) \in R
+q_370	A.239	3865731	question	(y, x) \in R
+q_371	A.239	3865731	question	(x, y)
+q_372	A.239	3865731	question	(y, x)
+q_373	A.239	3865731	question	(x, x) \in R
+q_374	A.240	3511471	question	\Delta  = b^2 – 4ac
+q_375	A.240	3511471	question	X = (–b \pm \sqrt\Delta)/2a)
+q_376	A.241	3629677	title	n^3 +6n^2-7n
+q_377	A.241	3629677	question	n = 2, 3, 4, ...
+q_378	A.241	3629677	question	n^3 +6n^2-7n
+q_379	A.241	3629677	question	6
+q_380	A.242	3879372	title	p
+q_381	A.242	3879372	title	3
+q_382	A.242	3879372	title	24
+q_383	A.242	3879372	title	p^2-1
+q_384	A.242	3879372	question	p
+q_385	A.242	3879372	question	3
+q_386	A.242	3879372	question	24
+q_387	A.242	3879372	question	p^2-1
+q_388	A.242	3879372	question	(p+1)(p-1) = p^2-1
+q_389	A.242	3879372	question	\frac{(p+1)(p-1)}{24}=k
+q_390	A.242	3879372	question	k \in \Bbb Z.
+q_391	A.242	3879372	question	24 = 2^3 \cdot 3
+q_392	A.242	3879372	question	24=2^3\cdot3\vert(p+1)(p-1).
+q_393	A.243	3903856	title	2^{2k}-x^2\bigm|2^{2k}-1
+q_394	A.243	3903856	title	x=1
+q_395	A.243	3903856	question	y=2^k
+q_396	A.243	3903856	question	k\geq1
+q_397	A.243	3903856	question	0<x<2^k
+q_398	A.243	3903856	question	2^{2k}-x^2\bigm|2^{2k}-1
+q_399	A.243	3903856	question	x=1
+q_400	A.243	3903856	question	2^{2k}-1
+q_401	A.243	3903856	question	2^k
+q_402	A.243	3903856	question	2^k-1
+q_403	A.243	3903856	question	2^k+1
+q_404	A.244	3675881	question	R
+q_405	A.244	3675881	question	\Bbb{R}
+q_406	A.244	3675881	question	aRb \Leftrightarrow (a-b)\in \Bbb{Z}
+q_407	A.244	3675881	question	|\Bbb{R}/R|
+q_408	A.244	3675881	question	\Bbb{R}/R
+q_409	A.244	3675881	question	\Bbb{R}
+q_410	A.244	3675881	question	R
+q_411	A.245	3555629	question	 f(f(z)) = \sin z 
+q_412	A.245	3555629	question	 z \in \mathbb{Z} 
+q_413	A.246	3877955	title	n
+q_414	A.246	3877955	title	n
+q_415	A.246	3877955	title	A_1A_2\ldots A_n
+q_416	A.246	3877955	title	\frac1{A_1A_2}=\frac1{A_1A_3}+\frac1{A_1A_4}
+q_417	A.246	3877955	question	n
+q_418	A.246	3877955	question	n
+q_419	A.246	3877955	question	A_1A_2 ...A_n
+q_420	A.246	3877955	question	\frac{1}{A_1A_2}=\frac{1}{A_1A_3}+\frac{1}{A_1A_4}
+q_421	A.246	3877955	question	2\sin(\theta)
+q_422	A.246	3877955	question	\theta
+q_423	A.246	3877955	question	\theta=\frac{180^\circ}{n}
+q_424	A.246	3877955	question	\csc(\theta)=\csc(2\theta)+\csc(3\theta)
+q_425	A.247	3680898	title	x^2+(y-8)^2=25
+q_426	A.247	3680898	title	(0,-5)
+q_427	A.247	3680898	question	C
+q_428	A.247	3680898	question	x^2 + (y − 8)^2 = 25
+q_429	A.247	3680898	question	E = (0, −5)
+q_430	A.247	3680898	question	AB
+q_431	A.247	3680898	question	A'B'
+q_432	A.247	3680898	question	A
+q_433	A.247	3680898	question	B
+q_434	A.247	3680898	question	P
+q_435	A.247	3680898	question	C
+q_436	A.247	3680898	question	x = 5 \cos\theta
+q_437	A.247	3680898	question	y = 8 + 5 \sin \theta
+q_438	A.247	3680898	question	A
+q_439	A.247	3680898	question	B
+q_440	A.248	3595995	title	\ne e
+q_441	A.248	3595995	title	2
+q_442	A.248	3595995	question	G
+q_443	A.248	3595995	question	M:=\{g\in G:g^2=e\}
+q_444	A.248	3595995	question	M
+q_445	A.248	3595995	question	G
+q_446	A.248	3595995	question	M
+q_447	A.248	3595995	question	2
+q_448	A.248	3595995	question	G
+q_449	A.248	3595995	question	M
+q_450	A.248	3595995	question	e
+q_451	A.248	3595995	question	M=2
+q_452	A.248	3595995	question	2
+q_453	A.248	3595995	question	M=4
+q_454	A.248	3595995	question	a,b\in M
+q_455	A.248	3595995	question	ab
+q_456	A.248	3595995	question	a,b,e
+q_457	A.248	3595995	question	c
+q_458	A.248	3595995	question	abc=c^2=e
+q_459	A.248	3595995	question	M=8
+q_460	A.248	3595995	question	e,a,b,c,d,f,g,h
+q_461	A.248	3595995	question	ab=c
+q_462	A.248	3595995	question	df=g
+q_463	A.248	3595995	question	h
+q_464	A.249	3918415	title	g*g=e
+q_465	A.249	3918415	title	g
+q_466	A.249	3918415	question	 (G, * , e) 
+q_467	A.249	3918415	question	*
+q_468	A.249	3918415	question	 g*g = e
+q_469	A.249	3918415	question	g \in G 
+q_470	A.250	3727953	title	(a_1a_2\ldots a_n)^{\frac{1}{n}}\leq \frac{\sum_{i=1}^{n}a_i}{n}
+q_471	A.250	3727953	question	(a_1a_2\ldots a_n)^{\frac{1}{n}}\leq \frac{\sum_{i=1}^{n}a_i}{n}
+q_472	A.250	3727953	question	a_i
+q_473	A.250	3727953	question	n=2
+q_474	A.250	3727953	question	\sqrt{ab}\leq \frac{a+b}{2}
+q_475	A.250	3727953	question	4ab\leq a^2 +2ab + b^2
+q_476	A.250	3727953	question	0\leq(a-b)^2
+q_477	A.250	3727953	question	n
+q_478	A.250	3727953	question	n+1
+q_479	A.251	3875006	title	(k+1)^{\frac{1}{k+1}} < k^{\frac{1}{k}} (k >= 3)
+q_480	A.251	3875006	question	(k+2)^{\frac{1}{k+2}} < ... < (k + 1)^{\frac{1}{k+1}}
+q_481	A.251	3875006	question	(k+1)^{\frac{1}{k+1}} < k^{\frac{1}{k}}
+q_482	A.252	3513089	title	\pi^2 /~6
+q_483	A.252	3513089	question	\frac 16 \pi^2
+q_484	A.252	3513089	question	\zeta(2)=\frac1{1^2}+\frac1{2^2}+\frac1{3^2}+\cdots = \frac{\pi^2}{6}.
+q_485	A.252	3513089	question	\zeta(2)
+q_486	A.252	3513089	question	\frac 16 \pi^2
+q_487	A.252	3513089	question	c\pi
+q_488	A.252	3513089	question	c\pi^2
+q_489	A.252	3513089	question	c \in \mathbb{Q}
+q_490	A.252	3513089	question	c\pi^2
+q_491	A.252	3513089	question	\frac 16 \pi^2
+q_492	A.252	3513089	question	\sum \frac{\pi^2}{6\cdot2^n} = \frac 16 \pi^2
+q_493	A.252	3513089	question	\frac 16\pi^2
+q_494	A.252	3513089	question	\frac 16 \pi^2
+q_495	A.252	3513089	question	)
+q_496	A.253	3695843	question	\int_{-\infty}^{\infty} \frac{\cos bx - \cos ax}{x^2} dx = \pi (a-b)
+q_497	A.254	3919232	question	 I=\int_0^\pi \frac{x \ dx}{1-sinx \ cosx} 
+q_498	A.255	3586367	title	e^{-\frac{u^2}{2}}
+q_499	A.255	3586367	question	\propto
+q_500	A.255	3586367	question	f_{X,Y}(x,y) \propto \exp\left(13xy - 94x^2 - \frac{1}{2}y^2\right)
+q_501	A.255	3586367	question	 -\infty< x <\infty, -\infty< y <\infty
+q_502	A.255	3586367	question	f_X(x)
+q_503	A.255	3586367	question	\begin{align*} f_X(x) &\propto \int_{-\infty}^\infty e^{13xy - 94x^2 - \frac{1}{2}y^2}{\rm d}y\\ &\propto \int_{-\infty}^\infty e^{-\frac{1}{2}(y - 13x)^2 - \frac{19x^2}{2}}{\rm d}y\\ &\propto \frac{1}{e^{\frac{19x^2}{2}}} \int_{-\infty}^\infty e^{-\frac{u^2}{2}}{\rm d}u \end{align*}
+q_504	A.255	3586367	question	 u = (y - 13x)^2 
+q_505	A.255	3586367	question	 f_Y(y) \propto \frac{1}{e^{\frac{19x^2}{376}}} \int_{-\infty}^\infty e^{-u^2}{\rm d}u 
+q_506	A.255	3586367	question	 u = \sqrt{94}x - \frac{13y}{2\sqrt{94}} 
+q_507	A.256	3510232	question	 f(x) =\frac{x^2-1}{x-1} 
+q_508	A.256	3510232	question	 \lim_{x\to1}\frac{x^2-1}{x-1} 
+q_509	A.256	3510232	question	 f(x) = \frac{x^2-1}{x-1} 
+q_510	A.256	3510232	question	 f(x) = {x+1} 
+q_511	A.257	3530539	question	\lim_{x \rightarrow k}\ c(f(x)+g(x)) = c \lim_{x \rightarrow k} f(x) + c\ \lim_{x \rightarrow k} g(x),
+q_512	A.257	3530539	question	\lim_{x \rightarrow k} (fg)(x) = \lim_{x \rightarrow k} f(x)g(x), 
+q_513	A.258	3580418	title	\lim_{x \to \infty} \frac{x^k}{e^x}=0
+q_514	A.258	3580418	question	\lim_{h \to 0} \frac{e^{-\frac{1}{h^2}}}{h}
+q_515	A.258	3580418	question	f(x) = \begin{cases} e^{-1/x^2} & \text{ if } x \ne 0 \\ 0 & \text{ if } x = 0 \end{cases}
+q_516	A.258	3580418	question	\lim_{h \to 0} \frac{e^{-\frac{1}{h^2}}}{h}=\lim_{x \to \infty} \frac{x}{e^{x^2}}=\lim_{x \to -\infty} \frac{x}{e^{x^2}}
+q_517	A.258	3580418	question	k
+q_518	A.258	3580418	question	\lim_{x \to \infty} \frac{x^k}{e^x}
+q_519	A.258	3580418	question	\epsilon-\delta
+q_520	A.258	3580418	question	M
+q_521	A.258	3580418	question	M<x
+q_522	A.258	3580418	question	x^k<\epsilon e^x
+q_523	A.258	3580418	question	e^x>x+1
+q_524	A.258	3580418	question	x>0
+q_525	A.258	3580418	question	k<1
+q_526	A.259	3636306	title	n^c
+q_527	A.259	3636306	title	2^n
+q_528	A.259	3636306	question	c
+q_529	A.259	3636306	question	2^n = n^c
+q_530	A.259	3636306	question	\lim_{n \rightarrow \infty} \frac{2^n}{n^c} = 0
+q_531	A.259	3636306	question	2^n
+q_532	A.259	3636306	question	c
+q_533	A.259	3636306	question	n
+q_534	A.260	3889046	question	\lim_{(x,y)\rightarrow (0,0)}\frac{xy^{2}}{x^{4}+y^{2}}
+q_535	A.260	3889046	question	lim_{r\rightarrow 0}\frac{r\cos(\theta)\sin^{2}(\theta)}{r^{2}\cos^{4}(\theta)+\sin^{2}(\theta)}
+q_536	A.260	3889046	question	\sin(\theta)\neq 0
+q_537	A.260	3889046	question	0
+q_538	A.260	3889046	question	\theta=0
+q_539	A.260	3889046	question	\theta = \pi
+q_540	A.261	3513362	title	\det(T_n)=\sum_{k=0}^{n}\alpha^{n-k}\beta^k
+q_541	A.261	3513362	question	T_n\in M(n\times n,\mathbb{F})
+q_542	A.261	3513362	question	\mathbb{F}
+q_543	A.261	3513362	question	T_n=(t_{ij})
+q_544	A.261	3513362	question	t_{ij}= \begin{cases}        \alpha\beta &  1\leq i\leq n-1,\;j=i+1 \\       \alpha+\beta & 1\leq i\leq n,\; j=i \\       1 & 2\leq i\leq n,\; j=i-1 \\       0 &\textrm{otherwise}    \end{cases}
+q_545	A.261	3513362	question	\det(T_n)=\sum_{k=0}^{n}\alpha^{n-k}\beta^k
+q_546	A.262	3842841	question	a
+q_547	A.262	3842841	question	a
+q_548	A.262	3842841	question	a^+
+q_549	A.262	3842841	question	a^+ = \text{if } a\geq 0 \text{ then a else } 0
+q_550	A.262	3842841	question	a
+q_551	A.262	3842841	question	a^-
+q_552	A.262	3842841	question	a^- = \text{if } a\geq 0 \text{ then 0 else } -a
+q_553	A.262	3842841	question	a^+
+q_554	A.262	3842841	question	a^-
+q_555	A.262	3842841	question	 a = a^+ - a^-
+q_556	A.262	3842841	question	a
+q_557	A.263	3930526	question	100\%
+q_558	A.263	3930526	question	(a\land (a\to b))\to b
+q_559	A.263	3930526	question	{a\to b,\text{ } a \over b}?
+q_560	A.264	3824988	question	a^b)\%p
+q_561	A.264	3824988	question	a^{(b\%p)})\%p
+q_562	A.265	3585571	title	(a/b)^2
+q_563	A.265	3585571	question	a
+q_564	A.265	3585571	question	b
+q_565	A.265	3585571	question	2
+q_566	A.265	3585571	question	(a/b)^2
+q_567	A.265	3585571	question	(a/b)^2
+q_568	A.265	3585571	question	a/b
+q_569	A.265	3585571	question	a=bk
+q_570	A.265	3585571	question	k
+q_571	A.265	3585571	question	b
+q_572	A.265	3585571	question	a
+q_573	A.265	3585571	question	a,b
+q_574	A.265	3585571	question	b
+q_575	A.265	3585571	question	1
+q_576	A.266	3740683	question	4\frac{2}{3}
+q_577	A.266	3740683	question	4
+q_578	A.266	3740683	question	4+\frac{2}{3}
+q_579	A.266	3740683	question	\frac{8}{3}
+q_580	A.266	3740683	question	\leq
+q_581	A.266	3740683	question	\frac{14}{3} \rightarrow 4 \frac{2}{3} \rightarrow \frac{8}{3} \rightarrow 2 \frac{2}{3} \rightarrow \frac{4}{3} \rightarrow 1\frac{1}{3}\rightarrow \frac{1}{3}.
+q_582	A.266	3740683	question	(p,q)\in\mathbb{N}\times(\mathbb{N}\setminus\{0\})
+q_583	A.266	3740683	question	\frac{p}{q}
+q_584	A.266	3740683	question	\frac{p \mod q}{q}
+q_585	A.267	3707780	question	\text{minimize } \quad f_0(x)
+q_586	A.267	3707780	question	\text{subject to } \quad f_i(x) \leq 0, \quad i = 1, \dots, m
+q_587	A.267	3707780	question	\text{minimize } \quad -g(\lambda) = - \inf_x L(x, \lambda)
+q_588	A.267	3707780	question	\text{subject to } \quad -\lambda \leq 0
+q_589	A.267	3707780	question	L(x,\lambda) = f_0(x) + \sum_{i=1}^m \lambda_i f_i(x)
+q_590	A.268	3634072	title	Z\thicksim\text{Poisson}(\lambda)
+q_591	A.268	3634072	title	\frac{1}{1+Z}.
+q_592	A.268	3634072	question	Z\thicksim\text{Poisson}(\lambda)
+q_593	A.268	3634072	question	\dfrac{1}{1+Z}.
+q_594	A.268	3634072	question	\begin{align*} E\left[\frac{1}{1+Z}\right]&=\sum_{k=0}^\infty\frac{1}{1+k}\frac{e^{-\lambda}\lambda^k}{k!}=e^{-\lambda}\sum_{k=0}^\infty\frac{\lambda^k}{(k+1)!}=\frac{e^{-\lambda}}{\lambda}\left[\sum_{k=0}^\infty\frac{\lambda^k}{k!}-1\right]\\ &=\frac{e^{-\lambda}}{\lambda}[e^\lambda-1]=\frac{1}{\lambda}-\frac{e^{-\lambda}}{\lambda}, \end{align*}
+q_595	A.269	3805766	question	S=\{(b,b)(b,g)(g,g)\}
+q_596	A.269	3805766	question	E=\{ (b,b) \}
+q_597	A.269	3805766	question	F=\{(b,g),(b,b)\}
+q_598	A.269	3805766	question	P(E|F)=\frac{P(E\cap F)}{P(F)}=\frac{1/3}{2/3}=\frac{1}{2}
+q_599	A.269	3805766	question	\frac{1}{3}
+q_600	A.270	3848638	question	E(n)=\frac{1}{2}(E(n)+1)+\frac{1}{2}(E(n-1))
+q_601	A.270	3848638	question	E(n)=E(n-1)+1
+q_602	A.271	3756789	title	\limsup_{n\to \infty} \{X_n X_{n+1}>0\}
+q_603	A.271	3756789	title	\{X_n\}
+q_604	A.271	3756789	question	\{X_n\}
+q_605	A.271	3756789	question	\mathbb{E}\, X_n = 0
+q_606	A.271	3756789	question	n \geq 1
+q_607	A.271	3756789	question	 \limsup_{n\to \infty} \big\{ X_n X_{n+1}> 0 \big\}
+q_608	A.271	3756789	question	\begin{align*} \mathbb{P} \big( \limsup_{n\to \infty} \big\{ X_n X_{n+1}> 0 \big\}\big) &= \mathbb{P}\big( X_n X_{n+1} > 0 \,\,\, i.o. \big) \\ &\leq \mathbb{P}\big( \big\{ X_n X_{n+1}> 0 \,\,\, i.o \big\} \cap \big\{ X_{n+1} > 0 \,\,\, i.o\big\} \big)\\ &= \mathbb{P}\big( \big\{ X_n X_{n+1}> 0 \,\,\, i.o \big\}\big) \,\,\mathbb{P}\big( \big\{ X_{n+1} > 0 \,\,\, i.o\big\} \big) \,\,\,\, \text{(by independence)} \end{align*}
+q_609	A.272	3528192	title	\sqrt{ab}
+q_610	A.272	3528192	title	\sqrt{a}\sqrt{b}
+q_611	A.272	3528192	question	\sqrt{ab}
+q_612	A.272	3528192	question	\sqrt{a}\sqrt{b}
+q_613	A.272	3528192	question	\sqrt{ab}
+q_614	A.272	3528192	question	\sqrt{a}\sqrt{b}
+q_615	A.272	3528192	question	x^2 = (\sqrt{ab})^2 = ab
+q_616	A.272	3528192	question	y^2 = (\sqrt{a}\sqrt{b})^2 = (\sqrt{a}\sqrt{b})(\sqrt{a}\sqrt{b}) = (\sqrt{a})^2(\sqrt{b})^2 = ab
+q_617	A.272	3528192	question	\therefore x^2 = y^2
+q_618	A.272	3528192	question	x^2-y^2=0
+q_619	A.272	3528192	question	(x+y)(x-y)=0
+q_620	A.272	3528192	question	\therefore x = y
+q_621	A.272	3528192	question	x = -y
+q_622	A.272	3528192	question	\therefore y = x
+q_623	A.272	3528192	question	y = -x
+q_624	A.272	3528192	question	i^2=-1
+q_625	A.272	3528192	question	i = \sqrt{-1}
+q_626	A.272	3528192	question	1 = \sqrt{(-1)(-1)} = \sqrt{-1}\sqrt{-1} = (i)(i) = i^2 = -1  
+q_627	A.272	3528192	question	\sqrt{ab}
+q_628	A.272	3528192	question	\sqrt{a}\sqrt{b}
+q_629	A.273	3907623	question	x^2
+q_630	A.273	3907623	question	 \sqrt[\cfrac{1}{2}]{x}=x^{1/{(\cfrac{1}{2}})} 
+q_631	A.273	3907623	question	x^2
+q_632	A.273	3907623	question	 \sqrt[\cfrac{1}{a}]{x}=x^{1/{(\cfrac{1}{a}})} =x^a 
+q_633	A.273	3907623	question	\sqrt[\cfrac{b}{a}]{x}=x^{1/{(\cfrac{b}{a}})} =x^{\cfrac{a}{b}}
+q_634	A.273	3907623	question	\sqrt[\cfrac{2}{3}]{4}=4^{1/{(\cfrac{2}{3}})} =4^{\cfrac{3}{2}}= 8
+q_635	A.273	3907623	question	\sqrt[\cfrac{22}{7}]{π}=π^{1/{(\cfrac{22}{7}})} =π^{\cfrac{7}{22}} \approx 1.439
+q_636	A.273	3907623	question	\sqrt[\cfrac{1}{2}]{\cfrac{1}{4}}=\cfrac{1}{4}^{1/(\cfrac{2}{1})} =\cfrac{1}{4}^{(\cfrac{2}{1})} =\cfrac{1}{4}^{2} =\cfrac{1}{16} 
+q_637	A.274	3501320	title	H
+q_638	A.274	3501320	title	H^{s}(\mathbb{R})
+q_639	A.274	3501320	question	\delta_{0}
+q_640	A.274	3501320	question	H^{s}\left(\mathbf{R}^{n}\right)=\left\{f \in \mathcal{S}^{\prime}\left(\mathbf{R}^{n}\right)\left|\left(1+|\xi|^{2}\right)^{s / 2} \mathcal{F} f \in L^{2}\left(\mathbf{R}^{n}\right)\right\}\right.
+q_641	A.274	3501320	question	s<-n / 2
+q_642	A.274	3501320	question	H
+q_643	A.274	3501320	question	\forall x \in \mathbb{R}, H(x)=\left\{\begin{array}{lll}{0} & {\text { si }} & {x<0} \\ {1} & {\text { si }} & {x \geq 0}\end{array}\right.
+q_644	A.274	3501320	question	H^{s}(\mathbb{R})
+q_645	A.275	3556571	question	 \lim_{A\rightarrow \infty} \int_0^A \frac{\sin(x)}{x}dx\;=\;\frac{\pi}{2}?
+q_646	A.275	3556571	question	x>0
+q_647	A.275	3556571	question	x^{-1}\;=\;\int_0^\infty e^{-xt}dt
+q_648	A.276	3634998	title	k\in\mathbb{N}
+q_649	A.276	3634998	title	a>1
+q_650	A.276	3634998	title	\lim_{n\to\infty} \frac{n^k}{a^n}=0
+q_651	A.276	3634998	question	n
+q_652	A.276	3634998	question	n^k<a^n
+q_653	A.276	3634998	question	n>k\log_an
+q_654	A.276	3634998	question	N
+q_655	A.277	3656344	question	P,S>0
+q_656	A.277	3656344	question	\frac{S}{n} \ge \sqrt[n]{P}
+q_657	A.277	3656344	question	a_1,\dots,a_n
+q_658	A.277	3656344	question	S=\sum a_i,P=\prod a_i
+q_659	A.277	3656344	question	\frac{S}{n} \ge \sqrt[n]{P}
+q_660	A.277	3656344	question	n=2
+q_661	A.277	3656344	question	n>3
+q_662	A.278	3788377	title	f(\mathbb Q) \subseteq \mathbb Q
+q_663	A.278	3788377	title	f'(\mathbb Q) \not \subseteq \mathbb Q
+q_664	A.278	3788377	question	f:\mathbb R \rightarrow \mathbb R
+q_665	A.278	3788377	question	f(\mathbb Q) \subseteq \mathbb Q
+q_666	A.278	3788377	question	f'(\mathbb Q) \not \subseteq \mathbb Q
+q_667	A.278	3788377	question	f(\mathbb Q) \subseteq \mathbb Q
+q_668	A.279	3806534	title	\lim_{x\to 0}\left(f(x)+\frac{1}{f(x)}\right)=2,
+q_669	A.279	3806534	title	\lim_{x\to 0}f(x)=1
+q_670	A.279	3806534	question	f:(-\delta,\delta)\to (0,\infty)
+q_671	A.279	3806534	question	\lim_{x\to 0}\left(f(x)+\frac{1}{f(x)}\right)=2.
+q_672	A.279	3806534	question	\lim_{x\to 0}f(x)=1
+q_673	A.279	3806534	question	h:(-\delta,\delta)\to(-1,\infty)
+q_674	A.279	3806534	question	h(x)=f(x)-1, \forall x\in(-\delta,\delta).
+q_675	A.279	3806534	question	\lim_{x\to 0}h(x)=0
+q_676	A.279	3806534	question	\lim_{x\to 0}\left(f(x)+\frac{1}{f(x)}\right)=2\implies \lim_{x\to 0}\frac{(f(x)-1)^2}{f(x)}=0\implies \lim_{x\to 0}\frac{h^2(x)}{h(x)+1}=0.
+q_677	A.279	3806534	question	\lim_{x\to 0} h(x)=0,
+q_678	A.279	3806534	question	\begin{cases}h(x)\ge \frac{h^2(x)}{h(x)+1},\text{when }h(x)\ge 0,\\h(x)<\frac{h^2(x)}{h(x)+1},\text{when }h(x)<0.\end{cases}
+q_679	A.280	3808684	question	\text{ExecutionTime}(n, k) = \Delta(4k+\frac{2n}{k}-4)
+q_680	A.280	3808684	question	\frac{d\,\text{ExecutionTime}(n, k)}{dk}=4\Delta-\frac{2n\Delta}{k^2}=0
+q_681	A.280	3808684	question	k= \sqrt{\frac{n}{2}}
+q_682	A.280	3808684	question	n
+q_683	A.280	3808684	question	k
+q_684	A.280	3808684	question	\Delta
+q_685	A.280	3808684	question	k
+q_686	A.280	3808684	question	n
+q_687	A.280	3808684	question	k
+q_688	A.280	3808684	question	n
+q_689	A.281	3865837	title	n^{\frac{1}{n}} \rightarrow 1
+q_690	A.281	3865837	title	n \in \mathbb{N}
+q_691	A.281	3865837	question	n^{\frac{1}{n}} \rightarrow 1
+q_692	A.281	3865837	question	n \in \mathbb{N}
+q_693	A.281	3865837	question	n^{1/n}>1
+q_694	A.281	3865837	question	n=(1+k)^n
+q_695	A.281	3865837	question	n>1
+q_696	A.281	3865837	question	k>0
+q_697	A.281	3865837	question	\begin{align} n&=1+nk+\frac{n(n-1)}{2}k^2+....+k^n \geq1+\frac{n(n-1)}{2}k \\ &\Rightarrow n-1 \geq \frac{n(n-1)}{2}k^2 \\ &\Rightarrow k^2 \leq \frac{2}{n} \end{align}
+q_698	A.281	3865837	question	n>0
+q_699	A.281	3865837	question	\frac{2}{\epsilon^2}<n\Rightarrow \frac{2}{n}<\epsilon^2
+q_700	A.281	3865837	question	|n^{\frac{1}{n}}-1|\geq0
+q_701	A.281	3865837	question	n^{\frac{1}{n}}-1=k\leq(\frac{2}{n})^{\frac{1}{2}}<\epsilon
+q_702	A.281	3865837	question	n^{\frac{1}{n}}\rightarrow1
+q_703	A.282	3876723	title	\zeta(2)
+q_704	A.282	3876723	question	\sum_{n=1}^{\infty} 1/n^2
+q_705	A.282	3876723	question	\pi^2/6
+q_706	A.282	3876723	question	\arcsin
+q_707	A.283	3565632	title	(x_n)
+q_708	A.283	3565632	question	x_1 := a > 0
+q_709	A.283	3565632	question	x_{n+1} := x_n + \frac{1}{x_n}
+q_710	A.283	3565632	question	n \in \mathbb{N}
+q_711	A.283	3565632	question	(x_n)
+q_712	A.283	3565632	question	x_1 > 0
+q_713	A.283	3565632	question	(x_n)
+q_714	A.283	3565632	question	(x_n)
+q_715	A.283	3565632	question	\exists M \in \mathbb{R}
+q_716	A.283	3565632	question	\begin{align}|x_n| \leq M ~\forall n \in \mathbb{N}\tag{1} \end{align}
+q_717	A.283	3565632	question	M
+q_718	A.283	3565632	question	(1)
+q_719	A.283	3565632	question	\epsilon > 0
+q_720	A.283	3565632	question	\begin{align} x_n + \epsilon \leq M \tag{2}\end{align}
+q_721	A.283	3565632	question	\epsilon = \frac{1}{x_n}
+q_722	A.283	3565632	question	\begin{align} x_{n+1} = x_n + \frac{1}{x_n} \leq M \implies x_n + \epsilon \leq M \tag{3}\end{align}
+q_723	A.283	3565632	question	\forall n \in \mathbb{N}
+q_724	A.283	3565632	question	(x_n)
+q_725	A.283	3565632	question	(x_n)
+q_726	A.283	3565632	question	x_n
+q_727	A.284	3797454	question	n \in \mathbb{N}
+q_728	A.284	3797454	question	\frac{1}{n}
+q_729	A.284	3797454	question	\frac{m}{n} = \frac{1}{n} + \frac{1}{n} + ... + \frac{1}{n}
+q_730	A.284	3797454	question	m
+q_731	A.285	3522780	question	n
+q_732	A.285	3522780	question	U_n= n^2+n
+q_733	A.285	3522780	question	U_n= 6n^2 -12n + 5
+q_734	A.286	3550076	title	\sum a_{k}
+q_735	A.286	3550076	title	\lim _{n \rightarrow+\infty} n a_{n}=0
+q_736	A.286	3550076	question	a_{n}
+q_737	A.286	3550076	question	\sum a_{k}
+q_738	A.286	3550076	question	\lim _{n \rightarrow+\infty} n a_{n}=0
+q_739	A.286	3550076	question	na_n
+q_740	A.287	3624817	title	\sum_{i=1}^n\frac{2i}{2^i}
+q_741	A.287	3624817	question	\frac{\sum 2i}{\sum2^i}
+q_742	A.287	3624817	question	\sum_{i=1}^n\frac{2i}{2^i}=5n
+q_743	A.288	3731454	question	\sum (-1)^n/n
+q_744	A.288	3731454	question	\left(1+\frac{1}{2}+\frac{1}{3}\right)-\left(\frac{1}{4}+\frac{1}{5}+\frac{1}{6}\right)+\left(\frac{1}{7}+\frac{1}{8}+\frac{1}{9}\right)-\cdots
+q_745	A.288	3731454	question	\sum\frac{\textrm{sgn}(\sin(n))}{n}\quad\textrm{or}\quad\sum\frac{\sin(n)}{n|\sin(n)|}
+q_746	A.288	3731454	question	\pi
+q_747	A.288	3731454	question	b_n=\textrm{sgn}(\sin(n)).
+q_748	A.288	3731454	question	\pi
+q_749	A.288	3731454	question	3+1/4
+q_750	A.288	3731454	question	B_n
+q_751	A.288	3731454	question	b_n
+q_752	A.288	3731454	question	\pi
+q_753	A.288	3731454	question	|B_n|\leq3
+q_754	A.288	3731454	question	n
+q_755	A.288	3731454	question	\pi-3
+q_756	A.288	3731454	question	1/7
+q_757	A.288	3731454	question	B_{312\ 692}=4
+q_758	A.288	3731454	question	B_{625\ 381}=5
+q_759	A.288	3731454	question	B_{938\ 070}=6
+q_760	A.288	3731454	question	B_{166\ 645\ 135}=-7
+q_761	A.288	3731454	question	B_{824\ 054\ 044}=8
+q_762	A.288	3731454	question	|B_n|
+q_763	A.288	3731454	question	9
+q_764	A.288	3731454	question	n=1\ 000\ 000\ 000
+q_765	A.288	3731454	question	B_{1\ 000\ 000\ 000}=-2
+q_766	A.289	3749238	title	x^n+y^n+z^n
+q_767	A.289	3749238	question	x+y+z=1
+q_768	A.289	3749238	question	x^2+y^2+z^2=2
+q_769	A.289	3749238	question	x^3+y^3+z^3=3
+q_770	A.289	3749238	question	a_n=x^n+y^n+z^n
+q_771	A.289	3749238	question	a_5=6
+q_772	A.290	3832496	title	7\times11^{2n+1}-3^{4n-1}
+q_773	A.290	3832496	title	10
+q_774	A.290	3832496	question	7\times11^{2n+1}-3^{4n-1}
+q_775	A.290	3832496	question	10
+q_776	A.290	3832496	question	10
+q_777	A.290	3832496	question	10
+q_778	A.290	3832496	question	10
+q_779	A.291	3875640	title	n
+q_780	A.291	3875640	question	\sum_{n=1}^\infty \frac{\prod_{k=1}^n(2k)^2}{(2n+2)!}
+q_781	A.291	3875640	question	\sum_{n=0}^\infty \frac{\prod_{k=0}^n(2k+1)^2}{(2n+3)!}
+q_782	A.291	3875640	question	n
+q_783	A.291	3875640	question	\prod_{k=1}^n(2k)^2=4^n(n!)^2
+q_784	A.291	3875640	question	\prod_{k=0}^n (2k+1)^2=\frac{((2n+1)!)^2}{4^n(n!)^2}
+q_785	A.291	3875640	question	\sum_{n=1}^\infty \frac{\prod_{k=1}^n(2k)^2}{(2n+2)!}=\sum_{n=1}^\infty\frac{4^n(n!)^2}{(2n+2)!}
+q_786	A.291	3875640	question	\sum_{n=0}^\infty \frac{\prod_{k=0}^n(2k+1)^2}{(2n+3)!}=\sum_{n=0}^\infty\frac{( (2n+1)!)^2}{4^n(n!)^2(2n+3)!}
+q_787	A.291	3875640	question	\sum_{n=1}^\infty \frac{\prod_{k=1}^n(2k)^2}{(2n+2)!}=\frac{2^2}{4!}+\frac{2^24^2}{6!}+\frac{2^24^26^2}{8!}\cdot\cdot\cdot\cdot
+q_788	A.291	3875640	question	\sum_{n=0}^\infty \frac{\prod_{k=0}^n(2k+1)^2}{(2n+3)!}=\frac{1^2}{3!}+\frac{1^23^2}{5!}+\frac{1^23^25^2}{7!}+\cdot\cdot\cdot
+q_789	A.291	3875640	question	n
+q_790	A.292	3886377	title	 \frac{x^n}{n^k}
+q_791	A.292	3886377	title	n \to \infty
+q_792	A.292	3886377	title	 x > 
+q_793	A.292	3886377	title	k = 1, 2,\cdots
+q_794	A.292	3886377	question	(n+1)^k \geq 1 + nk
+q_795	A.293	3571122	title	\sum_{j=2}^{n-1}j^2
+q_796	A.293	3571122	question	\sum_{j=2}^{n-1}j^2
+q_797	A.293	3571122	question	\sum_{j=1}^{n-1}j^2 - \sum_{j=1}^{1}j^2
+q_798	A.293	3571122	question	\frac{j(j+1)(2j+1)}{6} - j^2
+q_799	A.293	3571122	question	n-1
+q_800	A.294	3716038	question	\mathscr F
+q_801	A.294	3716038	question	\mathscr G^\bullet
+q_802	A.294	3716038	question	\mathscr F
+q_803	A.294	3716038	question	\mathscr G^\bullet
+q_804	A.294	3716038	question	 H^i(X, \mathscr F) \cong \mathbb H^i(X,\mathscr G^\bullet). 
+q_805	A.294	3716038	question	\mathscr F^\bullet
+q_806	A.294	3716038	question	(\mathscr G^\bullet)^\bullet
+q_807	A.295	3559567	question	f(x)=\frac{1}{1-x}
+q_808	A.295	3559567	question	\sum_{n=1}^{\infty} n(n+1)x^n
+q_809	A.295	3559567	question	\sum_{n=1}^{\infty} \frac{n(n+1)}{3^n}
+q_810	A.296	3539880	title	e^x
+q_811	A.296	3539880	question	 e^x=\sum_{n=0}^{\infty}\frac{x^n}{n!},x\in \mathbb R, 
+q_812	A.296	3539880	question	 e^x=\frac {x^0}{0!}+\frac {x^1}{1!}+\frac {x^2}{2!}+\cdots, 
+q_813	A.296	3539880	question	0^0
+q_814	A.297	3704776	question	\phi(n)=320
+q_815	A.297	3704776	question	\phi
+q_816	A.298	3646231	question	\delta(a\chi(z)-b) \rightarrow \delta(z-c)
+q_817	A.298	3646231	question	a, b
+q_818	A.298	3646231	question	c
+q_819	A.298	3646231	question	\chi(z)
+q_820	A.298	3646231	question	z
+q_821	A.298	3646231	question	\chi(z)=\int{\frac{1}{H(z)}dz}
+q_822	A.298	3646231	question	H(z)
+q_823	A.298	3646231	question	z
+q_824	A.298	3646231	question	H(z)
+q_825	A.298	3646231	question	\chi(z)
+q_826	A.298	3646231	question	z
+q_827	A.298	3646231	question	\Theta (a\chi(z)-b)
+q_828	A.298	3646231	question	\frac{d}{d(a\chi(z))}\Theta(a\chi(z)-b)=\delta(a\chi(z)-b)
+q_829	A.298	3646231	question	\frac{d}{dz}\Theta(a\chi(z)-b)\frac{dz}{d(a\chi(z))}
+q_830	A.298	3646231	question	H(z)
+q_831	A.298	3646231	question	\frac{d}{dz}\Theta(a\chi(z)-b)\frac{H(z)}{a}
+q_832	A.298	3646231	question	\chi(z)
+q_833	A.298	3646231	question	\frac{H(z)}{a}\frac{d}{dz}\Theta(\ a\int_0^z{\frac{1}{H(z')}dz'}-b)
+q_834	A.299	3493904	title	\cos \frac{\pi}5-\cos \frac{2 \pi}5=\frac12
+q_835	A.299	3493904	title	\cos \frac{ \pi}5
+q_836	A.299	3493904	question	\cos \left(\frac{ \pi}{5}\right)
+q_837	A.300	3648719	question	f(x)=\frac{1}{1+\ln^2 x}
+q_838	A.300	3648719	question	I=(0,\infty)
+q_839	A.300	3648719	question	f
+q_840	A.300	3648719	question	[0,1]
+q_841	A.300	3648719	question	\ln
+q_842	A.300	3648719	question	x=0
+q_843	A.300	3648719	question	[1,\infty]

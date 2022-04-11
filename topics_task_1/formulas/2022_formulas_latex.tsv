@@ -1,0 +1,1051 @@
+id	topic_id	thread_id	type	formula
+q_1	A.301	4235721	title	\infty
+q_2	A.301	4235721	body	A
+q_3	A.301	4235721	body	m\times n
+q_4	A.301	4235721	body	p=1
+q_5	A.301	4235721	body	q=\infty
+q_6	A.301	4235721	body	\|A\|_2=\sqrt{\rho(A^TA)}
+q_7	A.301	4235721	body	\begin{equation*} \|A\|_2\leq \sqrt{\|A\|_1 \|A\|_{\infty}} \end{equation*}
+q_8	A.301	4235721	body	\begin{align*} \frac{1}{\sqrt{n}}\|A\|_{\infty}\leq \|A\|_2\leq\sqrt{m}\|A\|_{\infty}\\ \frac{1}{\sqrt{m}}\|A\|_{1}\leq \|A\|_2\leq\sqrt{n}\|A\|_{1} \end{align*}
+q_9	A.302	4233786	title	n
+q_10	A.302	4233786	body	z=\sqrt[n]{s}e^{\frac{i\varphi}{n}}
+q_11	A.302	4233786	body	w=se^{i{\phi}}
+q_12	A.302	4233786	body	s\ge 0
+q_13	A.302	4233786	body	\phi \in \mathbb{R}
+q_14	A.302	4233786	body	z^n=w
+q_15	A.302	4233786	body	\mathbb{C}
+q_16	A.302	4233786	body	n
+q_17	A.302	4233786	body	n
+q_18	A.302	4233786	body	n
+q_19	A.302	4233786	body	n
+q_20	A.303	4232208	body	x , y
+q_21	A.303	4232208	body	[x,y] = x
+q_22	A.303	4232208	body	K
+q_23	A.303	4232208	body	K
+q_24	A.303	4232208	body	:\ V \ X \ V  \rightarrow V
+q_25	A.303	4232208	body	a)
+q_26	A.303	4232208	body	[x,x]=0
+q_27	A.303	4232208	body	x\in V
+q_28	A.303	4232208	body	b)
+q_29	A.303	4232208	body	[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0
+q_30	A.303	4232208	body	x,y,z \in V
+q_31	A.303	4232208	body	[x,x]=[y,y]=0
+q_32	A.303	4232208	body	[x,y]=-[x,y]
+q_33	A.303	4232208	body	[x,y]
+q_34	A.303	4232208	body	[x,y]=x
+q_35	A.303	4232208	body	[y,x]=-x
+q_36	A.304	4226422	title	2
+q_37	A.304	4226422	body	[T_X^{0,1}, T_X^{0,1}] \subset T_X^{0,1}
+q_38	A.304	4226422	body	X
+q_39	A.304	4226422	body	X
+q_40	A.304	4226422	body	T_X^{0,1}
+q_41	A.304	4226422	body	1
+q_42	A.304	4226422	body	[-,-]
+q_43	A.304	4226422	body	T_X^{0,1}
+q_44	A.304	4226422	body	X
+q_45	A.305	4223841	title	\lim\limits_{N\to\infty}\left\lfloor\sum\limits_{r=1}^N\frac{1}{2^r}\right\rfloor
+q_46	A.305	4223841	body	\lim\limits_{N\to\infty}\left\lfloor\sum\limits_{r=1}^N\frac{1}{2^r}\right\rfloor
+q_47	A.305	4223841	body	1
+q_48	A.305	4223841	body	0
+q_49	A.305	4223841	body	\frac{a}{1-r}
+q_50	A.305	4223841	body	\lim_{N \to \infty}
+q_51	A.306	4220206	body	 B = \gamma + \sum_p \left\{ \log\left( 1 - \frac 1p\right) + \frac 1p\right\}
+q_52	A.307	4217271	body	n
+q_53	A.307	4217271	body	t
+q_54	A.307	4217271	body	a^t\equiv1\pmod n
+q_55	A.307	4217271	body	a
+q_56	A.307	4217271	body	\gcd(a,n)=1
+q_57	A.307	4217271	body	\lambda(n)
+q_58	A.307	4217271	body	\lambda(n)=\max\{\operatorname{ord}_n(a):\gcd(a,n)=1\}
+q_59	A.307	4217271	body	x
+q_60	A.307	4217271	body	n
+q_61	A.307	4217271	body	\operatorname{ord}_n(x)=\lambda(n)
+q_62	A.308	4214335	body	\zeta(s)=\sum_{n=1}^\infty\frac{1}{n^s}=\frac{1}{\Gamma(s)}\int_0^\infty \frac{x^{s-1}}{e^x-1}dx
+q_63	A.308	4214335	body	\zeta(s)=\frac{\Gamma(1-s)}{2\pi i}\int_C \frac{(-z)^s}{e^z-1}\frac{dz}{z}
+q_64	A.308	4214335	body	\int_C \frac{(-z)^s}{e^z-1}\frac{dz}{z}
+q_65	A.308	4214335	body	(e^{i\pi s}-e^{-i\pi s})\int_0^\infty\frac{x^{s-1}}{e^x-1}dx
+q_66	A.308	4214335	body	\mbox{Re}(s)\gt 1
+q_67	A.308	4214335	body	s
+q_68	A.308	4214335	body	s=1
+q_69	A.308	4214335	body	C
+q_70	A.308	4214335	body	+\infty 
+q_71	A.308	4214335	body	\epsilon
+q_72	A.308	4214335	body	x
+q_73	A.308	4214335	body	\delta
+q_74	A.308	4214335	body	+\infty
+q_75	A.308	4214335	body	\epsilon
+q_76	A.308	4214335	body	\epsilon\rightarrow 0
+q_77	A.308	4214335	body	\delta \rightarrow 0
+q_78	A.308	4214335	body	[0,\infty)
+q_79	A.308	4214335	body	\mbox{Re}(s)\leq 1
+q_80	A.308	4214335	body	C
+q_81	A.308	4214335	body	s
+q_82	A.308	4214335	body	s=0
+q_83	A.308	4214335	body	x
+q_84	A.308	4214335	body	C
+q_85	A.308	4214335	body	\epsilon
+q_86	A.308	4214335	body	\delta
+q_87	A.308	4214335	body	R+i\epsilon
+q_88	A.308	4214335	body	R-i\epsilon
+q_89	A.308	4214335	body	R
+q_90	A.308	4214335	body	\epsilon
+q_91	A.309	4212480	body	\mathbb{F}_p
+q_92	A.309	4212480	body	x^3=a
+q_93	A.309	4212480	body	\mathbb{F}_p
+q_94	A.309	4212480	body	p
+q_95	A.309	4212480	body	p\equiv 2 (\text{mod }3)
+q_96	A.309	4212480	body	\mathbb{F}_p
+q_97	A.309	4212480	body	a\in \mathbb{F}_p
+q_98	A.309	4212480	body	\gcd(3,p-1)=1
+q_99	A.310	4202380	title	\frac{4}{x}+\frac{10}{y}=1
+q_100	A.310	4202380	body	\frac{4}{x} + \frac{10}{y} = 1
+q_101	A.311	4199950	title	f(x)=\frac{9^{x}}{9^x+3}
+q_102	A.311	4199950	title	f(\frac{1}{27})+ f(\frac{2}{27}) + f(\frac{3}{27})+ ...+ f(\frac{26}{27})
+q_103	A.311	4199950	body	f(x)=\frac{9^{x}}{9^x+3}
+q_104	A.311	4199950	body	f(\frac{1}{27})+ f(\frac{2}{27}) + f(\frac{3}{27})+ ...+ f(\frac{26}{27})
+q_105	A.311	4199950	body	\frac{9^{x}}{9^x+3}
+q_106	A.311	4199950	body	1+\frac{9^{x}}{3}
+q_107	A.311	4199950	body	9^{\frac{1}{27}}
+q_108	A.311	4199950	body	9^{\frac{2}{27}}
+q_109	A.311	4199950	body	9^{\frac{2}{27}}
+q_110	A.311	4199950	body	9^{\frac{3}{27}}
+q_111	A.311	4199950	body	\frac{n}{27}
+q_112	A.312	4199153	title	\left\lfloor \frac{\left\lfloor a/b \right\rfloor}{c} \right\rfloor=\left\lfloor\frac{a}{bc}\right\rfloor
+q_113	A.312	4199153	title	a
+q_114	A.312	4199153	title	b
+q_115	A.312	4199153	title	c
+q_116	A.312	4199153	body	\left\lfloor \frac{\left\lfloor \dfrac{a}{b} \right\rfloor}{c} \right\rfloor = \left\lfloor \frac{a}{bc} \right\rfloor
+q_117	A.312	4199153	body	a,b,c \in \mathbb{Z}^+
+q_118	A.313	4196659	title	a,b\in G
+q_119	A.313	4196659	title	|a|=r, |b|=s
+q_120	A.313	4196659	title	\gcd(r,s)=1
+q_121	A.313	4196659	title	|ab|=rs
+q_122	A.313	4196659	body	a,b\in G
+q_123	A.313	4196659	body	|a|=r, |b|=s
+q_124	A.313	4196659	body	\gcd(r,s)=1
+q_125	A.313	4196659	body	|ab|=rs
+q_126	A.313	4196659	body	|ab|=n
+q_127	A.313	4196659	body	G
+q_128	A.313	4196659	body	(ab)^n=a^nb^n=1
+q_129	A.313	4196659	body	r\mid n
+q_130	A.313	4196659	body	s\mid n
+q_131	A.313	4196659	body	\gcd(r,s)=1
+q_132	A.313	4196659	body	rs\mid n
+q_133	A.313	4196659	body	rs=n
+q_134	A.313	4196659	body	G
+q_135	A.313	4196659	body	n\mid{\rm lcm}(r,s)
+q_136	A.313	4196659	body	\gcd(r,s)=1
+q_137	A.313	4196659	body	{\rm lcm}(r,s)=rs
+q_138	A.313	4196659	body	n\mid rs
+q_139	A.313	4196659	body	rs\mid n
+q_140	A.313	4196659	body	n=rs
+q_141	A.314	4191388	body	\{e_n\}
+q_142	A.314	4191388	body	\sum \|e_n-x_n\| < 1
+q_143	A.314	4191388	body	\{x_n\}
+q_144	A.314	4191388	body	H
+q_145	A.314	4191388	body	x_n
+q_146	A.314	4191388	body	0
+q_147	A.315	4190793	body	n
+q_148	A.315	4190793	body	P(m)
+q_149	A.315	4190793	body	P(m\text{++})
+q_150	A.315	4190793	body	P(m)
+q_151	A.315	4190793	body	P(n)
+q_152	A.315	4190793	body	P(m)
+q_153	A.315	4190793	body	m ≤ n
+q_154	A.315	4190793	body	n
+q_155	A.315	4190793	body	P(m)
+q_156	A.315	4190793	body	\forall
+q_157	A.315	4190793	body	0\geq m
+q_158	A.315	4190793	body	\forall m
+q_159	A.315	4190793	body	P(m\text{++})\implies P(m)
+q_160	A.315	4190793	body	P(0)
+q_161	A.315	4190793	body	P(m)
+q_162	A.315	4190793	body	\forall
+q_163	A.315	4190793	body	0\geq m
+q_164	A.315	4190793	body	0\geq m
+q_165	A.315	4190793	body	0=m+a
+q_166	A.315	4190793	body	a
+q_167	A.315	4190793	body	m=a=0
+q_168	A.315	4190793	body	P(0)
+q_169	A.315	4190793	body	n=0
+q_170	A.315	4190793	body	n
+q_171	A.315	4190793	body	n\text{++}
+q_172	A.315	4190793	body	\forall m
+q_173	A.315	4190793	body	P(m\text{++})\implies P(m)
+q_174	A.315	4190793	body	P(n)\implies P(m)
+q_175	A.315	4190793	body	\forall
+q_176	A.315	4190793	body	n\geq m
+q_177	A.315	4190793	body	P(n\text{++})
+q_178	A.315	4190793	body	m=n
+q_179	A.315	4190793	body	P(n\text{++})\implies P(n)
+q_180	A.315	4190793	body	P(n)\implies P(m)
+q_181	A.315	4190793	body	n=m
+q_182	A.315	4190793	body	P(n\text{++})\implies P(m)
+q_183	A.315	4190793	body	n\text{++}>m
+q_184	A.315	4190793	body	n\text{++}=m
+q_185	A.315	4190793	body	P(n\text{++})
+q_186	A.315	4190793	body	P(n\text{++})\implies P(m)
+q_187	A.315	4190793	body	\forall
+q_188	A.315	4190793	body	n\text{++}\geq m
+q_189	A.316	4189948	body	\mathbb{Z}/2^m \mathbb{Z}
+q_190	A.316	4189948	body	m
+q_191	A.316	4189948	body	2^{m-1}
+q_192	A.316	4189948	body	(\mathbb{Z}/2 \mathbb{Z})^* = C_1
+q_193	A.316	4189948	body	(\mathbb{Z}/4 \mathbb{Z})^* = C_2
+q_194	A.316	4189948	body	(\mathbb{Z}/8 \mathbb{Z})^* = C_2 \times C_2
+q_195	A.316	4189948	body	(\mathbb{Z}/16 \mathbb{Z})^* = C_2 \times C_4
+q_196	A.316	4189948	body	(\mathbb{Z}/32 \mathbb{Z})^* = C_2 \times C_8
+q_197	A.316	4189948	body	m > 1
+q_198	A.316	4189948	body	(\mathbb{Z}/2^m \mathbb{Z})^* = C_2 \times C_{2^{m-2}}
+q_199	A.317	4187726	title	\int \frac{1}{\left(x^2+1\right)^n}dx
+q_200	A.317	4187726	body	\int \frac{1}{\left(x^2+1\right)^n}dx
+q_201	A.317	4187726	body	n=1
+q_202	A.317	4187726	body	\tan^{-1}x+C
+q_203	A.317	4187726	body	n=2
+q_204	A.317	4187726	body	x\left(\frac{1}{2\left(x^2+1\right)}+\frac{\tan \:^{-1}}{2x}\right)+C
+q_205	A.317	4187726	body	n\in \mathbb{Z_+}
+q_206	A.318	4186445	title	e^{x} \geq \left(1+\frac{x}{n}\right)^{n}
+q_207	A.318	4186445	title	n \geq 1
+q_208	A.318	4186445	body	e^{x} \geq \left(1+\frac{x}{n}\right)^{n}
+q_209	A.318	4186445	body	n \geq 1
+q_210	A.318	4186445	body	n \geq 1
+q_211	A.318	4186445	body	n=1
+q_212	A.318	4186445	body	e^x \geq 1+x
+q_213	A.318	4186445	body	e^{x} \geq \left(1+\frac{x}{n}\right)^{n}
+q_214	A.318	4186445	body	(1+\frac{x}{n+1})^{n+1}
+q_215	A.318	4186445	body	(1+\frac{x}{n+1})^{n}
+q_216	A.318	4186445	body	(1+\frac{x}{n+1})^{n} < \left(1+\frac{x}{n}\right)^{n} \leq e^x = \frac{d}{dx} e^x
+q_217	A.319	4185541	title	\mathbb{R}
+q_218	A.319	4185541	body	A_1 \subseteq A_2 \subseteq \ldots \subseteq A_n \subseteq A_{n+1} \subseteq \ldots
+q_219	A.319	4185541	body	A
+q_220	A.319	4185541	body	A
+q_221	A.319	4185541	body	(A, \subseteq)
+q_222	A.319	4185541	body	A
+q_223	A.319	4185541	body	B=\bigcup_{n \in \Bbb{N}} A_n
+q_224	A.319	4185541	body	m
+q_225	A.319	4185541	body	A_m \subseteq B
+q_226	A.319	4185541	body	B
+q_227	A.319	4185541	body	A
+q_228	A.319	4185541	body	A
+q_229	A.319	4185541	body	A
+q_230	A.319	4185541	body	X
+q_231	A.319	4185541	body	X
+q_232	A.319	4185541	body	X = \Bbb{R}
+q_233	A.319	4185541	body	X \neq \Bbb{R}
+q_234	A.319	4185541	body	x \in \Bbb{R}
+q_235	A.319	4185541	body	x \notin X
+q_236	A.319	4185541	body	Y=X \cup \{x\}
+q_237	A.319	4185541	body	Y
+q_238	A.319	4185541	body	X \subsetneq Y
+q_239	A.319	4185541	body	X
+q_240	A.319	4185541	body	X = \Bbb{R}
+q_241	A.319	4185541	body	\Bbb{R}
+q_242	A.320	4185408	body	\int_{0}^{1}\frac{\sin^{-1}(x)}{x}
+q_243	A.320	4185408	body	\mathcal I = \int_0^1 \frac{\arcsin(x)}{x}
+q_244	A.320	4185408	body	\mathcal I = \int_0^{\frac{\pi}{2}} \frac{t}{\sin(t)} \cos(t) dt\tag{Bounds have changed}
+q_245	A.320	4185408	body	= \int_0^{\frac{\pi}{2}} t\space\cot(t) dt
+q_246	A.320	4185408	body	-\int_0^{\frac{\pi}{2}} \ln(sin(t))dt\tag{t*ln(sin(t)) = 0}
+q_247	A.320	4185408	body	x = \sin(t)
+q_248	A.320	4185408	body	t = \arcsin(x)
+q_249	A.320	4185408	body	dx = \cos(t) dt
+q_250	A.320	4185408	body	\space$$u = t
+q_251	A.320	4185408	body	\implies du = dt
+q_252	A.320	4185408	body	dv = \cot(t)
+q_253	A.320	4185408	body	\implies v = \ln(\sin(t))
+q_254	A.320	4185408	body	= t\space\ln(\sin(t))
+q_255	A.320	4185408	body	0
+q_256	A.320	4185408	body	\frac{\pi}{2}
+q_257	A.321	4183619	title	ax+by=d
+q_258	A.321	4183619	title	d \neq \gcd(a,b)
+q_259	A.321	4183619	body	3x+4y=14
+q_260	A.321	4183619	body	\gcd(3,4)=1
+q_261	A.321	4183619	body	14
+q_262	A.321	4183619	body	3(6) + 4(-1) =14
+q_263	A.321	4183619	body	3(6-4k) + 4(-1+3k) = 14 (1)
+q_264	A.321	4183619	body	k
+q_265	A.321	4183619	body	k>1/3
+q_266	A.321	4183619	body	k<3/2
+q_267	A.321	4183619	body	k = 1
+q_268	A.321	4183619	body	k
+q_269	A.321	4183619	body	(1)
+q_270	A.321	4183619	body	a=2, b=2
+q_271	A.321	4183619	body	(a,b)=(4,-1)
+q_272	A.321	4183619	body	2
+q_273	A.322	4182890	body	a_n=\frac{n(n+1)}{2}
+q_274	A.322	4182890	body	b_n=\sum_{x=1}^na_x
+q_275	A.322	4182890	body	c_n=\sum_{x=1}^nb_x
+q_276	A.322	4182890	body	\frac{n(n+1)}{2}
+q_277	A.322	4182890	body	1,3,6,10,15...
+q_278	A.322	4182890	body	c_n
+q_279	A.322	4182890	body	b_n=\frac{n(n+1)(n+2)}{6}
+q_280	A.322	4182890	body	a_n
+q_281	A.322	4182890	body	b_n
+q_282	A.322	4182890	body	c_n
+q_283	A.322	4182890	body	\frac{n(n+1)(n+2)(n+3)}{24}
+q_284	A.322	4182890	body	\frac{n(n+1)(n+2)(n+3)}{12}
+q_285	A.322	4182890	body	n=1
+q_286	A.322	4182890	body	c_n=1
+q_287	A.322	4182890	body	\frac{n(n+1)(n+2)(n+3)}{24}=1
+q_288	A.322	4182890	body	\frac{n(n+1)(n+2)(n+3)}{12}=2
+q_289	A.322	4182890	body	n=2
+q_290	A.322	4182890	body	c_n=1+4=5
+q_291	A.322	4182890	body	\frac{n(n+1)(n+2)(n+3)}{24}=5
+q_292	A.322	4182890	body	n=3
+q_293	A.322	4182890	body	c_n=1+4+10=15
+q_294	A.322	4182890	body	\frac{n(n+1)(n+2)(n+3)}{24}=\frac{360}{24}=15
+q_295	A.323	4181152	title	\overline{x^2 -x}
+q_296	A.323	4181152	title	(\mathbb{R} [x]/(x^4 + 1))^*
+q_297	A.323	4181152	body	\overline{x^2 -x}
+q_298	A.323	4181152	body	(\mathbb{R} [x]/(x^4 + 1))^*
+q_299	A.324	4180416	body	 \sum_{n=1}^{\infty} \sum_{m=1}^\infty \frac{1}{{n^2 +m^2}}. 
+q_300	A.324	4180416	body	 \sum_{m=1}^{\infty}\frac{1}{x^2+m^2} = \frac{1}{2x}\left[ \pi \coth{\pi x} - \frac{1}{x}\right]. 
+q_301	A.324	4180416	body	 \sum_{n=1}^{\infty} \frac{1}{2n}\left[\pi \coth{\pi n} - \frac{1}{n} \right]. 
+q_302	A.325	4180188	body	m
+q_303	A.325	4180188	body	n!+2, n! +3, ..., n! + n
+q_304	A.325	4180188	body	n! + 2
+q_305	A.325	4180188	body	2
+q_306	A.325	4180188	body	n! + 3
+q_307	A.325	4180188	body	3
+q_308	A.325	4180188	body	m
+q_309	A.325	4180188	body	n-1
+q_310	A.325	4180188	body	n!+2, n! +3, ..., n! + n
+q_311	A.325	4180188	body	(n-1)
+q_312	A.325	4180188	body	4!+2, 4! +3, 4! +4
+q_313	A.325	4180188	body	→
+q_314	A.325	4180188	body	26, 27, 28
+q_315	A.325	4180188	body	8, 9, 10
+q_316	A.325	4180188	body	14, 15 ,16.
+q_317	A.326	4179813	body	P
+q_318	A.326	4179813	body	 F=P \oplus T
+q_319	A.326	4179813	body	T
+q_320	A.327	4177181	body	A = \frac{1}{2} \begin{vmatrix} 1 & 1 &1 \\  x_1 & x_2 & x_3 \\ y_1 & y_2 & y_3 \\ \end{vmatrix} 
+q_321	A.327	4177181	body	A=\frac{1}{2}\begin{vmatrix} 1 & 1 &1 \\  x & y & z \\ x^2 & y^2 &z^2 \\ \end{vmatrix}
+q_322	A.327	4177181	body	\frac{1}{3}bh=\frac{1}{3}\times\frac{1}{2}(x-y)(y-z)(z-x)\times 1
+q_323	A.327	4177181	body	= \frac{1}{6}(x-y)(y-z)(z-x)  
+q_324	A.327	4177181	body	3\times 3
+q_325	A.327	4177181	body	\begin{vmatrix} 1 & 1 &1 \\  x & y & z \\ x^2 & y^2 &z^2 \\ \end{vmatrix} 
+q_326	A.327	4177181	body	(1,x,x^2),(1,y,y^2)
+q_327	A.327	4177181	body	(1,z,z^2)
+q_328	A.327	4177181	body	^{[1]} 
+q_329	A.327	4177181	body	(x-y)(y-z)(z-x)
+q_330	A.327	4177181	body	 = z^2(y-x)-z(y^2-x^2)+x(y^2-x^2)-x^2(y-x) 
+q_331	A.327	4177181	body	 =z^2(y-x)-x^2(y-x)+x(y^2-x^2)-z(y^2-x^2) 
+q_332	A.327	4177181	body	(y-x)
+q_333	A.327	4177181	body	(y^2-x^2)
+q_334	A.327	4177181	body	 =(y-x)(z^2-x^2)+(y^2-x^2)(x-z) 
+q_335	A.327	4177181	body	(z^2-x^2)
+q_336	A.327	4177181	body	(y^2-x^2)
+q_337	A.327	4177181	body	 =(y-x)(z-x)(z+x)+(y-x)(y+x)(x-z) 
+q_338	A.327	4177181	body	 =(y-x)(z-x)(z+x)-(y-x)(z-x)(y+x) 
+q_339	A.327	4177181	body	(y-x)(z-x)
+q_340	A.327	4177181	body	 =(y-x)(z-x) [z+x-y-x] 
+q_341	A.327	4177181	body	 =(y-x)(z-x)(z-y) 
+q_342	A.327	4177181	body	 =(x-y)(y-z)(z-x) 
+q_343	A.327	4177181	body	x
+q_344	A.327	4177181	body	1
+q_345	A.327	4177181	body	x
+q_346	A.327	4177181	body	1
+q_347	A.327	4177181	body	1
+q_348	A.327	4177181	body	\text{volume of a pyramid}=\frac{1}{3}bh
+q_349	A.327	4177181	body	1
+q_350	A.327	4177181	body	(x_1,y_1),(x_2.y_2),(x_3,y_3)
+q_351	A.327	4177181	body	^{[2]}
+q_352	A.327	4177181	body	(x,x^2),(y,y^2)
+q_353	A.327	4177181	body	(z,z^2)
+q_354	A.327	4177181	body	\frac{1}{2} (x-y)(y-z)(z-x)
+q_355	A.327	4177181	body	(x-y)(y-z)(z-x)
+q_356	A.327	4177181	body	\begin{equation*} \begin{vmatrix} 1 & 1 &1 \\  x & y & z \\ x^2 & y^2 &z^2 \\ \end{vmatrix}  =  \begin{vmatrix} 1 & 0 &1 \\  x & y-x & z \\ x^2 & y^2-x^2 &z^2 \\ \end{vmatrix}  \end{equation*}
+q_357	A.328	4170548	title	\sum_{k=1}^{n}\cos\frac{2\pi k}{n}=0
+q_358	A.328	4170548	body	\sum_{ k=1 }^{ n  } \cos\left(\frac{  2 \pi k }{  n  } \right) =0, \qquad n>1 
+q_359	A.328	4170548	body	  \text{As } n=2 
+q_360	A.328	4170548	body	  \cos\left(\frac{  2 \pi \cdot 1   }{  2  } \right) + \cos\left(\frac{  2 \pi \cdot 2   }{  2   } \right)  
+q_361	A.328	4170548	body	 = \cos\left(\pi\right)  + \cos\left(2 \pi\right)    
+q_362	A.328	4170548	body	 = -1+ 1 =0  ~~ \leftarrow~~ \text{Obvious}  
+q_363	A.328	4170548	body	  \text{As}~~ n=3  
+q_364	A.328	4170548	body	  \cos\left(\frac{  2 \pi \cdot  1   }{  3   } \right) +\cos\left(\frac{  2 \pi  \cdot  2   }{  3   } \right) + \cos\left(\frac{  2 \pi  \cdot  3   }{  3   } \right)  
+q_365	A.328	4170548	body	 = \cos\left(\frac{  2 \pi  }{  3  } \right) + \cos\left(\frac{  4 \pi  }{  3  } \right) + \cos\left( 2\pi \right)  
+q_366	A.328	4170548	body	 = \cos\left(\frac{  2 \pi  }{  3  } \right) + \cos\left(\frac{  4 \pi  }{  3  } \right) + 1  =?
+q_367	A.328	4170548	body	n
+q_368	A.329	4168878	title	A
+q_369	A.329	4168878	title	U \supseteq A
+q_370	A.329	4168878	title	V
+q_371	A.329	4168878	title	A \subseteq V \subseteq \overline{V} \subseteq U
+q_372	A.329	4168878	body	A
+q_373	A.329	4168878	body	U
+q_374	A.329	4168878	body	A\subseteq U
+q_375	A.329	4168878	body	V
+q_376	A.329	4168878	body	A \subseteq  V \subseteq \overline{V} \subseteq U
+q_377	A.329	4168878	body	p \in A
+q_378	A.329	4168878	body	p \in U
+q_379	A.329	4168878	body	T_1
+q_380	A.329	4168878	body	(X, \mathcal T)
+q_381	A.329	4168878	body	p
+q_382	A.329	4168878	body	X
+q_383	A.329	4168878	body	U
+q_384	A.329	4168878	body	p
+q_385	A.329	4168878	body	V
+q_386	A.329	4168878	body	p
+q_387	A.329	4168878	body	\overline{V}\subseteq U
+q_388	A.329	4168878	body	 V \subseteq \overline{V} \subseteq U
+q_389	A.329	4168878	body	A\subseteq V \subseteq \overline{V}
+q_390	A.329	4168878	body	V\subseteq \overline{V} \subseteq A
+q_391	A.330	4168744	body	\Delta= \begin{vmatrix} x&a&a&\ldots&a\\ a&x&a&\ldots&a\\ a&a&x&\ldots&a\\ \cdot&\cdot&\cdot&\ldots&\cdot\\ a&a&a&\ldots&x \end{vmatrix}
+q_392	A.330	4168744	body	\begin{vmatrix} 1&a&a&\ldots&a\\ 1&x&a&\ldots&a\\ 1&a&x&\ldots&a\\ \cdot&\cdot&\cdot&\ldots&\cdot\\ 1&a&a&\ldots&x \end{vmatrix}
+q_393	A.330	4168744	body	n
+q_394	A.330	4168744	body	\Delta=[x+a(n-1)](x-a)^{n-1}
+q_395	A.331	4166768	title	4^x+6^x=9^x
+q_396	A.331	4166768	body	4^x+6^x=9^x
+q_397	A.331	4166768	body	f(x)=4^x+6^x-9^x
+q_398	A.331	4166768	body	f(0)=1>0, f(1)=1>0, f(2)=-29
+q_399	A.331	4166768	body	g(x)=(4/9)^x+(6/9)^x-1 \implies f'(x)<0
+q_400	A.331	4166768	body	x
+q_401	A.331	4166768	body	g(x)
+q_402	A.332	4166489	body	g(n) = \frac{n}{{L(n)}},\forall n \in {\Bbb N}{\text{ such that }}n \geqslant 2
+q_403	A.332	4166489	body	g(n) = 1 = \frac{p}{p} = \frac{n}{{L(n)}}
+q_404	A.332	4166489	body	n = {p_1}^{{\alpha _1}}p_2^{{\alpha _2}}...{p_m}^{{\alpha _m}},{\text{ }}i < j,{\text{ }}{p_i} < {p_j}{\text{ and }}i,j \in {{\Bbb Z}^ + }{\text{ and }}{\alpha _i} \in {{\Bbb Z}^{ \geqslant 0}}
+q_405	A.332	4166489	body	p_1 = p = L(n)
+q_406	A.332	4166489	body	\exists y \in {{\Bbb Z}^ + }:y = \frac{n}{x} = \frac{n}{{L(n)}} = {p_1}^{{\alpha _1} - 1}{p_2}^{{\alpha _2}}...{p_m}^{{\alpha _m}}
+q_407	A.332	4166489	body	\frac{n}{d} = \frac{n}{{g(n)}} = m
+q_408	A.332	4166489	body	x = m = p = L(n) = \frac{n}{g(n)} \Rightarrow g(n) = \frac{n}{p} =\frac{n}{L(n)} = y
+q_409	A.332	4166489	body	g(n) = \frac{n}{L(n)}
+q_410	A.332	4166489	body	L:{\Bbb N} \to {\Bbb N}
+q_411	A.332	4166489	body	L(n) = {\text{least prime factor p of n}}
+q_412	A.332	4166489	body	g:{\Bbb N} \to {\Bbb N}
+q_413	A.332	4166489	body	g(n) = {\text{biggest positive integer d such that d|n and 1}} \leqslant {\text{d < n}}
+q_414	A.332	4166489	body	n \geqslant 2
+q_415	A.332	4166489	body	n
+q_416	A.332	4166489	body	n
+q_417	A.332	4166489	body	n = p
+q_418	A.332	4166489	body	p
+q_419	A.332	4166489	body	L(n)
+q_420	A.332	4166489	body	p
+q_421	A.332	4166489	body	p = p_1
+q_422	A.332	4166489	body	p
+q_423	A.332	4166489	body	L(n)
+q_424	A.332	4166489	body	p = p_1
+q_425	A.332	4166489	body	p|n
+q_426	A.332	4166489	body	x = p = L(n)
+q_427	A.332	4166489	body	1 < x < n
+q_428	A.332	4166489	body	x|n
+q_429	A.332	4166489	body	y|n
+q_430	A.332	4166489	body	y < n
+q_431	A.332	4166489	body	y
+q_432	A.332	4166489	body	y|n
+q_433	A.332	4166489	body	d = g(n)
+q_434	A.332	4166489	body	m
+q_435	A.332	4166489	body	m = p
+q_436	A.332	4166489	body	n=md
+q_437	A.332	4166489	body	m = ab
+q_438	A.332	4166489	body	1 < a,b < m \Rightarrow n = abd \Rightarrow ad|n
+q_439	A.332	4166489	body	1<a<m \Rightarrow d<ad<md = n
+q_440	A.332	4166489	body	n
+q_441	A.332	4166489	body	ad
+q_442	A.332	4166489	body	n
+q_443	A.332	4166489	body	d=g(n)
+q_444	A.332	4166489	body	d = g(n)
+q_445	A.332	4166489	body	m = \frac{n}{d} = \frac{n}{g(n)}
+q_446	A.332	4166489	body	m = L(n) = p
+q_447	A.333	4164620	body	\frac{\sqrt{1-p^2}}{2\pi(1-2p\sin(\varphi)\cos(\varphi))}
+q_448	A.333	4164620	body	( X, Y)
+q_449	A.333	4164620	body	E(X^2)
+q_450	A.333	4164620	body	E(Y^2) = 1
+q_451	A.333	4164620	body	E(XY) = p
+q_452	A.333	4164620	body	(X, Y)
+q_453	A.333	4164620	body	(R,\Phi)
+q_454	A.333	4164620	body	R^2 = X^2 + Y^2
+q_455	A.333	4164620	body	\Phi
+q_456	A.333	4164620	body	p = 0
+q_457	A.333	4164620	body	P\{XY > 0\} =  \frac{1}{2} +\pi^{-1} \arcsin (p)
+q_458	A.333	4164620	body	P\{XY < 0\}= \pi^{-1} \arccos (p)
+q_459	A.334	4163828	title	a^{log_a(b)}=b
+q_460	A.334	4163828	body	a^{log_a(b)}=b
+q_461	A.334	4163828	body	log_aa^{log_a(b)}=log_ab
+q_462	A.334	4163828	body	log_a(b)log_aa= log_ab
+q_463	A.334	4163828	body	log_a(b)= log_ab
+q_464	A.335	4163359	body	 \lim_{N \rightarrow \infty} \sum_{k=0}^{N}\frac{A^k}{k!} =X  
+q_465	A.335	4163359	body	 0 \le  \sum_{k=0}^{\infty} \left\Vert  \frac{A^k }{k!} \right\Vert  \le  \sum_{k=0}^{N} \frac{\Vert A \Vert ^k }{k!}<\infty , 
+q_466	A.335	4163359	body	 \lim_{N \rightarrow \infty} \left\Vert \sum_{k=0}^{N} \frac{A^k}{k!} -X \right\Vert  =0
+q_467	A.335	4163359	body	A
+q_468	A.335	4163359	body	X
+q_469	A.335	4163359	body	\sum_{k=0}^{N}\frac{A^k}{k!}
+q_470	A.335	4163359	body	\frac{A^k}{k!} -X
+q_471	A.336	4157683	title	n \in \mathbb{N}
+q_472	A.336	4157683	title	A, B \in \mathbb{R}^{n \times n}
+q_473	A.336	4157683	title	A B \neq B A
+q_474	A.336	4157683	body	 M:=\left\{A \in \mathbb{R}^{2 \times 2}: A B=B A \quad \forall B \in \mathbb{R}^{2 \times 2}\right\} 
+q_475	A.336	4157683	body	n \in \mathbb{N}
+q_476	A.336	4157683	body	A, B \in \mathbb{R}^{n \times n}
+q_477	A.336	4157683	body	A B \neq B A
+q_478	A.336	4157683	body	A \in \mathbb{R}^{2 \times 2}
+q_479	A.336	4157683	body	B \in \mathbb{R}^{2 \times 2}
+q_480	A.337	4155217	body	\gamma
+q_481	A.337	4155217	body	\gamma
+q_482	A.337	4155217	body	\lambda(t)
+q_483	A.337	4155217	body	\gamma'(t) = \lambda(t)\gamma(t)
+q_484	A.337	4155217	body	t
+q_485	A.337	4155217	body	\gamma '' = \lambda'\gamma   + \lambda \gamma' = (\lambda' + \lambda^2)\gamma
+q_486	A.337	4155217	body	\lambda(t)
+q_487	A.337	4155217	body	\gamma'(t) = \lambda(t)\gamma(t)
+q_488	A.337	4155217	body	t
+q_489	A.338	4142934	title	y = \frac{a+bx}{b-x}
+q_490	A.338	4142934	body	y = \frac{a+bx}{b-x}
+q_491	A.339	4142872	body	p
+q_492	A.339	4142872	body	ab
+q_493	A.339	4142872	body	p \mid ab
+q_494	A.339	4142872	body	p \mid a
+q_495	A.339	4142872	body	p \mid b
+q_496	A.339	4142872	body	a
+q_497	A.339	4142872	body	b
+q_498	A.339	4142872	body	a \mid bc
+q_499	A.339	4142872	body	c
+q_500	A.339	4142872	body	a \not \mid b
+q_501	A.339	4142872	body	c
+q_502	A.339	4142872	body	a,b
+q_503	A.339	4142872	body	r,s \in \mathbb{Z}
+q_504	A.339	4142872	body	ar + bs = 1
+q_505	A.339	4142872	body	c
+q_506	A.339	4142872	body	arc + bsc = c
+q_507	A.339	4142872	body	a \mid arc
+q_508	A.339	4142872	body	a \mid bsc
+q_509	A.339	4142872	body	a \mid c
+q_510	A.340	4142220	title	|x_{n+1} - x_n| < 1/3^n
+q_511	A.340	4142220	title	(x_n)
+q_512	A.340	4142220	body	 |x_{n+1} - x_n| < \frac{1}{3^n}. 
+q_513	A.340	4142220	body	(x_n)
+q_514	A.340	4142220	body	\epsilon>0
+q_515	A.340	4142220	body	n_0 > 0
+q_516	A.340	4142220	body	m,n > n_o \Rightarrow |x_m - x_n|< \epsilon
+q_517	A.341	4141272	body	a, b \in Z^+
+q_518	A.341	4141272	body	\gcd(a, b) = 1
+q_519	A.341	4141272	body	c_i = a + i \cdot b
+q_520	A.341	4141272	body	\{a, a+b, a+2b, \cdots\}
+q_521	A.341	4141272	body	a=2, b=3
+q_522	A.341	4141272	body	c_1 = a+b = 5
+q_523	A.341	4141272	body	a=4, b=2
+q_524	A.341	4141272	body	\gcd(a, b) = 2 \neq 1
+q_525	A.342	4140378	body	f(x_4) =\frac{2}{5}e^{\frac{-x}{10}}\left(1-e^{\frac{-x}{10}}\right)^3.
+q_526	A.342	4140378	body	E(X_4) = \int_0^\infty\frac{2x}{5}e^\frac{-x}{10}\left(1-e^\frac{-x}{10}\right)^3 \,dx= 125/6.
+q_527	A.342	4140378	body	10
+q_528	A.342	4140378	body	40
+q_529	A.342	4140378	body	(10 \cdot 4 = 40)
+q_530	A.342	4140378	body	40
+q_531	A.342	4140378	body	125/6
+q_532	A.343	4138767	body	E = {(1,6),\ (2,5),\ (3,4),\ (4,3),\ (3,4),\ (5,2),\ (6,1)}
+q_533	A.343	4138767	body	|Sample Space|
+q_534	A.343	4138767	body	36
+q_535	A.343	4138767	body	P(E) = 1/6
+q_536	A.343	4138767	body	\{(1,6),\ (2,5),\ (3,4)\} 
+q_537	A.343	4138767	body	|S| = 21
+q_538	A.343	4138767	body	P(E) = 3/21
+q_539	A.344	4135977	body	\mathcal{A}
+q_540	A.344	4135977	body	X
+q_541	A.344	4135977	body	\tau
+q_542	A.344	4135977	body	X
+q_543	A.344	4135977	body	X
+q_544	A.344	4135977	body	X
+q_545	A.344	4135977	body	X= \{a,b,c,d,e\}
+q_546	A.344	4135977	body	\mathcal{A}=\{\{a\}\}
+q_547	A.344	4135977	body	X
+q_548	A.344	4135977	body	\mathcal{A}=\{\{a\}\}
+q_549	A.344	4135977	body	X
+q_550	A.344	4135977	body	\mathcal{A}
+q_551	A.344	4135977	body	X
+q_552	A.344	4135977	body	\mathcal{A}
+q_553	A.344	4135977	body	\{a\}\cap\{a\}=\{a\}
+q_554	A.344	4135977	body	\mathcal{B} = \{\{a\}\}
+q_555	A.344	4135977	body	\mathcal{B}
+q_556	A.344	4135977	body	\{a\}
+q_557	A.344	4135977	body	\displaystyle\bigcup \mathcal{B} = \{a\}
+q_558	A.344	4135977	body	\{a\} \neq X.
+q_559	A.344	4135977	body	X \not \in \tau.
+q_560	A.344	4135977	body	X
+q_561	A.344	4135977	body	\tau
+q_562	A.345	4126474	body	r\equiv \begin{cases} x=1 \\ y=1 \\z=\lambda -2 \end{cases}
+q_563	A.345	4126474	body	s\equiv\begin{cases} x=\mu \\ y=\mu -1 \\ z=-1\end{cases}
+q_564	A.346	4125256	body	 \{ r \in \mathbb Q \mid r^2 >2, r>0 \}
+q_565	A.346	4125256	body	0 \in \mathbb Q
+q_566	A.347	4118427	body	(a, b) = 1
+q_567	A.347	4118427	body	(a+b, a-b) = 1
+q_568	A.347	4118427	body	2 .
+q_569	A.347	4118427	body	( a+b, a-b ) = d
+q_570	A.347	4118427	body	 a+b =md
+q_571	A.347	4118427	body	 a-b = nd.
+q_572	A.347	4118427	body	2a = (m+n)d
+q_573	A.347	4118427	body	2b = (m-n)d
+q_574	A.347	4118427	body	a, b
+q_575	A.347	4118427	body	2
+q_576	A.347	4118427	body	(a,b)
+q_577	A.347	4118427	body	(2a, 2b),
+q_578	A.348	4115846	body	\det \begin{pmatrix} A & B\\ B & A\end{pmatrix} = \det(A-B)\det(A+B)
+q_579	A.348	4115846	body	\begin{pmatrix} A & -B\\  B & A \end{pmatrix}
+q_580	A.348	4115846	body	A, B \in \Bbb R^{n \times n}
+q_581	A.348	4115846	body	A
+q_582	A.348	4115846	body	B
+q_583	A.349	4115364	body	x! = \sqrt{2\pi x} * (\frac{x}{e})^x
+q_584	A.349	4115364	body	y = \sqrt{2\pi x} * (\frac{x}{e})^x
+q_585	A.350	4114892	body	x^3 - x, x \in \mathbb{N}
+q_586	A.350	4114892	body	x \in \mathbb{N}
+q_587	A.350	4114892	body	P(x)
+q_588	A.350	4114892	body	x^3 - x
+q_589	A.350	4114892	body	\mathbb{N}
+q_590	A.350	4114892	body	0
+q_591	A.350	4114892	body	\frac{0^3 - 0}{2} = 0
+q_592	A.350	4114892	body	\frac{0^3 - 0}{3} = 0
+q_593	A.350	4114892	body	P(0)
+q_594	A.350	4114892	body	P(k)
+q_595	A.350	4114892	body	k^3 - k
+q_596	A.350	4114892	body	P(k)
+q_597	A.350	4114892	body	P(k + 1)
+q_598	A.350	4114892	body	(k+1)^3 - (k+1)
+q_599	A.350	4114892	body	\frac{(k+1)^3-(k+1)}{2}
+q_600	A.350	4114892	body	\frac{(k+1)^3-(k+1)}{3}
+q_601	A.350	4114892	body	(k+1)^3 - (k+1)
+q_602	A.351	4114583	body	(X,\mathcal{A},\mu)
+q_603	A.351	4114583	body	A_n
+q_604	A.351	4114583	body	\mathcal{A}
+q_605	A.351	4114583	body	A := \{ x \in X 
+q_606	A.351	4114583	body	n \in \mathbb{N}
+q_607	A.351	4114583	body	x ∈ A_n
+q_608	A.351	4114583	body	 \}
+q_609	A.351	4114583	body	\lim_{n\to\infty}\inf \mu (A_n) \geq \mu(A)
+q_610	A.351	4114583	body	 \mu (A_n) = \int_X \chi_{A_n} d\mu
+q_611	A.351	4114583	body	\lim_{n\to\infty}\inf \mu (A_n) = \lim_{n\to\infty}\inf \int_X \chi_{ A_n} \geq \int_X \lim_{n\to\infty}\inf \chi_{A_n} d\mu
+q_612	A.351	4114583	body	\lim_{n\to\infty}\inf \chi_{A_n}(x)  = \chi_A(x)
+q_613	A.351	4114583	body	x\in A
+q_614	A.351	4114583	body	x\in A_n \forall n 
+q_615	A.351	4114583	body	\chi_{A_n}(x) = 1 \forall n 
+q_616	A.351	4114583	body	\lim_{n\to\infty}\inf \chi_{A_n}(x)  = \lim_{n\to\infty} 1 = 1= \chi_A(x)
+q_617	A.351	4114583	body	x\not\in A
+q_618	A.351	4114583	body	\forall N \in \mathbb{N} \exists n >N
+q_619	A.351	4114583	body	x \not\in A_n
+q_620	A.351	4114583	body	\inf_{m \geq n} \chi_{A_n}(x) = 0 \forall n
+q_621	A.351	4114583	body	\lim_{n\to\infty}\inf \chi_{A_n}(x)  = \lim_{n\to\infty} 0 = 0= \chi_A(x)
+q_622	A.352	4106871	title	\int_0^\infty f(x) dx
+q_623	A.352	4106871	title	f(x)\rightarrow
+q_624	A.352	4106871	body	\int_0^\infty f(x) dx
+q_625	A.352	4106871	body	f(x)
+q_626	A.352	4106871	body	x
+q_627	A.353	4106661	body	Cov(x,y) = E(xy)- E(x)E(y)
+q_628	A.353	4106661	body	E(x)*E(y) = E(xy)
+q_629	A.353	4106661	body	Cov(x,y) = 0
+q_630	A.354	4106382	title	p_1\mid a
+q_631	A.354	4106382	title	p_2\mid a
+q_632	A.354	4106382	title	p_1p_2\mid a
+q_633	A.354	4106382	body	p_1
+q_634	A.354	4106382	body	p_2
+q_635	A.354	4106382	body	p_1\mid a
+q_636	A.354	4106382	body	p_2\mid a
+q_637	A.354	4106382	body	p_1p_2\mid a
+q_638	A.355	4103126	title	f(f(x)^2+f(y))=xf(x)+y
+q_639	A.355	4103126	body	f(f(x)^2+f(y))=xf(x)+y
+q_640	A.355	4103126	body	f:\mathbb{R}\rightarrow\mathbb{R}
+q_641	A.355	4103126	body	x,y\in{\mathbb{R}}
+q_642	A.355	4103126	body	f(x)=x
+q_643	A.356	4093729	title	 \sum_{n=0}^{\infty}{\frac{x^{kn}}{(kn)!}} 
+q_644	A.356	4093729	title	k
+q_645	A.356	4093729	body	 f^{(k)}(x)=f(x) 
+q_646	A.356	4093729	body	 f(x)=A_0e^x=\sum_{n=0}^{\infty}{\frac{A_0x^n}{n!}} 
+q_647	A.356	4093729	body	 f(x)=Ae^x-Be^{-x}=\sum_{n=0}^{\infty}{(\frac{A_0x^{2n}}{(2n)!}+\frac{A_1x^{2n+1}}{(2n+1)!})} 
+q_648	A.356	4093729	body	 f(x)=\sum_{n=0}^{\infty}{\sum_{i=0}^{k-1}{\frac{A_ix^{kn+i}}{(kn+i)!}}} 
+q_649	A.356	4093729	body	 \sum_{n=0}^{\infty}{\frac{x^{3n}}{(3n)!}}=\frac{1}{3}(2e^{-\frac {x}{2}}\cos{(\frac {\sqrt{3}}{2}x)}+e^{x}) 
+q_650	A.356	4093729	body	n
+q_651	A.356	4093729	body	 k=1 
+q_652	A.356	4093729	body	 k=2 
+q_653	A.356	4093729	body	 A_0=A+B 
+q_654	A.356	4093729	body	 A_1=A-B 
+q_655	A.356	4093729	body	 \sum_{n=0}^{\infty}{\frac{x^{kn}}{(kn)!}} 
+q_656	A.356	4093729	body	 k=3 
+q_657	A.356	4093729	body	 \sin 
+q_658	A.356	4093729	body	 \cos 
+q_659	A.356	4093729	body	 \frac {2\pi}{k} 
+q_660	A.357	4093299	body	\Bbb N \Rightarrow \Bbb R
+q_661	A.357	4093299	body	(2, 4, ...)
+q_662	A.357	4093299	body	f(n)=2n
+q_663	A.357	4093299	body	f(n)=n^2-n+2
+q_664	A.357	4093299	body	f(n)=2^n
+q_665	A.357	4093299	body	f(1) = 2
+q_666	A.357	4093299	body	f(2) = 4
+q_667	A.357	4093299	body	(3, 1, 4, 1, 5, 9...)
+q_668	A.358	4092427	body	\int 2\pi y \,ds
+q_669	A.358	4092427	body	ds = \sqrt{1 + \frac{dy}{dx}^2}
+q_670	A.358	4092427	body	\int \pi y^2 dx 
+q_671	A.358	4092427	body	(2\pi y) (dx)
+q_672	A.358	4092427	body	2\pi y
+q_673	A.358	4092427	body	dx
+q_674	A.358	4092427	body	\int 2\pi y dx
+q_675	A.359	4088830	body	\tan\theta=\frac{x}{2}
+q_676	A.359	4088830	body	\sin\theta=\frac{x}{\sqrt{4+x^2}}
+q_677	A.359	4088830	body	sin\theta
+q_678	A.359	4088830	body	\theta
+q_679	A.360	4088631	title	1/ \vert x \vert
+q_680	A.360	4088631	body	f(x) = \frac{1}{\vert x \vert}?
+q_681	A.361	4084077	body	f:[a,b]\to\mathbb{R}
+q_682	A.361	4084077	body	F(x)=\int_a^xf(t)dt
+q_683	A.361	4084077	body	F
+q_684	A.361	4084077	body	F'=f
+q_685	A.362	4081835	body	Z \in X, Y \cap Z
+q_686	A.362	4081835	body	C_0
+q_687	A.362	4081835	body	\exists x \in X \setminus C_0
+q_688	A.362	4081835	body	C_0
+q_689	A.362	4081835	body	C_1 := C_0 \cup \{ x \}
+q_690	A.362	4081835	body	x
+q_691	A.362	4081835	body	i\geq 1 \Rightarrow X_i := C_{i+1} \setminus C_i
+q_692	A.362	4081835	body	Y
+q_693	A.362	4081835	body	X_i \subseteq Y
+q_694	A.362	4081835	body	C_0
+q_695	A.362	4081835	body	\exists j
+q_696	A.362	4081835	body	a \in C_j
+q_697	A.362	4081835	body	x R y \lor y R x
+q_698	A.363	4081201	title	X_n \rightarrow 0
+q_699	A.363	4081201	title	P[X^* \geq x | \mathcal{F}_0]= 1 \wedge X_0 / x
+q_700	A.363	4081201	body	P[X^*  \geq x | \mathcal{F}_0]= 1 \wedge X_0 / x
+q_701	A.363	4081201	body	X
+q_702	A.363	4081201	body	X_n\rightarrow 0
+q_703	A.363	4081201	body	n\rightarrow \infty
+q_704	A.363	4081201	body	X^*=supX_n
+q_705	A.363	4081201	body	x>0
+q_706	A.363	4081201	body	x\leq X_0
+q_707	A.363	4081201	body	x\leq X^*
+q_708	A.363	4081201	body	1\leq X_0 /x
+q_709	A.363	4081201	body	P[X^*  \geq x | \mathcal{F}_0]= 1
+q_710	A.364	4080548	body	d(x,A)\leqslant d(x,y)+d(y,A)
+q_711	A.364	4080548	body	x
+q_712	A.364	4080548	body	A
+q_713	A.364	4080548	body	(X, d)
+q_714	A.364	4080548	body	y
+q_715	A.364	4080548	body	X
+q_716	A.364	4080548	body	\begin{align}\inf\left\{ d(x,a):a\in A\right\}\end{align}
+q_717	A.365	4079321	body	\in
+q_718	A.365	4079321	body	\subset
+q_719	A.365	4079321	body	\omega
+q_720	A.365	4079321	body	\alpha
+q_721	A.365	4079321	body	\alpha^+
+q_722	A.365	4079321	body	\alpha
+q_723	A.366	4075442	title	X 
+q_724	A.366	4075442	title	n
+q_725	A.366	4075442	title	X'
+q_726	A.366	4075442	body	X 
+q_727	A.366	4075442	body	n
+q_728	A.366	4075442	body	X'
+q_729	A.366	4075442	body	\text{Given that  a  normed space  $X$ has  a linearly indepenedent  susbset of  $n-$  element}\tag1
+q_730	A.366	4075442	body	S=\{ e_1,e_2,e_3,....,e_n\}
+q_731	A.366	4075442	body	e_i \in X
+q_732	A.366	4075442	body	f_j(e_i)= \delta_{ij} = \begin{cases} 1 & i=j \\0 , & i \neq j  \end{cases}
+q_733	A.366	4075442	body	1\le i\le n
+q_734	A.366	4075442	body	1\le j\le n
+q_735	A.366	4075442	body	(1)
+q_736	A.366	4075442	body	c_1e_1+...+c_ne_n=0\implies c_1f(e_1)+...+c_nf(e_n)=0
+q_737	A.367	4072665	title	d(x,M)=\frac{|\langle f,x \rangle|}{||f||}
+q_738	A.367	4072665	body	\ |\langle f,x-m|\rangle \leq ||f|| ||x-m|| \Rightarrow \frac{|\langle f,x\rangle|}{||f||} \leq ||x-m||. 
+q_739	A.367	4072665	body	 \frac{|\langle f,x\rangle|}{||f||} \leq \inf_{m\in M}||x-m|| =d(x,M). 
+q_740	A.367	4072665	body	d(x,M)\leq \frac{|\langle f,x\rangle|}{||f||} 
+q_741	A.367	4072665	body	E
+q_742	A.367	4072665	body	f\in E^*
+q_743	A.367	4072665	body	M=\{x\in E\,:\, f(x)=0\}
+q_744	A.367	4072665	body	M^\perp
+q_745	A.367	4072665	body	d(x,M)=\frac{|\langle f,x\rangle|}{||f||}
+q_746	A.367	4072665	body	f\in E^*
+q_747	A.367	4072665	body	x\in E
+q_748	A.367	4072665	body	m\in M
+q_749	A.368	4067931	title	\mathcal O(1/x)
+q_750	A.368	4067931	body	 \sum_{n\geq1}\frac{1}{n^2}=\sum_{n\leq x}\frac1{n^2}+\mathcal O(1/x). 
+q_751	A.368	4067931	body	 \sum_{n=x}^\infty\frac1{n^2}\leq\sum_{n=1}^\infty\frac1{n^2}=\frac{\pi^2}{6}=\frac{C}{x}, 
+q_752	A.368	4067931	body	 \sum_{n\geq1}\frac1{n^2}=\sum_{n\leq x}\frac{1}{n^2}+\sum_{n=x}^\infty\frac{1}{n^2}\leq\sum_{n\leq x}\frac{1}{n^2}+C/x=\sum_{n\leq x}\frac{1}{n^2}+\mathcal O(1/x). 
+q_753	A.368	4067931	body	x\to\infty
+q_754	A.368	4067931	body	x
+q_755	A.368	4067931	body	C=\pi^2x/6
+q_756	A.368	4067931	body	x
+q_757	A.369	4065814	body	J_n=\int_{-\pi}^\pi \frac{\sin{(nx)}}{(1+2^n) \sin{x}}\,\mathrm{d}x\:?
+q_758	A.369	4065814	body	I_n+iJ_n
+q_759	A.369	4065814	body	I_n=\int_{-\pi}^\pi \frac{\cos{(nx)}}{(1+2^n) \sin{x}} dx
+q_760	A.370	4062051	body	s(x) = \sum\limits_{j=1}^n c_j\chi_{A_j}(x)
+q_761	A.370	4062051	body	A_j
+q_762	A.370	4062051	body	\int sd\mu = \sum\limits_{i=j}^n c_j \mu(A_j)
+q_763	A.370	4062051	body	f\ge 0
+q_764	A.370	4062051	body	\int fd\mu = \sup\{\int sd\mu
+q_765	A.370	4062051	body	0\le s\le f\}
+q_766	A.370	4062051	body	s(x)=\sum\limits_{j=1}^nc_i\chi_{I_j}(x)
+q_767	A.370	4062051	body	I_j
+q_768	A.370	4062051	body	(a,b), (a,b], [a,b), [a,b])
+q_769	A.371	4058673	title	|f(x)g(x)|=||fg||
+q_770	A.371	4058673	body	||fg||\le||f||\space||g||
+q_771	A.371	4058673	body	f,g:[0,1]\to \Bbb{R}
+q_772	A.371	4058673	body	|f(x)| \le\max|f(x)|=
+q_773	A.371	4058673	body	f
+q_774	A.371	4058673	body	||f||
+q_775	A.371	4058673	body	\forall x\in[0,1]
+q_776	A.371	4058673	body	|f(x)||g(x)| =|f(x)g(x)|\le \max |f(x)|g(x)=||f|| \space\space |g|\le \max|f(x)|\space \max|g(x)|=|f||\space\space||g||
+q_777	A.371	4058673	body	|f(x)g(x)|\le||f||\space\space||g||
+q_778	A.371	4058673	body	||fg||\le||f||\space||g||
+q_779	A.371	4058673	body	|f(x) g(x)|=||fg||
+q_780	A.371	4058673	body	|f(x)g(x)| \le\max|f(x)g(x)|=\max|f(x)| \space \max|g(x)|
+q_781	A.371	4058673	body	|f(x) g(x)|=||fg||
+q_782	A.371	4058673	body	||fg||\le||f||\space||g||
+q_783	A.372	4057514	title	\mathbb{Z}\left[\sqrt{d}\right]
+q_784	A.372	4057514	title	\mathcal{O}_{\mathbb{Q}\left[\sqrt{d}\right]}
+q_785	A.372	4057514	body	\mathbb{Z}
+q_786	A.372	4057514	body	\mathbb{Z}[i]
+q_787	A.372	4057514	body	\mathbb{Z}\left[\sqrt{-1}\right]
+q_788	A.372	4057514	body	\mathbb{Z}[i]
+q_789	A.372	4057514	body	x^2 - dy^2 = 1
+q_790	A.372	4057514	body	\mathbb{Z}\left[\sqrt{d}\right]
+q_791	A.372	4057514	body	\mathcal{O}_{\mathbb{Q}\left[\sqrt{d}\right]}
+q_792	A.372	4057514	body	d = 5
+q_793	A.372	4057514	body	\mathcal{O}_{\mathbb{Q}\left[\sqrt{5}\right]} = \mathbb{Z}\left[\frac{1 + \sqrt{5}}{2}\right]
+q_794	A.372	4057514	body	\mathbb{Z}\left[\sqrt{5}\right]
+q_795	A.372	4057514	body	\mathbb{Z}\left[\sqrt{d}\right]
+q_796	A.373	4056304	title	\sqrt n
+q_797	A.373	4056304	title	n
+q_798	A.373	4056304	body	\sqrt n
+q_799	A.373	4056304	body	n
+q_800	A.373	4056304	body	\sqrt n
+q_801	A.373	4056304	body	n
+q_802	A.373	4056304	body	\sqrt n = {a\over b}
+q_803	A.373	4056304	body	gcd(a,b)=1
+q_804	A.373	4056304	body	a
+q_805	A.373	4056304	body	b
+q_806	A.373	4056304	body	gcd(a,b)=1
+q_807	A.374	4050738	title	P(x)
+q_808	A.374	4050738	title	P(x)|P(x^2)
+q_809	A.374	4050738	body	P(x)
+q_810	A.374	4050738	body	P(x)|P(x^2)
+q_811	A.374	4050738	body	P(x)=x, x^2
+q_812	A.374	4050738	body	P(x)=x^2+x+1, x^2, x^2-1, x^2-x, x^2-2x+1
+q_813	A.375	4049923	body	x^2 + 7 = 2^n
+q_814	A.376	4049589	body	\lim\limits_{n\to\infty}\dfrac{\sqrt1+\sqrt2+\sqrt3+\ldots+\sqrt n}{n\sqrt n}
+q_815	A.377	4049168	title	\mathbb{R}^{n+1}-\mathbb{R}^n
+q_816	A.377	4049168	body	\mathbb{R}^{n+1}-\mathbb{R}^n=\mathbb{R}^n\times\left(\mathbb{R}-\left\{0\right\}\right)
+q_817	A.377	4049168	body	\hat{\mathcal{G}}=\left(\mathbb{R}^{n+1}-\mathbb{R}^n\right)\cap\partial\mathcal{O}_f.
+q_818	A.377	4049168	body	\mathcal{O}_f
+q_819	A.377	4049168	body	f:\mathbb{R}^n\to\mathbb{R}
+q_820	A.377	4049168	body	\mathbb{R}^n
+q_821	A.377	4049168	body	f,
+q_822	A.377	4049168	body	\mathbf{x}\in\mathbb{R}^n
+q_823	A.377	4049168	body	\left\{\mathbf{x},f\left(\mathbf{x}\right)\right\}\in\mathbb{R}^{n+1}
+q_824	A.377	4049168	body	\hat{\mathcal{G}}=\partial\mathcal{O}_f-\mathbb{R}^n,
+q_825	A.377	4049168	body	\partial\mathcal{O}_f
+q_826	A.377	4049168	body	\mathcal{O}_f.
+q_827	A.377	4049168	body	\times
+q_828	A.377	4049168	body	\mathbb{R}^n
+q_829	A.377	4049168	body	\mathbb{R}^{n+1}
+q_830	A.377	4049168	body	\mathbb{R}^{n}
+q_831	A.377	4049168	body	\mathbb{R}^{n+1}
+q_832	A.377	4049168	body	\mathbb{R}^{n}
+q_833	A.377	4049168	body	\mathbb{R}^{n+1}.
+q_834	A.377	4049168	body	\mathbb{R}^{n+1}-\mathbb{R}^n
+q_835	A.378	4049093	body	\left(-3\right)^\frac{2}{2}
+q_836	A.378	4049093	body	\sqrt{\left(-3\right)^2}
+q_837	A.379	4048733	title	 f: G \to G 
+q_838	A.379	4048733	body	G
+q_839	A.379	4048733	body	 S 
+q_840	A.379	4048733	body	 f: G \to G
+q_841	A.379	4048733	body	 (S, \circ) 
+q_842	A.379	4048733	body	 (S, \circ) 
+q_843	A.379	4048733	body	 x \in 
+q_844	A.379	4048733	body	 f_1,f_2 \in S
+q_845	A.379	4048733	body	f_2(x) = y \in G
+q_846	A.379	4048733	body	 f_1 
+q_847	A.379	4048733	body	 f_2(y) = z \in G 
+q_848	A.379	4048733	body	 f_2 
+q_849	A.379	4048733	body	 f_1(f_2(x)) = f_1(y) = z = f_1 \circ f_2(x),
+q_850	A.379	4048733	body	f_1, f_2 \in S \longrightarrow f_1 \circ f_2 \in S.
+q_851	A.379	4048733	body	id
+q_852	A.379	4048733	body	 \longrightarrow id \in S
+q_853	A.379	4048733	body	 f 
+q_854	A.379	4048733	body	 \longrightarrow \exists f^{-1}
+q_855	A.379	4048733	body	 f^{-1} 
+q_856	A.379	4048733	body	 \longrightarrow f^{-1} \in S
+q_857	A.379	4048733	body	 | S | = 1
+q_858	A.379	4048733	body	 G 
+q_859	A.379	4048733	body	 | S | = 1 
+q_860	A.379	4048733	body	 f \in S 
+q_861	A.379	4048733	body	f^{-1} \in S 
+q_862	A.379	4048733	body	 | S | = 1 
+q_863	A.379	4048733	body	 f = f^{-1} = id
+q_864	A.380	4043338	title	\int_0^\pi f(t) \sin(t)dt =\int_0^\pi f(t) \cos(t)dt = 0
+q_865	A.380	4043338	title	f(x)=0
+q_866	A.380	4043338	body	f\colon [0,\pi]\to\mathbb{R}
+q_867	A.380	4043338	body	\int^{\pi}_{0}f (t) \sin(t)dt =\int^{\pi}_{0} f (t) \cos(t)dt = 0
+q_868	A.380	4043338	body	f(x)=0
+q_869	A.380	4043338	body	[0,\pi]
+q_870	A.380	4043338	body	f(x)>0
+q_871	A.381	4032477	title	A_1 \times ... \times A_n
+q_872	A.381	4032477	title	A_1, ..., A_n
+q_873	A.381	4032477	body	A_1, ..., A_n
+q_874	A.381	4032477	body	A := A_1 \times ... \times A_n
+q_875	A.381	4032477	body	\mathbb{N}
+q_876	A.381	4032477	body	f: A \rightarrow S
+q_877	A.381	4032477	body	f: S \rightarrow A
+q_878	A.381	4032477	body	S \subset \mathbb{N}
+q_879	A.381	4032477	body	A_1, ..., A_n
+q_880	A.381	4032477	body	fi: \mathbb{N} \rightarrow A_i
+q_881	A.381	4032477	body	i = 1, ..., n
+q_882	A.381	4032477	body	g: \mathbb{N} \rightarrow A
+q_883	A.382	4030774	title	SS = \{ A_{1}, A_{2}, A_{3},...\}
+q_884	A.382	4030774	title	\{ \mathbf{T}, \mathbf{F} \} 
+q_885	A.382	4030774	body	SS=\{ A_1,A_2,A_3,\ldots\}
+q_886	A.382	4030774	body	V = \{ v \mid v: SS \to \{ \mathbf{T}, \mathbf{F} \} \}
+q_887	A.382	4030774	body	V = \{ v \mid v: SS \to \{ \mathbf{T}, \mathbf{F} \} \}
+q_888	A.382	4030774	body	v_{1}, v_{2},...
+q_889	A.382	4030774	body	n_1, n_2,\ldots
+q_890	A.382	4030774	body	v_{m} : SS \to \{ \mathbf{T}, \mathbf{F} \}
+q_891	A.382	4030774	body	T, F
+q_892	A.382	4030774	body	v_{m}
+q_893	A.383	4026325	body	f_a(z):=\frac{z-a}{1-\overline{a}z}
+q_894	A.383	4026325	body	|a|<1
+q_895	A.383	4026325	body	f_a(e^{it})
+q_896	A.383	4026325	body	|f_a(e^{it})|=1
+q_897	A.383	4026325	body	f_a(a)=0
+q_898	A.384	4022815	body	 f_3(n) = \binom n2
+q_899	A.385	4009989	body	\sigma(a)=|a|
+q_900	A.385	4009989	body	\sigma(ab)=\sigma(a)\sigma(b)
+q_901	A.385	4009989	body	\sigma(f(x))=deg(f(x))
+q_902	A.385	4009989	body	\sigma(ab)=\sigma(a)+\sigma(b)
+q_903	A.385	4009989	body	R
+q_904	A.385	4009989	body	\sigma:R -\{0\}\rightarrow \{0,1,2,3...\}   
+q_905	A.385	4009989	body	 
+q_906	A.385	4009989	body	a,b \in R
+q_907	A.385	4009989	body	q,r \in R
+q_908	A.385	4009989	body	b=aq+r
+q_909	A.385	4009989	body	r=0
+q_910	A.385	4009989	body	\sigma(r)\lt \sigma(a) 
+q_911	A.386	4009456	title	\sum _{n=-\infty }^{\infty } e^{-n^2 \pi x}=\frac{1}{\sqrt{x}}\sum _{n=-\infty }^{\infty } e^{-\frac{n^2 \pi }{x}}
+q_912	A.386	4009456	body	\sum _{n=-\infty }^{\infty } e^{-n^2 \pi x} = \frac{1}{\sqrt{x}}\sum _{n=-\infty }^{\infty } e^{-\frac{n^2 \pi }{x}}
+q_913	A.386	4009456	body	 \begin{aligned} \sum _{n=-\infty }^{\infty } e^{-n^2 \pi x} &= \vartheta_{3}(0,e^{-\pi  x}) \\&= \vartheta_{00}(0,e^{-\pi  x}) \\&= \vartheta(0,e^{-\pi  x}) \end{aligned} 
+q_914	A.386	4009456	body	\vartheta(z;\tau) := \sum _{n=-\infty }^{\infty } e^{\pi i n^2 \tau+2 \pi i n z}
+q_915	A.386	4009456	body	\vartheta(0,e^{-\pi  x}) = \sum _{n=-\infty }^{\infty } e^{\pi i n^2 e^{-\pi  x}}
+q_916	A.386	4009456	body	z = 0
+q_917	A.386	4009456	body	\tau = e^{-\pi  x}
+q_918	A.387	4006307	title	11
+q_919	A.387	4006307	title	5
+q_920	A.387	4006307	title	4
+q_921	A.387	4006307	body	n\in\mathbb{Z}^{+}
+q_922	A.387	4006307	body	k\in\mathbb{Z}_0^+
+q_923	A.387	4006307	body	n=5k + i, i\in\{0,1,2,3,4\}
+q_924	A.387	4006307	body	i=0
+q_925	A.387	4006307	body	 i = 1 
+q_926	A.387	4006307	body	 i = 2 
+q_927	A.387	4006307	body	i=3
+q_928	A.387	4006307	body	i=4
+q_929	A.387	4006307	body	5
+q_930	A.387	4006307	body	4
+q_931	A.387	4006307	body	n>11
+q_932	A.387	4006307	body	 i 
+q_933	A.387	4006307	body	k\in\mathbb{Z}_0^+ \Rightarrow k \geq 3 \Rightarrow n \geq 15 
+q_934	A.387	4006307	body	15
+q_935	A.387	4006307	body	5
+q_936	A.387	4006307	body	4
+q_937	A.387	4006307	body	12
+q_938	A.387	4006307	body	13
+q_939	A.387	4006307	body	14
+q_940	A.387	4006307	body	11
+q_941	A.387	4006307	body	5
+q_942	A.387	4006307	body	4
+q_943	A.387	4006307	body	\begin{align*}         n = 5k \Rightarrow n = 5k + 4(0). \end{align*}
+q_944	A.387	4006307	body	\begin{align*}        n & = 5k + 1 \\          & = 5k-5(3) +5(3) +1 \\          & = 5(k-3) + 15 + 1 \\          & = 5(k-3) +16 \Rightarrow n = 5(k-3) +4(4). \end{align*}
+q_945	A.387	4006307	body	\begin{align*}    n & = 5k + 2 \\      & = 5k-5(2) +5(2) +2 \\      & = 5(k-2) + 10 + 2 \\      & = 5(k-2) +12 \Rightarrow n = 5(k-2) +4(3). \end{align*}
+q_946	A.387	4006307	body	\begin{align*}    n & = 5k + 3 \\      & = 5k-5 + 5 + 3 \\      & = 5(k-1) +8 \Rightarrow n = 5(k-1) +4(2). \end{align*}
+q_947	A.387	4006307	body	\begin{align*}     n = 5k + 4 \Rightarrow n = 5k + 4(1). \end{align*}
+q_948	A.387	4006307	body	\begin{align*} n       &> 11 \\ 5k + i  &> 5(2) +1 \\ 5k-5(2) &> 1-i \\ 5 (k-2) &> 1-i \\ k-2     &> \frac{1-i}{5} \\ k       &> 2+\frac{1-i}{5}. \end{align*}
+q_949	A.387	4006307	body	\begin{align*} k &> 2+ \frac{1-i}{5} \geq 2+ \frac{1-0}{5}\\ k &> 2 + 0.2 = 2.2 \end{align*}
+q_950	A.387	4006307	body	\begin{align*} 12 &= 5(0) +4(3) \\ 13 &= 5(1) +4(2) \\ 14 &= 5(2) +4(1). \end{align*}
+q_951	A.388	4004685	title	k
+q_952	A.388	4004685	body	\begin{cases}  x_1 + kx_2 − x_3 = 2\\  2x_1 − x_2 + kx_3 = 5 \\ x_1 +10x_2 −6x_3 =1 \end{cases}
+q_953	A.388	4004685	body	k
+q_954	A.388	4004685	body	R_1
+q_955	A.388	4004685	body	R_3
+q_956	A.388	4004685	body	R_2
+q_957	A.388	4004685	body	R_3
+q_958	A.388	4004685	body	\left[\begin{array}{ccc|c}1&10&-6&1\\1&k&-1&2\\2&-1&k&5\end{array}\right]
+q_959	A.389	4004022	body	\sum\limits_{i=1}^N  \frac{i}{(1+r)^i}
+q_960	A.389	4004022	body	\frac{(1+r)^{N+1}-(1+r)-rN}{r^2(1+r)^N}
+q_961	A.390	3994470	title	x_n
+q_962	A.390	3994470	title	\omega
+q_963	A.390	3994470	title	t_n
+q_964	A.390	3994470	title	\omega
+q_965	A.390	3994470	body	(x_n)_{n\in\Bbb{N}}
+q_966	A.390	3994470	body	(t_n)_{n\in\Bbb{N}}
+q_967	A.390	3994470	body	t_n:=\frac {x_1+x_2+...+x_n}{n}
+q_968	A.390	3994470	body	\lim_{n\rightarrow\infty}t_n=\omega
+q_969	A.390	3994470	body	\lim_{t\rightarrow\infty}x_n=\omega
+q_970	A.390	3994470	body	\lim_{n\rightarrow\infty}x_n=\omega
+q_971	A.391	3993087	title	C_r 
+q_972	A.391	3993087	body	\mathbb{E} |X+Y|^r \leq c_r (\mathbb{E} |X|^r + \mathbb{E} |Y|^r),
+q_973	A.391	3993087	body	r> 0
+q_974	A.391	3993087	body	c_r
+q_975	A.391	3993087	body	2^{r-1}
+q_976	A.391	3993087	body	\begin{equation}    c_r = \left\{         \begin{array}{ll}    1 & \mathrm{if\ } 0 < r \le 1 \\    2^{r-1}     & \mathrm{if\ } 1 < r         \end{array}       \right. \end{equation}
+q_977	A.392	3992939	body	 f * f_p \equiv 1 \bmod p 
+q_978	A.392	3992939	body	\mathbb{Z}[X]/(X^n-1)
+q_979	A.392	3992939	body	n-1
+q_980	A.392	3992939	body	X^n-1
+q_981	A.392	3992939	body	f(X)
+q_982	A.392	3992939	body	p
+q_983	A.392	3992939	body	f_p(X)
+q_984	A.392	3992939	body	f(X) = -1+X+X^2-X^4+X^6+X^9-X^{10}
+q_985	A.393	3987109	body	|f(z^{2})| \leq  2|f(z)|
+q_986	A.394	3986715	title	\delta
+q_987	A.394	3986715	body	\forall \epsilon > 0, \exists \delta > 0, |x-a|<\delta \implies |f(x) - f(a)| < \epsilon
+q_988	A.394	3986715	body	\forall \epsilon > 0, \exists \delta > 0, |\frac{m}{n}-a|<\delta \implies |\frac{1}{n}| < \epsilon
+q_989	A.394	3986715	body	f(x) = \begin{cases} 0,  & \text{if $x$ is irrational} \\ 1/n, & \text{if $x = m/n$} \end{cases}
+q_990	A.394	3986715	body	m/n
+q_991	A.394	3986715	body	\epsilon-\delta
+q_992	A.394	3986715	body	x
+q_993	A.394	3986715	body	x
+q_994	A.394	3986715	body	a
+q_995	A.394	3986715	body	x
+q_996	A.394	3986715	body	f(x) = 0
+q_997	A.394	3986715	body	f(a)
+q_998	A.394	3986715	body	\delta
+q_999	A.394	3986715	body	0 < \epsilon
+q_1000	A.394	3986715	body	\delta
+q_1001	A.394	3986715	body	x
+q_1002	A.394	3986715	body	x = \frac{m}{n}
+q_1003	A.394	3986715	body	\delta
+q_1004	A.394	3986715	body	|\frac{m}{n}-a|
+q_1005	A.394	3986715	body	1+2|a|
+q_1006	A.394	3986715	body	\delta \le 1
+q_1007	A.394	3986715	body	\delta
+q_1008	A.395	3978806	body	f: V \to W 
+q_1009	A.395	3978806	body	K
+q_1010	A.395	3978806	body	a,b \in V
+q_1011	A.395	3978806	body	k \in K
+q_1012	A.395	3978806	body	f(a+b) = f(a) + f(b)
+q_1013	A.395	3978806	body	k*f(b) =f(k * b)
+q_1014	A.395	3978806	body	f
+q_1015	A.396	3976421	title	\theta^*
+q_1016	A.396	3976421	title	\theta
+q_1017	A.396	3976421	body	x_1, x_2,...,x_n
+q_1018	A.396	3976421	body	X
+q_1019	A.396	3976421	body	f_X(x)=\frac{2x}{\theta^2} \quad
+q_1020	A.396	3976421	body	0 \le x \le \theta  \quad
+q_1021	A.396	3976421	body	f_X(x)=0 \quad
+q_1022	A.396	3976421	body	\theta^*
+q_1023	A.396	3976421	body	\theta
+q_1024	A.396	3976421	body	L(\theta)= \frac{2}{\theta^{2n}}\prod_{i=1}^nx_i
+q_1025	A.396	3976421	body	\frac{\partial L(\theta)}{\partial \theta} =...=\frac{-4n}{\theta^{2n+1}}\prod_{i=1}^nx_i + \frac{2}{\theta^{2n}}\frac{\partial(\prod_{i=1}^nx_i)}{\partial \theta}
+q_1026	A.396	3976421	body	F_{\theta^*}
+q_1027	A.396	3976421	body	f_{\theta^*}
+q_1028	A.396	3976421	body	E[\theta^*]
+q_1029	A.396	3976421	body	\theta^*
+q_1030	A.397	3975897	body	 1 + 2 + 3 + 4 + \cdots = -\frac{1}{12} 
+q_1031	A.397	3975897	body	 \sum_{i=1}^{n} i = \frac{n(n+1)}{2} 
+q_1032	A.397	3975897	body	 \lim_{n\rightarrow\infty} \frac{n(n+1)}{2} = \infty 
+q_1033	A.397	3975897	body	 \sum_{i=1}^{n=\infty} i = -\frac{1}{12} 
+q_1034	A.397	3975897	body	 \lim_{n\rightarrow\infty} \frac{n(n+1)}{2} \stackrel{?}{=} -\frac{1}{12} 
+q_1035	A.398	3975145	body	\lim_{x \rightarrow c} f'(x) = L = \lim_{x \rightarrow c^+} f'(x) =\lim_{x \rightarrow c^-} f'(x)
+q_1036	A.398	3975145	body	x=c
+q_1037	A.398	3975145	body	L
+q_1038	A.399	3974322	body	M = {\{\langle x,y \rangle \in \mathbb{R^2} | a \leq x \leq b , c \leq y \leq d}\}
+q_1039	A.399	3974322	body	A
+q_1040	A.399	3974322	body	A
+q_1041	A.399	3974322	body	a,b,c,d
+q_1042	A.399	3974322	body	a < b
+q_1043	A.399	3974322	body	 c < d
+q_1044	A.399	3974322	body	\mathbb{Q}
+q_1045	A.399	3974322	body	(\mathbb{R},\leq)
+q_1046	A.400	3968655	title	16
+q_1047	A.400	3968655	body	\frac{1}{15} + \frac{14}{15}...
+q_1048	A.400	3968655	body	2^n
+q_1049	A.400	3968655	body	\frac{1}{2^n-1}+\frac{2^n-2}{2^n-1}\left(\frac{1}{2^{n-2}}\right)^2\:=\:\frac{1}{2^{n-1}}
+q_1050	A.400	3968655	body	\left(\frac{1}{2^{n-2}}\right)^2
