@@ -170,26 +170,36 @@ def batch_query( engine, query_list ):
 
     return engine( queries )
 
-def verbose_hit_summary( result ):
+def verbose_hit_summary( result, math_index=False ):
 
     result.reset_index()
     for ( index, row ) in result.iterrows():
+        #print("KEYS: " + str( row.keys() ) )
         print('QUERY (' + row['qid'] + '): ', row['query'])
         score = "{:.2f}".format( row['score'] )
         
         print('RANK:', index, 'Score:', score)
-        print('Docid:',row['docid'], 'Post-no:', row['docno'], 'Parent-no:',row['parentno'],'Votes:', row['votes'] )
-        if row['parentno'] == 'qpost':
-            print('QUESTION TITLE:', row['title'])
+        if not math_index:
+            # Post document
+            print('Docid:',row['docid'], 'Post-no:', row['docno'], 'Parent-no:',row['parentno'],'Votes:', row['votes'] )
+            if row['parentno'] == 'qpost':
+                print('QUESTION TITLE:', row['title'])
+            else:
+                print('ANSWER')
         else:
-            print('ANSWER:')
+            # Formula document
+            print('Docid:',row['docid'], 'Post-no:', row['docno'], 'Parent-no:',row['parentno'])
 
-        print(row['text'])
-        print('  TAGS:',row['tags'])
-        print('  FORMULA IDS:',row['mathnos'])
+        print('TEXT:',row['text'])
+
+        # Provide tags, formula id's for posts
+        if not math_index:
+            print('TAGS:',row['tags'])
+            print('  FORMULA IDS:',row['mathnos'])
+        
         print('')
 
-def show_result( result, field_names=[], show_table=True, show_hits=False ):
+def show_result( result, field_names=[], show_table=True, show_hits=False, math=False ):
     if show_table:
         if field_names == []:
             print( result, '\n' )
@@ -197,7 +207,7 @@ def show_result( result, field_names=[], show_table=True, show_hits=False ):
             print( result[ field_names ], '\n' )
 
     if show_hits:
-        verbose_hit_summary( result )
+        verbose_hit_summary( result, math_index=math )
 
 def test_retrieval( post_index, math_index, model, tokens, debug=False ):
     titles = [ 'qid', 'docid', 'docno', 'title', 'rank', 'score', 'query' ]
@@ -217,16 +227,22 @@ def test_retrieval( post_index, math_index, model, tokens, debug=False ):
         result = query( posts_engine, '+simplified +proof' )
         show_result( result, mathnos, show_hits=True )
         # Added 'writing' to test matching tags, 'mean' in title field  for post number '1'
-        show_result( batch_query( posts_engine, ['simplified proof', 'proof', 'writing', 'mean', 'qpost', 'proof -qpost' ] ), 
-                parentno, show_hits=True )
-        show_result ( query( posts_engine, 'simplified' ), show_hits=True  )
+        show_result( batch_query( posts_engine, [
+            'simplified proof', 
+            'proof', 
+            'writing', 
+            'mean', 
+            'qpost', 
+            'proof -qpost' 
+            # 'man +TITLE:{intuition}'  # Trouble restricting to fields (?)
+            ] ), parentno, show_hits=True )
     
     if math_index != None:
         print("[ Testing math index retrieval ]")
         
         math_engine = search_engine( math_index, model, ['docno', 'text', 'postno', 'parentno' ], token_pipeline=tokens )
-        show_result( query( math_engine, '+sqrt +2' ), show_hits=True )
-        show_result( batch_query( math_engine, [ 'sqrt 2', '2' ] ), show_hits=True )
+        show_result( query( math_engine, '+sqrt +2' ), show_hits=True, math=True )
+        show_result( batch_query( math_engine, [ 'sqrt 2', '2' ] ), show_hits=True, math=True )
 
     print( 'Test complete.' )
 
