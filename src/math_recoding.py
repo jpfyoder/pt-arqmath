@@ -12,9 +12,7 @@
 ################################################################
 # LaTeX Symbol Map
 ################################################################
-
-
-# Warning - mapping is incomplete.
+# Warning - mapping may be incomplete.
 # Mapping ignores backslash (\) in TeX commands
 # Commands will be tokenized as-is with no backslash 
 # (e.g., \geq -> ge )

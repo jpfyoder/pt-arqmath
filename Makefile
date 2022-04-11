@@ -7,10 +7,10 @@ data:
 	rm ARQMath_Collection.zip
 
 posts:
-	./arqmath-index post_data/rawTest.xml -s
+	./arqmath-test test/indexTest.xml -s
 
 math:
-	./arqmath-index post_data/rawTest.xml -m
+	./arqmath-test test/indexTest.xml -m
 
 clean:
 	rm -rf *-ptindex

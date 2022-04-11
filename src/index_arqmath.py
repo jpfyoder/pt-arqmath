@@ -199,18 +199,19 @@ def verbose_hit_summary( result, math_index=False ):
             # Formula document
             print('Docid:',row['docid'], 'Formula-no:', row['docno'],  'Post-no:', row['postno'], 'Parent-no:',row['parentno'])
 
-        print('TEXT:',row['text'])
-        if math_index:
-            print('ORIGTEXT:',row['origtext'] )
+        # Show original text before token mapping
+        print('ORIGTEXT:',row['origtext'])
 
         # Provide tags, formula id's for posts
-        else:
+        if not math_index:
             print('TAGS:',row['tags'])
-            print('  FORMULA IDS:',row['mathnos'])
+            print('FORMULA IDS:',row['mathnos'])
         
         print('')
 
 def show_result( result, field_names=[], show_table=True, show_hits=False, math=False ):
+    print("\n__ SEARCH RESULTS _________________________\n")
+
     if show_table:
         if field_names == []:
             print( result, '\n' )
@@ -235,7 +236,7 @@ def test_retrieval( post_index, math_index, model, tokens, debug=False ):
                 metadata_keys=['docno','title', 'origtext', 'tags', 'votes', 'parentno', 'mathnos' ],
                 token_pipeline=tokens )
         
-        result = query( posts_engine, '+simplified +proof' )
+        result = query( posts_engine, '_pand simplified _pand proof' )
         show_result( result, mathnos, show_hits=True )
         # Added 'writing' to test matching tags, 'mean' in title field  for post number '1'
         show_result( batch_query( posts_engine, [
@@ -244,7 +245,7 @@ def test_retrieval( post_index, math_index, model, tokens, debug=False ):
             'writing', 
             'mean', 
             'qpost', 
-            'proof -qpost' 
+            'proof _pnot qpost' 
             # 'man +TITLE:{intuition}'  # Trouble restricting to fields (?)
             ] ), parentno, show_hits=True )
     
@@ -252,9 +253,9 @@ def test_retrieval( post_index, math_index, model, tokens, debug=False ):
         print("[ Testing math index retrieval ]")
         
         math_engine = search_engine( math_index, model, ['docno', 'origtext','postno', 'parentno' ], token_pipeline=tokens )
-        show_result( query( math_engine, '+sqrt +2' ), show_hits=True, math=True )
+        show_result( query( math_engine, '_pand sqrt _pand 2' ), show_hits=True, math=True )
         show_result( batch_query( math_engine, [ 'sqrt 2', '2' ] ), show_hits=True, math=True )
-        show_result( batch_query( math_engine, [ 'sqrt 2 -qpost' ] ), show_hits=True, math=True )
+        show_result( batch_query( math_engine, [ 'sqrt 2 _pnot qpost' ] ), show_hits=True, math=True )
 
     print( 'Test complete.' )
 
@@ -291,9 +292,11 @@ def main():
         args.tokens = ''
 
     # Start PyTerrier -- many Java classes unavailable until this is complete
+    print('\n>>> Initializing PyTerrier...')
     if not pt.started():
         pt.init()
 
+    print('\n>>> Indexing...')
     # Initialize indices as non-existent
     post_index = None
     math_index = None
@@ -301,14 +304,18 @@ def main():
     # Post index construction
     # Store post text and ids for formulas in each post in the 'meta' (document) index
     if not args.math or args.mathpost:
-        post_index = create_XML_index( args.xmlFile, "./" + indexDir + "-post-ptindex", token_pipeline=args.tokens, debug=args.debug )
+        post_index = create_XML_index( args.xmlFile, "./" + indexDir + "-post-ptindex", 
+            token_pipeline=args.tokens, debug=args.debug )
         view_index( "Post Index", post_index, args.lexicon, args.stats )
 
     # Formula index construction
     # Store formula text (LaTeX) and formula ids, along with source post id for each formula
     if args.math or args.mathpost:
-        math_index = create_XML_index( args.xmlFile, "./" + indexDir + "-math-ptindex", formulas=True, token_pipeline=args.tokens, debug=args.debug )
+        math_index = create_XML_index( args.xmlFile, "./" + indexDir + "-math-ptindex", formulas=True, 
+            token_pipeline=args.tokens, debug=args.debug )
         view_index( "Math Index", math_index, args.lexicon, args.stats )
+
+    print('>>> Indexing complete.\n')
 
     # Retrieval test
     test_retrieval( post_index, math_index, 'BM25', args.tokens, debug=args.debug )    
