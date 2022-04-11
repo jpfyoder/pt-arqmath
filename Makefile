@@ -1,3 +1,5 @@
+install:
+
 posts:
 	./arqmath-index post_data/rawTest.xml -s
 
