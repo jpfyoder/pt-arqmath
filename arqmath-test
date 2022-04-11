@@ -3,8 +3,8 @@
 # Pass all arguments to arqmath
 if [ $# -lt 1 ]
 then
-	python index_arqmath.py --help
+	python src/index_arqmath.py --help
 else
-	python index_arqmath.py $@
+	python src/index_arqmath.py "$@"
 fi
 

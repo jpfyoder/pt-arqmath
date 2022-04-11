@@ -1,0 +1,8 @@
+ARQMath_Collection
+__pycache__/
+*/__pycache__/
+.*.bak
+*.bak
+.*.swp
+*.swp
+
