@@ -2,6 +2,8 @@
 # REPLACE top line if the command `which bash` does not return the path shown
 # (keep #!, then append that path)
 
+export PYTHONPATH=./src:$PYTHONPATH
+
 # Pass all arguments to arqmath
 if [ $# -lt 1 ]
 then
