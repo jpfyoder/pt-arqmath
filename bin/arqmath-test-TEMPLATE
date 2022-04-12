@@ -1,4 +1,3 @@
-#!/usr/bin/bash
 # REPLACE top line if the command `which bash` does not return the path shown
 # (keep #!, then append that path)
 

@@ -22,17 +22,6 @@ This code has been tested on MacOS X and Linux, and requires a bash command shel
 3. Issue `make` to install PyTerrier and Python dependencies
 4. Issue `make data` to download the collection of ARQMath posts
 
-**Note about Bash Scripts (e.g., `arqmath-test`)**
-
-The `arqmath-test` and any other bash scripts may require that you change the first line of the file, which calls the bash using a path. 
-
-The path on the CS systems for the bash shell is `/usr/bin/bash/`. To find this path on other machines, issue:
-
-```
-which bash
-```
-and then replace the first line of the bash scripts (e.g., `arqmath-test`) to user that path if necessary.
-
 **Notes for RIT CS Students (Spring 2022)**
 
 * You may probably find it easiest to run the code on a Ubuntu system or virtual machine/environment.
