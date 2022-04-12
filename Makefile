@@ -10,7 +10,6 @@ data:
 	rm ARQMath_Collection.zip
 
 posts:
-	export PYTHONPATH=./src:$PYTHONPATH
 	./arqmath-test test/indexTest.xml -s
 
 math:
