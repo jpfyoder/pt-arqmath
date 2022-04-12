@@ -11,25 +11,31 @@ This code is provided to make getting started with ARQMath Task 1 (Answer Retrie
 
 ## Installation
 
-This code has been tested on MacOS X and Linux, and requires a bash command shell (i.e., command line).
+**Please check the notes below** before following the installation instructions.
+
+This code has been tested on MacOS X and Linux, and requires a bash command shell (i.e., command line). 
 
 1. **Download** the code from GitLab using:  
 `git clone https://gitlab.com/dprl/pt-arqmath.git`
+2. If possible, make sure to install lxml, e.g., on Ubuntu, using: `sudo apt-get install lxml`
 2. Enter the project directory using: `cd pt-arqmath`
 3. Issue `make` to install PyTerrier and Python dependencies
 4. Issue `make data` to download the collection of ARQMath posts
 
 **Note about Bash Scripts (e.g., `arqmath-test`)**
 
-The `arqmath-test` script may require a small change in the first line of the file (which calls the bash interpreter). The path on the CS systems for the bash shell is `/usr/bin/bash/`. To find this path, issue:
+The `arqmath-test` and any other bash scripts may require that you change the first line of the file, which calls the bash using a path. 
+
+The path on the CS systems for the bash shell is `/usr/bin/bash/`. To find this path on other machines, issue:
 
 ```
 which bash
 ```
-and then replace the path at the top of bash scripts (e.g., `arqmath-test`) if the scripts are not finding the bash shell when they start.
+and then replace the first line of the bash scripts (e.g., `arqmath-test`) to user that path if necessary.
 
 **Notes for RIT CS Students (Spring 2022)**
 
+* You may probably find it easiest to run the code on a Ubuntu system or virtual machine/environment.
 * For the CS machines, some do not have pip installed. `glados` is one system that does. The packages have to be installed in your user account, so I have asked the sys admins to increase space for your CS user accounts.
 * If you receive a message complaining that a package is incompatible/too old, you can use:  
 ```
