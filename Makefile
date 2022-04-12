@@ -1,4 +1,7 @@
 install:
+	# First two lines to help with installation on RIT CS systems
+	pip install --user numpy --upgrade
+	pip install --user packaging --upgrade
 	pip install --user python-terrier bs4 tqdm pandas
 
 data:
