@@ -29,6 +29,11 @@ This code has been tested on MacOS X and Linux, and requires a bash command shel
 ```
 pip install --user <pkgname> --upgrade
 ```  
+to update, and
+```
+pip install --user <pkgname>==X.Y.Z 
+```
+to select a specific package version (where X.Y.Z is a specific version number, e.g., 0.8.2).
 
 
 ## Getting Started
