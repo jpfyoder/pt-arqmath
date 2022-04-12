@@ -19,6 +19,26 @@ This code has been tested on MacOS X and Linux, and requires a bash command shel
 3. Issue `make` to install PyTerrier and Python dependencies
 4. Issue `make data` to download the collection of ARQMath posts
 
+**Note about Bash Scripts (e.g., `arqmath-test`)**
+
+The `arqmath-test` script may require a small change in the first line of the file (which calls the bash interpreter). The path on the CS systems for the bash shell is `/usr/bin/bash/`. To find this path, issue:
+
+```
+which bash
+```
+and then replace the path at the top of bash scripts (e.g., `arqmath-test`) if the scripts are not finding the bash shell when they start.
+
+**Notes for RIT CS Students (Spring 2022)**
+
+* For the CS machines, some do not have pip installed. `glados` is one system that does. The packages have to be installed in your user account, so I have asked the sys admins to increase space for your CS user accounts.
+* If you receive a message complaining that a package is incompatible/too old, you can use:  
+```
+pip install --user <pkgname> --upgrade
+```  
+I did this for the packages `packaging` and `numpy` on glados.cs.rit.edu. It took about five minutes for all packages to install afterward. **I have added these two to the Makefile directly,** but you may encounter different messages depending upon the machine you are on.
+
+
+
 ## Getting Started
 
 Some quick indexing and retrieval tests are provided by the `arqmath-test` bash script. The script has flags you can modify, for example to return index statistics, the lexicon produced after tokenization, whether to produce an index for posts/formulas/both, and a flag to control tokenization by PyTerrier  (e.g., stemming and stopword removal).
