@@ -24,14 +24,11 @@ This code has been tested on MacOS X and Linux, and requires a bash command shel
 
 **Notes for RIT CS Students (Spring 2022)**
 
-* You may probably find it easiest to run the code on a Ubuntu system or virtual machine/environment.
-* For the CS machines, some do not have pip installed. `glados` is one system that does. The packages have to be installed in your user account, so I have asked the sys admins to increase space for your CS user accounts.
+* It will probably be easiest to run the code on a Ubuntu system or virtual machine/environment (e.g., an RIT CS lab machine).
 * If you receive a message complaining that a package is incompatible/too old, you can use:  
 ```
 pip install --user <pkgname> --upgrade
 ```  
-I did this for the packages `packaging` and `numpy` on glados.cs.rit.edu. It took about five minutes for all packages to install afterward. **I have added these two to the Makefile directly,** but you may encounter different messages depending upon the machine you are on.
-
 
 
 ## Getting Started
