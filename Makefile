@@ -12,6 +12,7 @@ script:
 	# Creating test script...
 	@echo "#!`which bash`" > exec_line
 	@cat exec_line bin/arqmath-test-TEMPLATE > arqmath-test
+	@chmod u+x arqmath-test
 	@rm exec_line
 	# Test script is ./arqmath-test
 
