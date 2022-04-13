@@ -22,7 +22,8 @@ from math_recoding import *
 ################################################################
 def rewrite_math_tags( soup ):
     formulaTags = soup('span')
-    formula_ids = [ node['id'] for node in formulaTags ]
+    # Skip span tags without id's
+    formula_ids = [ node['id'] for node in formulaTags if node.id ]
     for tag in formulaTags:
         tag.name = 'math'
         del tag['class']
@@ -225,7 +226,7 @@ def show_result( result, field_names=[], show_table=True, show_hits=False, math=
     if show_hits:
         verbose_hit_summary( result, math_index=math )
 
-def test_retrieval( post_index, math_index, model, tokens, debug=False ):
+def test_retrieval( k, post_index, math_index, model, tokens, debug=False ):
     titles = [ 'qid', 'docid', 'docno', 'title', 'rank', 'score', 'query' ]
     tags = [ 'qid', 'docid', 'docno', 'tags', 'rank', 'score' , 'query']
     votes = [ 'qid', 'docid', 'docno', 'votes', 'rank', 'score' , 'query']
@@ -235,10 +236,11 @@ def test_retrieval( post_index, math_index, model, tokens, debug=False ):
     if post_index != None:
         print("[ Testing post index retrieval ]")
         
+        # Return top k results (% k)
         posts_engine = search_engine( post_index, 
                 model, 
                 metadata_keys=['docno','title', 'text', 'origtext', 'tags', 'votes', 'parentno', 'mathnos' ],
-                token_pipeline=tokens )
+                token_pipeline=tokens ) % k
         
         result = query( posts_engine, '_pand simplified _pand proof' )
         show_result( result, mathnos, show_hits=True )
@@ -256,7 +258,8 @@ def test_retrieval( post_index, math_index, model, tokens, debug=False ):
     if math_index != None:
         print("[ Testing math index retrieval ]")
         
-        math_engine = search_engine( math_index, model, ['docno', 'text', 'origtext','postno', 'parentno' ], token_pipeline=tokens )
+        # Return top k results (% k)
+        math_engine = search_engine( math_index, model, ['docno', 'text', 'origtext','postno', 'parentno' ], token_pipeline=tokens ) % k
         show_result( query( math_engine, '_pand sqrt _pand 2' ), show_hits=True, math=True )
         show_result( batch_query( math_engine, [ 'sqrt 2', '2' ] ), show_hits=True, math=True )
         show_result( batch_query( math_engine, [ 'sqrt 2 _pnot qpost' ] ), show_hits=True, math=True )
@@ -299,7 +302,8 @@ def main():
     if os.path.isdir( args.xmlFile ):
         # Get directory, keep only xml files.
         dir_files = os.listdir( args.xmlFile )
-        in_file_list = [ file for file in dir_files if file.endswith('.xml') ]
+        in_file_list = [ (args.xmlFile + "/" + file).replace("//","/")
+                for file in dir_files if file.endswith('.xml') ]
 
     # Start PyTerrier -- many Java classes unavailable until this is complete
     print('\n>>> Initializing PyTerrier...')
@@ -330,7 +334,9 @@ def main():
     print('>>> Indexing complete.\n')
 
     # Retrieval test
-    test_retrieval( post_index, math_index, 'BM25', args.tokens, debug=args.debug )    
+    # Top k
+    k = 10
+    test_retrieval( k, post_index, math_index, 'BM25', args.tokens, debug=args.debug )    
 
 if __name__ == "__main__":
     main()
