@@ -21,8 +21,8 @@ from math_recoding import *
 # Index creation and properties
 ################################################################
 def rewrite_math_tags( soup ):
-    formulaTags = soup('span')
-    # Skip span tags without id's
+    # Skip span tags without id's (i.e., formulas without identifiers)
+    formulaTags = [ node for node in soup('span') if node.id ]
     formula_ids = [ node['id'] for node in formulaTags if node.id ]
     for tag in formulaTags:
         tag.name = 'math'
