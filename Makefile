@@ -18,8 +18,10 @@ script:
 
 data:
 	wget https://www.cs.rit.edu/~dprl/data/ARQMath/ARQMath_Collection.zip
+	wget https://www.cs.rit.edu/~dprl/data/ARQMath/ARQMath_Collection-post-ptindex.zip
 	unzip ARQMath_Collection.zip
-	rm ARQMath_Collection.zip
+	unzip ARQMath_Collection-post-ptindex.zip
+	rm *.zip
 
 posts:
 	./arqmath-test test/indexTest.xml -s

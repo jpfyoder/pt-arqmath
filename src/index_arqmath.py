@@ -17,9 +17,17 @@ from tqdm import tqdm
 
 from math_recoding import *
 
+# Constants for indexing
+# **Warning: tag names converted to lower case by default in BSoup (e.g., <P> -> <p>)
+TAGS_TO_REMOVE = ['p','a','body','html','question','head','title']
+
 ################################################################
 # Index creation and properties
 ################################################################
+def remove_tags( soup_node, tag_list ):
+    for tag in soup_node( tag_list ):
+        tag.unwrap()
+
 def rewrite_math_tags( soup ):
     # Skip span tags without id's (i.e., formulas without identifiers)
     formulaTags = [ node for node in soup('span') if node.id ]
@@ -32,9 +40,6 @@ def rewrite_math_tags( soup ):
     return ( formulaTags, formula_ids )
 
 def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False ):
-    # **Warning: tag attribute names converted to lower case by default in BSoup
-    tagsToRemove = ['p','a','body','html']
-
     for file_name in file_name_list:
         print(">> Reading File: ", file_name )
         with open(file_name) as xml_file:
@@ -55,15 +60,12 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
                 # Title formulas - apply soup to recover HTML structure from attribute field value
                 title_soup = bsoup( html.unescape( row.get('title','') ), 'lxml' )
                 ( title_formulas, title_formula_ids ) = rewrite_math_tags( title_soup )
-                for tag in title_soup( tagsToRemove ):
-                    tag.unwrap()
+                remove_tags( title_soup, TAGS_TO_REMOVE )
 
                 # Body formulas and simplification - again, apply soup to construct Tag tree w. bsoup
-                body_soup = bsoup( html.unescape( row['body'] ), 'lxml' )
+                body_soup = bsoup( html.unescape( row['body',''] ), 'lxml' )
                 ( body_formulas , formula_ids )= rewrite_math_tags( body_soup )
-                # Remove unwanted <p>, <body>, <html> tags
-                for tag in body_soup( tagsToRemove ):
-                    tag.unwrap()
+                remove_tags( body_soup, TAGS_TO_REMOVE )
         
                 # Combine title and body formulas
                 all_formulas = title_formulas + body_formulas
