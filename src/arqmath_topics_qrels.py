@@ -19,7 +19,7 @@ def load_qrels( file_name ):
     return pyterrier.io.read_qrels( file_name )
 
 # HACK: modifying code from index file to work with topics, no outputs
-# Removes ids (which have no correspondence in index), maps symbols
+# Removes ids (which have no correspondence in index)
 # WARNING: Assumes well-formed topic entries
 def replace_formulas( soup_tag ):
     # Skip span tags without id's (i.e., formulas without identifiers)
@@ -29,8 +29,6 @@ def replace_formulas( soup_tag ):
         del tag['class']
         del tag['id']
 
-        # Generate text tokens for formulas
-        rewrite_symbols( tag.get_text(), latex_symbol_map )
 
 def convert_topic( topic_tag ):
     # Topic number and tags
@@ -41,6 +39,7 @@ def convert_topic( topic_tag ):
 
     # Convert fields to index representation
     # HACK: Removing dollar signs for formulas (appear absent in the index)
+    # DEBUG: Beautiful soup 'get_text()' removes all tags; use str for full trees
     title_text =  html.unescape( str( topic_tag('title')[0] )).replace('$','')
     body_text =   html.unescape( str( topic_tag('question')[0])).replace('$','')
 
@@ -55,13 +54,17 @@ def convert_topic( topic_tag ):
     remove_tags( body_soup, TAGS_TO_REMOVE )
 
     # Save full query as all converted topic content (all fields)
+    # REWRITE punctuation/math before exporting
     # NOTE: To see original query, please consult original topics files
-    topic_text = 'Title: ' + title_soup.get_text() + \
-            ' Question: ' + body_soup.get_text() + \
+    title_text = rewrite_symbols( title_soup.get_text(), latex_symbol_map )
+    body_text =  rewrite_symbols(body_soup.get_text(), latex_symbol_map )
+    topic_text = 'Title: ' + title_text + \
+            ' Body: ' + body_text + \
             ' Tags: ' + tags
 
-    # DEBUG: Beautiful soup 'get_text()' removes all tags; use str for full trees
-    return ( topic_number, topic_text, str( title_soup ), str( body_soup ), tags )
+    # BUG: the output text does not contain the 'math' tokens for math tags present
+    # in the indexed documents. Skipping for time (BM25 is a bag-of-words model).
+    return ( topic_number, topic_text, title_text, body_text, tags )
 
 def read_topic_file( file_name ):
     with open( file_name ) as infile:
