@@ -1,4 +1,8 @@
 arqmath-test
+run-topics-test
+run-topics-2020
+*.gz
+*.zip
 ARQMath_Collection
 __pycache__/
 */__pycache__/

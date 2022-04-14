@@ -20,6 +20,8 @@ from math_recoding import *
 # Constants for indexing
 # **Warning: tag names converted to lower case by default in BSoup (e.g., <P> -> <p>)
 TAGS_TO_REMOVE = ['p','a','body','html','question','head','title']
+TEXT_META_INDEX_FIELDS = ['docno','title', 'text', 'origtext', 'tags', 'votes', 'parentno', 'mathnos' ]
+TEXT_RETRIEVAL_FIELDS = [ 'title', 'text', 'tags', 'parentno' ]
 
 ################################################################
 # Index creation and properties
