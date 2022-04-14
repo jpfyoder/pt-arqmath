@@ -22,27 +22,18 @@ This code has been tested on MacOS X and Linux, and requires a bash command shel
 3. Issue `make` to install PyTerrier and Python dependencies
 4. Issue `make data` to download the collection of ARQMath posts
 
-**Note about Bash Scripts (e.g., `arqmath-test`)**
-
-The `arqmath-test` and any other bash scripts may require that you change the first line of the file, which calls the bash using a path. 
-
-The path on the CS systems for the bash shell is `/usr/bin/bash/`. To find this path on other machines, issue:
-
-```
-which bash
-```
-and then replace the first line of the bash scripts (e.g., `arqmath-test`) to user that path if necessary.
-
 **Notes for RIT CS Students (Spring 2022)**
 
-* You may probably find it easiest to run the code on a Ubuntu system or virtual machine/environment.
-* For the CS machines, some do not have pip installed. `glados` is one system that does. The packages have to be installed in your user account, so I have asked the sys admins to increase space for your CS user accounts.
+* It will probably be easiest to run the code on a Ubuntu system or virtual machine/environment (e.g., an RIT CS lab machine).
 * If you receive a message complaining that a package is incompatible/too old, you can use:  
 ```
 pip install --user <pkgname> --upgrade
 ```  
-I did this for the packages `packaging` and `numpy` on glados.cs.rit.edu. It took about five minutes for all packages to install afterward. **I have added these two to the Makefile directly,** but you may encounter different messages depending upon the machine you are on.
-
+to update, and
+```
+pip install --user <pkgname>==X.Y.Z 
+```
+to select a specific package version (where X.Y.Z is a specific version number, e.g., 0.8.2).
 
 
 ## Getting Started

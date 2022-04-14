@@ -12,47 +12,53 @@
 ################################################################
 # LaTeX Symbol Map
 ################################################################
-# Warning - mapping may be incomplete.
-# Mapping ignores backslash (\) in TeX commands
-# Commands will be tokenized as-is with no backslash 
-# (e.g., \geq -> ge )
+# Warning - mapping may be incomplete 
+# Commands will be tokenized as-is 
+# (e.g., \geq -> backslash ge )
+#
+# Modification:
+#
+# Also mapping punctuation to full words, in hopes of better matching
+# tokenization in existing BERT models, and to capture more coreferences
+# when text and formulas refer to the same thing/concept (i.e., increasing
+# the likelihood of the 'same name for the same thing').
 latex_symbol_map = {
-        "+" : " mplus ",
-        "-" : " mminus ",
-        "^" : " mpower ",
-        "*" : " mstar ",
+        "+" : " plus ",
+        "-" : " minus ",
+        "^" : " power ",
+        "*" : " star ",
 
-        "#" : " mhash ",
-        "!" : " mexclaim ",
-        "?" : " mquestion ", 
-        "," : " mcomma ",
-        "." : " mperiod ",
-        "/" : " mfslash ",
-        ":" : " mcolon ",
-        ";" : " msemicolon ",
-        "&" : " mampersand ",
-        "~" : " mtilde ",
-        "`" : " mbackquote ",
-        "@" : " mat ",
-        "$" : " mdollar ",
-        "%" : " mpercent ",
-        '"' : " mdquote ",
-        "'" : " msquote ",
-        "|" : " mvbar ",
+        "#" : " hash ",
+        "!" : " exclaim ",
+        "?" : " question ", 
+        "," : " comma ",
+        "." : " period ",
+        "/" : " forward slash ",
+        ":" : " colon ",
+        ";" : " semicolon ",
+        "&" : " ampersand ",
+        "~" : " tilde ",
+        "`" : " backquote ",
+        "@" : " at ",
+        "$" : " dollar ",
+        "%" : " percent ",
+        '"' : " double quote ",
+        "'" : " single quote ",
+        "|" : " vertical bar ",
 
-        "=" : " mequals ",
-        ">" : " mgreater ",
-        "<" : " mlesser ",
+        "=" : " equals ",
+        ">" : " greater than ",
+        "<" : " less than ",
 
-        "{" : " mobrace ",
-        "}" : " mcbrace ",
-        "[" : " mosquareb ",
-        "]" : " mcsquareb ",
-        "(" : " moparen ",
-        ")" : " mcparen ",
+        "{" : " open brace ",
+        "}" : " close brace ",
+        "[" : " open square bracket ",
+        "]" : " close square bracket ",
+        "(" : " open parenthesis ",
+        ")" : " close parenthesis ",
         
-        "\\\\" : " mdblbackslash ",
-        "\\" : " "
+        "\\\\" : " double backslash ",
+        "\\" : " backslash "
     }
 
 # 'Mini' query language for formulas, replacing pyterrier ops        
