@@ -1,5 +1,5 @@
 
-echo "Running 2020 (ARQMath-1) test topics for Task 1"
+echo "Running 2020 (ARQMath-1) test topics for Task 1 (QUICK TEST)"
 echo ">> Open the 'run-topics' script in a text editor to see arguments used."
 echo ">> WARNING: PyTerrier requires './' in the front of every relative path."
 
