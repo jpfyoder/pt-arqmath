@@ -1,4 +1,7 @@
-arqmath-test
+arqmath-index
+run-topics-*
+*.gz
+*.zip
 ARQMath_Collection
 ARQMath_Collection-post-ptindex
 indexTest-math-ptindex

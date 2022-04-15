@@ -5,9 +5,11 @@
 This code is provided to make getting started with ARQMath Task 1 (Answer Retrieval) a bit easier. The rest of this document covers:
 
 * Installation of the git package 
-* Getting started
+* Getting started: Indexing
+* Search and evaluation using the ARQMath collection
 * Important notes (especially for CSCI 539 students)
-* Search and evaluation using the full ARQMath collection
+* Acknowledgements and Author information
+
 
 ## Installation
 
@@ -36,11 +38,11 @@ pip install --user <pkgname>==X.Y.Z
 to select a specific package version (where X.Y.Z is a specific version number, e.g., 0.8.2).
 
 
-## Getting Started
+## Getting Started: Indexing
 
-Some quick indexing and retrieval tests are provided by the `arqmath-test` bash script. The script has flags you can modify, for example to return index statistics, the lexicon produced after tokenization, whether to produce an index for posts/formulas/both, and a flag to control tokenization by PyTerrier  (e.g., stemming and stopword removal).
+Some quick indexing and retrieval tests are provided by the `arqmath-index` bash script. The script has flags you can modify, for example to return index statistics, the lexicon produced after tokenization, whether to produce an index for posts/formulas/both, and a flag to control tokenization by PyTerrier  (e.g., stemming and stopword removal).
 
-If you issue `./arqmath-test` without arguments, you should see the following:
+If you issue `./arqmath-index` without arguments, you should see the following:
 
 ```
 usage: index_arqmath.py [-h] [-m | -mp] [-l] [-s] [-t TOKENS] [-d] xmlFile
@@ -78,16 +80,48 @@ make math
 Again on the terminal, you will see information on indexing, along with results for a single query and a batch query.
 
 
-After running these tests, you can try passing different flags to `arqmath-test`, and observe the effect (e.g., using `-l none` to prevent stopword removal and stemming).
+After running these tests, you can try passing different flags to `arqmath-index`, and observe the effect (e.g., using `-l none` to prevent stopword removal and stemming).
 
 **The `src/index_arqmath.py` program has been written to make it easy to scan, modify, and reuse.** You are encouraged to do all three for your project!
 
 **Deleting Index Directories** If at some point you want to get rid of your local index directories, issue (**make sure you want this!**):
 
 ```
-make clean
+make delete-indices
 ```
 For the test program this is not a big deal, but later on if you reindex you will want to be careful before issuing this command.
+
+
+
+
+## Search and Evaluation Using the ARQMath Collection
+
+To do a quick test of the evaluation framework, we have created a preliminary BM25 model that you can run quickly on a couple of queries by issuing:
+
+```
+make eval
+```
+which runs two queries, that don't do particularly well (!). This is partly because currently only the topic question titles are used in the search queries. The other topic fields are read and stored by the `read_topic_file` function in `src/arqmath_topics_qrels.py` that read topic filess; note that the `text` field defining queries may be easily modified.
+
+You can look at the (shortened) topics file in `test/2020_topics_task1_short.xml` for an example of the topics file format.
+
+To run this BM25 model over *all* topics from ARQMath-1 (2020), issue:
+
+```
+./run-topics-2020
+```
+and to run the model over all topics from ARQMath-2 (2021), issue:
+
+```
+./run-topics-2021
+```
+
+### Notes on the Evaluation Protocol for ARQMath Task 1
+
+* **Per TREC-based evaluation protocol conventions, only the top 1000 hits from each search result should be passed on for evaluation.** The provided code does this already.
+* **Metrics are computed in 'prime' form.** For prime versions of metrics, only documents with relevance ratings in qrel files are used in evaluation. For example, P'@5 requires first removing documents from the ranked results that have not been evaluated (i.e., are not included in the qrels), and then computing precision for the top 5 remaining documents. 
+*  **Prime metrics were adopted in ARQMath to allow systems run outside of the official lab runs to be fairly compared to participants.** By default, `trec_eval` scores unevaluated documents as non-relevant, which can drive the scores of systems that did not contribute to the assessment pools down, even if they are able to recover relevant documents that are not included in qrels. Prime metrics avoid this, by comparing systems using a fixed set of assessed documents.
+*  The function `select_assessed_hits` in `src/run_topics.py` implements both the cut off at 1000 hits, and the removal of documents not included in the qrels.
 
 ## Important Notes
 
@@ -110,10 +144,20 @@ For the test program this is not a big deal, but later on if you reindex you wil
 	*  **So far, we have been unable to get the field-based search** to work in the PyTerrier QL (even if fields are capitalized as the PyTerrier error messages suggest doing). Ideally, this would allow us to search a title for a keyword using `TITLE:keyword`.
 
 
-## Search and Evaluation Using the ARQMath Collection
+## Acknowledgement
 
-(TBD) - stay tuned.
+We thank Craig Macdonald, Nicola Tonellotto, and the many other PyTerrier and Terrier contributors for making this helpful framework available. 
 
+If you use this system, you should cite their paper lists below. An arXiv version of the paper may be found at this [link](https://arxiv.org/abs/2007.14271).
+
+```bibtex
+@inproceedings{pyterrier2020ictir,
+    author = {Craig Macdonald and Nicola Tonellotto},
+    title = {Declarative Experimentation inInformation Retrieval using PyTerrier},
+    booktitle = {Proceedings of ICTIR 2020},
+    year = {2020}
+}
+```
 
 ## Authors and License
 

@@ -16,10 +16,19 @@ import argparse
 from tqdm import tqdm
 
 from math_recoding import *
+from utils import *
 
 # Constants for indexing
 # **Warning: tag names converted to lower case by default in BSoup (e.g., <P> -> <p>)
 TAGS_TO_REMOVE = ['p','a','body','html','question','head','title']
+
+TEXT_RETRIEVAL_FIELDS = [ 'title', 'text', 'tags', 'parentno' ]
+TEXT_META_FIELDS = ['docno','title', 'text', 'origtext', 'tags', 'votes', 'parentno', 'mathnos' ]
+TEXT_META_SIZES = [ 16, 256, 4096, 4096, 128, 8, 20, 20 ]
+
+MATH_RETRIEVAL_FIELDS = [ 'text', 'parentno' ]
+MATH_META_FIELDS = [ 'docno', 'text', 'origtext','postno','parentno']
+MATH_META_SIZES = [ 20, 1024, 1024, 20, 20]
 
 ################################################################
 # Index creation and properties
@@ -30,8 +39,14 @@ def remove_tags( soup_node, tag_list ):
 
 def rewrite_math_tags( soup ):
     # Skip span tags without id's (i.e., formulas without identifiers)
-    formulaTags = [ node for node in soup('span') if node.id ]
-    formula_ids = [ node['id'] for node in formulaTags if node.id ]
+    formulaTags = [ node for node in soup('span') if node.has_attr('id') ]
+    formula_ids = [ node['id'] for node in formulaTags if node.has_attr('id') ]
+    
+    #dbshow( "soup", soup )
+    #dbshow( "soup('span')", soup('span') )
+    #dbshow( "formulaTags", formulaTags )
+    #pshow( "formula_ids", formula_ids )
+
     for tag in formulaTags:
         tag.name = 'math'
         del tag['class']
@@ -59,24 +74,32 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
 
                 # Title formulas - apply soup to recover HTML structure from attribute field value
                 title_soup = bsoup( html.unescape( row.get('title','') ), 'lxml' )
-                ( title_formulas, title_formula_ids ) = rewrite_math_tags( title_soup )
                 remove_tags( title_soup, TAGS_TO_REMOVE )
+                ( title_formulas, title_formula_ids ) = rewrite_math_tags( title_soup )
 
                 # Body formulas and simplification - again, apply soup to construct Tag tree w. bsoup
-                body_soup = bsoup( html.unescape( row['body',''] ), 'lxml' )
-                ( body_formulas , formula_ids )= rewrite_math_tags( body_soup )
+                body_soup = bsoup( html.unescape( row.get('body','') ), 'lxml' )
                 remove_tags( body_soup, TAGS_TO_REMOVE )
+                ( body_formulas, formula_ids )= rewrite_math_tags( body_soup )
+
+                # Remove tags that we do not want to search.
         
                 # Combine title and body formulas
                 all_formulas = title_formulas + body_formulas
                 all_formula_ids = title_formula_ids + formula_ids
 
                 if formula_index:
-                    ## Formula index entries   ##
+                    ## Formula index entries   
                     #  One output per formula
                     for math_tag in all_formulas:
+                        tokenized_formula = rewrite_symbols( math_tag.get_text(), latex_symbol_map )
+                        
+                        if debug_out:
+                            print('\nDOCNO:',docno,'\nTEXT:',tokenized_formula,'\nORIGTEXT:',math_tag.get_text(),'\nPOSTNO:',docno,
+                                    '\nPARENTNO',parentno)
+
                         yield { 'docno':     math_tag['id'],
-                                'text':      rewrite_symbols( math_tag.get_text(), latex_symbol_map ),
+                                'text':      tokenized_formula,
                                 'origtext':  math_tag.get_text(),
                                 'postno':    docno,
                                 'parentno' : parentno
@@ -90,18 +113,21 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
                     # Generate strings for title, post body, and tags
                     title_text = str( title_soup )
                     modified_post_text = str( body_soup )
+                    indexed_body = translate_latex( modified_post_text )
                     tag_text = row.get('tags', '').replace('<','').replace('>',', ').replace('-',' ')
 
                     # DEBUG: Show main text field entries.
                     if debug_out:
-                        print('\nDOCNO: ',docno,'\nTITLE: ',title_text,'\nBODY: ',modified_post_text,'\nTAGS: ',tag_text)
+                        print('\nDOCNO: ',docno,'\nTITLE: ',title_text,'\nBODY: ',modified_post_text,
+                                '\nTEXT (SEARCHABLE):',indexed_body,'\nTAGS: ',tag_text,'\nMATHNOS:',all_formula_ids,
+                                '\nPARENTNO:',parentno,'\nVOTES:',votes)
 
                     # Note: the formula ids are stored in a string currently.
                     # Concatenate post and tag text
                     # NOTE: representation for search is tokenized differently than meta/document index version for viewing hits
                     yield { 'docno' :   docno,
                             'title' :   title_text,
-                            'text' :    translate_latex( modified_post_text),
+                            'text' :    indexed_body,
                             'origtext': modified_post_text,
                             'tags' :    tag_text,
                             'mathnos' : all_formula_ids,
@@ -111,27 +137,24 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
 
 
 def create_XML_index( file_list, indexName, token_pipeline="Stopwords,PorterStemmer", formulas=False, debug=False):
-    # Construct an index
-    # Post meta (document index) fields (for space 'text' with retokenization not in doc index!
-    # Storing processed text AND original text in docs, to support neural reranking with
-    # tokenizes punctuation and LaTeX commands.
-    meta_fields=['docno','title', 'text', 'origtext', 'tags', 'votes', 'parentno', 'mathnos' ]
-    meta_sizes=[16, 256, 4096, 4096, 128, 8, 20, 20]
-    field_names= [ 'title', 'text', 'tags', 'parentno' ]
+    # Storing processed text AND original text in meta index, docs, to support neural reranking with keywords, and 
+    # viewing original posts
+    ( meta_fields, meta_sizes ) = ( TEXT_META_FIELDS, TEXT_META_SIZES )
+    field_names= TEXT_RETRIEVAL_FIELDS
 
     if formulas:
-        # Formula index fields: for space, 'text' with retokenization not in doc index!
-        meta_fields=['docno', 'text', 'origtext','postno','parentno']
-        meta_sizes=[20, 1024, 1024, 20, 20]
-        field_names=[ 'text', 'parentno' ]
+        ( meta_fields, meta_sizes ) = ( MATH_META_FIELDS, MATH_META_SIZES )
+        field_names= MATH_RETRIEVAL_FIELDS
 
-    indexer = pt.IterDictIndexer( indexName, 
+    indexer = pt.IterDictIndexer( 
+            indexName, 
             meta=meta_fields,
             meta_lengths=meta_sizes,
             overwrite=True )
+
     indexer.setProperty( "termpipelines", token_pipeline )
-    
     index_ref = indexer.index( generate_XML_post_docs( file_list, formula_index=formulas, debug_out=debug ), fields=field_names )
+    
     return pt.IndexFactory.of( index_ref )
 
 ## Visualization routines
@@ -146,7 +169,7 @@ def show_index_stats( index ):
 
 def view_index( indexName, index, view_tokens, view_stats ):
     if view_tokens or view_stats:
-        print('[ ' + indexName + ': Details ]')
+        print('\n[ ' + indexName + ': Details ]')
         if view_stats:
             show_index_stats( index )
         if view_tokens:
@@ -284,6 +307,7 @@ def process_args():
     parser.add_argument('-s', '--stats', help="show collection statistics", action="store_true" )
     parser.add_argument('-t', '--tokens', help="set tokenization property (none:  no stemming/stopword removal)", 
             default='Stopwords,PorterStemmer' )
+    parser.add_argument('-n', '--notest', help="skip retrieval tests after indexing", action="store_true" )
     parser.add_argument('-d', '--debug', help="include debugging outputs", action="store_true" )
     
     args = parser.parse_args()
@@ -321,7 +345,7 @@ def main():
     # Store post text and ids for formulas in each post in the 'meta' (document) index
     if not args.math or args.mathpost:
         post_index = create_XML_index(
-                in_file_list, "./" + indexName + "-post-ptindex", 
+            in_file_list, "./" + indexName + "-post-ptindex", 
             token_pipeline=args.tokens, debug=args.debug )
         view_index( "Post Index", post_index, args.lexicon, args.stats )
 
@@ -329,7 +353,7 @@ def main():
     # Store formula text (LaTeX) and formula ids, along with source post id for each formula
     if args.math or args.mathpost:
         math_index = create_XML_index( 
-                in_file_list, "./" + indexName + "-math-ptindex", formulas=True, 
+            in_file_list, "./" + indexName + "-math-ptindex", formulas=True, 
             token_pipeline=args.tokens, debug=args.debug )
         view_index( "Math Index", math_index, args.lexicon, args.stats )
 
@@ -337,8 +361,9 @@ def main():
 
     # Retrieval test
     # Top k
-    k = 10
-    test_retrieval( k, post_index, math_index, 'BM25', args.tokens, debug=args.debug )    
+    k = 5
+    if not args.notest:
+        test_retrieval( k, post_index, math_index, 'BM25', args.tokens, debug=args.debug )    
 
 if __name__ == "__main__":
     main()

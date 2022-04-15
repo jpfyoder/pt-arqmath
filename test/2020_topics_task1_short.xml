@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<Topics>
+   <Topic number="A.3">
+      <Title>Approximation to &lt;span class=&quot;math-container&quot; id=&quot;q_10&quot;&gt;$\sqrt{5}$&lt;/span&gt; correct to an exactitude of &lt;span class=&quot;math-container&quot; id=&quot;q_11&quot;&gt;$10^{-10}$&lt;/span&gt;</Title>
+      <Question>&lt;p&gt;I am attempting to resolve the following problem:&lt;/p&gt;  &lt;blockquote&gt;   &lt;p&gt;Find an approximation to &lt;span class=&quot;math-container&quot; id=&quot;q_12&quot;&gt;$\sqrt{5}$&lt;/span&gt; correct to an exactitude of &lt;span class=&quot;math-container&quot; id=&quot;q_13&quot;&gt;$10^{-10}$&lt;/span&gt; using the bisection algorithm.&lt;/p&gt; &lt;/blockquote&gt;  &lt;p&gt;From what I understand, &lt;span class=&quot;math-container&quot; id=&quot;q_14&quot;&gt;$\sqrt{5}$&lt;/span&gt; has to be placed in function of &lt;span class=&quot;math-container&quot; id=&quot;q_15&quot;&gt;$x$&lt;/span&gt; but I am not sure where to go from there.&lt;/p&gt;  &lt;p&gt;Also, a function in Mathematica are given to do the calculations in which the function &lt;span class=&quot;math-container&quot; id=&quot;q_16&quot;&gt;$f(x)$&lt;/span&gt;, &lt;span class=&quot;math-container&quot; id=&quot;q_17&quot;&gt;$a$&lt;/span&gt; and &lt;span class=&quot;math-container&quot; id=&quot;q_18&quot;&gt;$b$&lt;/span&gt; (from the interval &lt;span class=&quot;math-container&quot; id=&quot;q_19&quot;&gt;$[a, b]$&lt;/span&gt; where &lt;span class=&quot;math-container&quot; id=&quot;q_20&quot;&gt;$f(a)$&lt;/span&gt; and &lt;span class=&quot;math-container&quot; id=&quot;q_21&quot;&gt;$f(b)$&lt;/span&gt; have opposite signs), the tolerance and the number of iterations.&lt;/p&gt; </Question>
+      <Tags>numerical-methods,algorithms,bisection</Tags>
+   </Topic>
+   <Topic number="A.10">
+      <Title>Find the values of a&gt;0 for which the improper integral &lt;span class=&quot;math-container&quot; id=&quot;q_54&quot;&gt;$\int_{0}^{\infty}\frac{\sin x}{x^{a}} $&lt;/span&gt; converges .</Title>
+      <Question>&lt;p&gt;Find the values of a&gt;0 for which the improper integral &lt;span class=&quot;math-container&quot; id=&quot;q_55&quot;&gt;$\int_{0}^{\infty}\frac{\sin x}{x^{a}} $&lt;/span&gt; converges .  Do  I have to expand integrand using series expansion??&lt;/p&gt; </Question>
+      <Tags>improper-integrals</Tags>
+  </Topic>
+</Topics>

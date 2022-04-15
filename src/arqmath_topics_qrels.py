@@ -53,14 +53,16 @@ def convert_topic( topic_tag ):
     remove_tags( title_soup, TAGS_TO_REMOVE )
     remove_tags( body_soup, TAGS_TO_REMOVE )
 
-    # Save full query as all converted topic content (all fields)
     # REWRITE punctuation/math before exporting
     # NOTE: To see original query, please consult original topics files
+
     title_text = rewrite_symbols( title_soup.get_text(), latex_symbol_map )
     body_text =  rewrite_symbols(body_soup.get_text(), latex_symbol_map )
-    topic_text = 'Title: ' + title_text + \
-            ' Body: ' + body_text + \
-            ' Tags: ' + tags
+    
+    # Save full query as TITLE field only (first version)
+    # **IMPORTANT**: '- qpost' prepended so that Terrier returns only answer posts.
+    #   This can be removed if you want to see which questions match as well.
+    topic_text = '-qpost ' + title_text 
 
     # BUG: the output text does not contain the 'math' tokens for math tags present
     # in the indexed documents. Skipping for time (BM25 is a bag-of-words model).
@@ -71,26 +73,11 @@ def read_topic_file( file_name ):
         topic_soup = bsoup( infile, 'lxml' )
         topic_tags = topic_soup('topic')
 
-        # Lists to hold output data
-        tnum_list = []
-        ttext_list = []
-        title_list = []
-        question_list = []
-
         # Extract fields
-        tags_list = []
-        for tag in topic_tags:
-            ( tnum, ttext, title, question, tags ) = convert_topic( tag )
-            tnum_list.append( tnum )
-            ttext_list.append(ttext)
-            title_list.append( title )
-            question_list.append( question )
-            tags_list.append( tags )
+        tuples = [ convert_topic(tag ) for tag in topic_tags ]
+        df = pd.DataFrame( tuples, columns= [  'qid', 'query','title','body','tags' ] )
 
-        df = pd.DataFrame( list( zip( tnum_list, ttext_list, title_list, question_list, tags_list ) ),
-                columns = [ 'qid','query','title','body','tags' ] )
-
-    return ( len( topic_tags ), df )
+        return ( len( topic_tags ), df )
 
      
 def main():
@@ -103,6 +90,8 @@ def main():
     ( num_topics, topic_df ) = read_topic_file( inTopics )
 
     print("Topic File: " + inTopics + "   Number of Topics: " + str(num_topics) )
+    print(topic_df)
+
     print("\n>>> TAGS")
     print(topic_df['tags'])
 
@@ -111,6 +100,9 @@ def main():
 
     print("\n>>> QUESTION BODIES")
     print(topic_df['body'])
+
+    print("\n>>> QUERIES")
+    print(topic_df['query'])
 
     qrels = load_qrels( inQrels )
     print("\n>>> QREL Contents:")
