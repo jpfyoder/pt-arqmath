@@ -30,6 +30,8 @@ MATH_RETRIEVAL_FIELDS = [ 'text', 'parentno' ]
 MATH_META_FIELDS = [ 'docno', 'text', 'origtext','postno','parentno']
 MATH_META_SIZES = [ 20, 1024, 1024, 20, 20]
 
+EMPTY_DOCS = 0
+
 ################################################################
 # Index creation and properties
 ################################################################
@@ -39,6 +41,7 @@ def remove_tags( soup_node, tag_list ):
 
 def rewrite_math_tags( soup ):
     # Skip span tags without id's (i.e., formulas without identifiers)
+    # Skip empty regions.
     formulaTags = [ node for node in soup('span') if node.has_attr('id') ]
     formula_ids = [ node['id'] for node in formulaTags if node.has_attr('id') ]
     
@@ -55,7 +58,7 @@ def rewrite_math_tags( soup ):
     return ( formulaTags, formula_ids )
 
 def print_formula_record(math_tag, tokenized_formula, docno, parentno ):
-    print('\nDOCNO:',math_tag['id'],'\nTEXT:',tokenized_formula,'\nORIGTEXT:',math_tag.get_text(),'\nPOSTNO:',docno,
+    print('\nDOCNO (FORMULA ID):',math_tag['id'],'\nTEXT:',tokenized_formula,'\nORIGTEXT:',math_tag.get_text(),'\nPOSTNO:',docno,
                                     '\nPARENTNO',parentno)
 
 def print_post_record( docno, title_text, modified_post_text, indexed_body, 
@@ -65,6 +68,8 @@ def print_post_record( docno, title_text, modified_post_text, indexed_body,
         '\nPARENTNO:',parentno,'\nVOTES:',votes)
 
 def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False ):
+    global EMPTY_DOCS
+
     for file_name in file_name_list:
         print(">> Reading File: ", file_name )
         with open(file_name) as xml_file:
@@ -77,7 +82,7 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
                 docno = row['id'] 
                 votes = row['score']
 
-                # Parent post for answers ('none' for questions)
+                # Parent post for answers ('qpost' for questions)
                 parentno = 'qpost'
                 if row[ 'posttypeid' ] == '2':  
                     parentno = row['parentid'] 
@@ -102,12 +107,18 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
                     ## Formula index entries   
                     #  One output per formula
                     for math_tag in all_formulas:
+                        EMPTY_DOCS += 1
+                        raw_text = math_tag.get_text()
                         tokenized_formula = rewrite_symbols( math_tag.get_text(), latex_symbol_map )
 
                         # Skip empty formulas
                         if tokenized_formula.isspace():
-                            print('!!! WARNING: Empty "text" field for retrieval')
-                            print_formula_record(math_tag, tokenized_formula, docno, parentno )
+                            if debug_out:
+                                if raw_text.isspace():
+                                    print('!!! WARNING: Empty "text" field for retrieval, formula id: ' + math_tag['id'] )
+                                else:
+                                    print('!!! WARNING: Non-empty formula tokenized into empty string, formula id: ' + math_tag['id'])
+                                ##print_formula_record(math_tag, tokenized_formula, docno, parentno )
                             continue
                         
                         elif debug_out:
@@ -133,9 +144,11 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
 
                     # Skip posts with empty content
                     if indexed_body.isspace():
-                        print('!!! WARNING: Empty "text" field for retrieval')
-                        print_post_record( docno, title_text, modified_post_text, indexed_body, 
-                            tag_text, all_formula_ids, parentno, votes)
+                        EMPTY_DOCS += 1
+                        if debug_out:
+                            print('!!! WARNING: Empty "text" field for retrieval, post id: ' + docno ) 
+                            #print_post_record( docno, title_text, modified_post_text, indexed_body, 
+                            #    tag_text, all_formula_ids, parentno, votes)
                         continue
 
                     elif debug_out:
@@ -174,6 +187,9 @@ def create_XML_index( file_list, indexName, token_pipeline="Stopwords,PorterStem
 
     indexer.setProperty( "termpipelines", token_pipeline )
     index_ref = indexer.index( generate_XML_post_docs( file_list, formula_index=formulas, debug_out=debug ), fields=field_names )
+
+    if EMPTY_DOCS > 0:
+        print("*** WARNING: " + str(EMPTY_DOCS) + " documents/formulas empty before tokenization, and were skipped.")
     
     return pt.IndexFactory.of( index_ref )
 
