@@ -54,6 +54,16 @@ def rewrite_math_tags( soup ):
 
     return ( formulaTags, formula_ids )
 
+def print_formula_record(math_tag, tokenized_formula, docno, parentno ):
+    print('\nDOCNO:',math_tag['id'],'\nTEXT:',tokenized_formula,'\nORIGTEXT:',math_tag.get_text(),'\nPOSTNO:',docno,
+                                    '\nPARENTNO',parentno)
+
+def print_post_record( docno, title_text, modified_post_text, indexed_body, 
+        tag_text, all_formula_ids, parentno, votes):
+    print('\nDOCNO: ',docno,'\nTITLE: ',title_text,'\nBODY: ',modified_post_text,
+        '\nTEXT (SEARCHABLE):',indexed_body,'\nTAGS: ',tag_text,'\nMATHNOS:',all_formula_ids,
+        '\nPARENTNO:',parentno,'\nVOTES:',votes)
+
 def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False ):
     for file_name in file_name_list:
         print(">> Reading File: ", file_name )
@@ -93,10 +103,15 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
                     #  One output per formula
                     for math_tag in all_formulas:
                         tokenized_formula = rewrite_symbols( math_tag.get_text(), latex_symbol_map )
+
+                        # Skip empty formulas
+                        if tokenized_formula.isspace():
+                            print('!!! WARNING: Empty "text" field for retrieval')
+                            print_formula_record(math_tag, tokenized_formula, docno, parentno )
+                            continue
                         
-                        if debug_out:
-                            print('\nDOCNO:',docno,'\nTEXT:',tokenized_formula,'\nORIGTEXT:',math_tag.get_text(),'\nPOSTNO:',docno,
-                                    '\nPARENTNO',parentno)
+                        elif debug_out:
+                            print_formula_record( math_tag, tokenized_formula, docno, parentno )
 
                         yield { 'docno':     math_tag['id'],
                                 'text':      tokenized_formula,
@@ -116,11 +131,16 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
                     indexed_body = translate_latex( modified_post_text )
                     tag_text = row.get('tags', '').replace('<','').replace('>',', ').replace('-',' ')
 
-                    # DEBUG: Show main text field entries.
-                    if debug_out:
-                        print('\nDOCNO: ',docno,'\nTITLE: ',title_text,'\nBODY: ',modified_post_text,
-                                '\nTEXT (SEARCHABLE):',indexed_body,'\nTAGS: ',tag_text,'\nMATHNOS:',all_formula_ids,
-                                '\nPARENTNO:',parentno,'\nVOTES:',votes)
+                    # Skip empty posts with empty content
+                    if indexed_body.isspace():
+                        print('!!! WARNING: Empty "text" field for retrieval')
+                        print_post_record( docno, title_text, modified_post_text, indexed_body, 
+                            tag_text, all_formula_ids, parentno, votes)
+                        continue
+
+                    elif debug_out:
+                        print_post_record( docno, title_text, modified_post_text, indexed_body, 
+                            tag_text, all_formula_ids, parentno, votes)
 
                     # Note: the formula ids are stored in a string currently.
                     # Concatenate post and tag text
