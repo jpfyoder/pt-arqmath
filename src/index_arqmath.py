@@ -131,7 +131,7 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
                     indexed_body = translate_latex( modified_post_text )
                     tag_text = row.get('tags', '').replace('<','').replace('>',', ').replace('-',' ')
 
-                    # Skip empty posts with empty content
+                    # Skip posts with empty content
                     if indexed_body.isspace():
                         print('!!! WARNING: Empty "text" field for retrieval')
                         print_post_record( docno, title_text, modified_post_text, indexed_body, 
