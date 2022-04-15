@@ -101,7 +101,9 @@ To do a quick test of the evaluation framework, we have created a preliminary BM
 ```
 make eval
 ```
-which runs two queries, that don't do particulary well (!).
+which runs two queries, that don't do particularly well (!). This is partly because currently only the topic question titles are used in the search queries. The other topic fields are read and stored by the `read_topic_file` function in `src/arqmath_topics_qrels.py` that read topic filess; note that the `text` field defining queries may be easily modified.
+
+You can look at the (shortened) topics file in `test/2020_topics_task1_short.xml` for an example of the topics file format.
 
 To run this BM25 model over *all* topics from ARQMath-1 (2020), issue:
 
