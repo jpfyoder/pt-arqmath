@@ -83,7 +83,7 @@ def main():
     # Compiling example to make it faster (see https://pyterrier.readthedocs.io/en/latest/transformer.html)
     # * Filtering unasessed hits (w. prime_transformer) - also enforces maximum result list length.
     prime_transformer = select_assessed_hits( qrels_df )
-    bm25_engine = search_engine( index, 'BM25', TEXT_META_INDEX_FIELDS ) >> prime_transformer 
+    bm25_engine = search_engine( index, 'BM25', TEXT_META_FIELDS ) >> prime_transformer 
 
     # First pass: two runs on retrieval, one for ndcg', one for binarized metrics
     # Saves results to current directory in file BM25.res.gz this prevents running

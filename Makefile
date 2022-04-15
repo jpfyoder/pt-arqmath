@@ -33,10 +33,10 @@ data:
 	rm *.zip
 
 posts:
-	./arqmath-test ./test/indexTest.xml -s
+	./arqmath-test test/indexTest.xml -s
 
 math:
-	./arqmath-test ./test/indexTest.xml -m
+	./arqmath-test test/indexTest.xml -m
 
 eval:
 	./run-topics-test
