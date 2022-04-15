@@ -35,7 +35,7 @@ collection:
 post-data:
 	wget https://www.cs.rit.edu/~dprl/data/ARQMath/ARQMath_Collection-post-ptindex.zip
 	unzip ARQMath_Collection-post-ptindex.zip
- 	rm ARQMath_Collection-post-ptindex.zip
+	rm ARQMath_Collection-post-ptindex.zip
 
 
 math-data:
