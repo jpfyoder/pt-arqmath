@@ -74,7 +74,7 @@ def read_topic_file( file_name ):
         topic_tags = topic_soup('topic')
 
         # Extract fields
-        tuples = [ convert_topic(tag ) for tag in topic_tags ]
+        tuples = [ convert_topic(tag) for tag in topic_tags ]
         df = pd.DataFrame( tuples, columns= [  'qid', 'query','title','body','tags' ] )
 
         return ( len( topic_tags ), df )
