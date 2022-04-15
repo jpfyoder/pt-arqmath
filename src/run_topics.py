@@ -65,11 +65,9 @@ def report_results( ndcg_metrics, binarized_metrics ):
 ################################################################
 # Used to remove unasessed hits in search results for prime (') metrics
 # Consider only up to MAX_HITS
-def select_assessed_hits( qrel_df, math_result=False ):
-    # Use Pandas operations to select columns with shared 'qid' and 'docno' in a row
-    # (need to consider query, not just document identifier)
+def select_assessed_hits( qrel_df ):
     def filter_results( result_df ):
-        result_df.drop_duplicates( subset='docno' )  # esp. important for formula retrieval results
+        #result_df.drop_duplicates( subset='docno' )  # esp. important for formula retrieval results
         result_df_cut = result_df.iloc[0 : MAX_HITS ]
 
         # Filter by ( qid, docno ) pairs in the qrel file.
@@ -134,11 +132,12 @@ def main():
     #token_pipeline = index_ref.getProperty("termpipelines")  # does not work.
     #print("Tokenization: " + token_pipeline)
 
-    print("Generating search engine...(BM25 with stop word removal and Porter stemming)")
+    print("Generating search engine...(BM25 with tokenization spec: '" + args.tokens + "')" )
     # Compiling example to make it faster (see https://pyterrier.readthedocs.io/en/latest/transformer.html)
     # * Filtering unasessed hits (w. prime_transformer) - also enforces maximum result list length.
     prime_transformer = select_assessed_hits( qrels_df )
-    bm25_engine = search_engine( index, 'BM25', TEXT_META_FIELDS ) >> prime_transformer 
+    bm25_engine = search_engine( index, 'BM25', TEXT_META_FIELDS, token_pipeline=args.tokens )
+    bm25_pipeline = bm25_engine >> prime_transformer
 
     # First pass: two runs on retrieval, one for ndcg', one for binarized metrics
     # Saves results to current directory in file BM25.res.gz this prevents running
