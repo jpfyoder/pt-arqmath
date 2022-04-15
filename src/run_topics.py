@@ -17,6 +17,7 @@ import os
 
 # Constants
 REL_THRESHOLD=2  # ARQMath convention, treat '2' in 0-3 scale as 'relevant' for binary relevance metrics
+MAX_HITS=1000    # TREC / CLEF / NTCIR / FIRE / ARQMath convention (max of 1000 hits per query)
 
 def process_args():
     # Process command line arguments
@@ -28,6 +29,24 @@ def process_args():
     args = parser.parse_args()
     
     return args
+
+# Used to remove unasessed hits in search results for prime (') metrics
+# Consider only up to MAX_HITS
+def select_assessed_hits( qrel_df ):
+    # Use Pandas operations to select columns with shared 'qid' and 'docno' in a row
+    # (need to consider query, not just document identifier)
+    def filter_results( result_df ):
+        result_df_cut = result_df.iloc[0 : MAX_HITS ]
+
+        # Filter by ( qid, docno ) pairs in the qrel file.
+        keycols = qrel_df[ ['qid','docno'] ]
+        keys = list( keycols.columns.values )
+        i1 = result_df_cut.set_index(keys).index
+        i2 = qrel_df.set_index(keys).index
+
+        return result_df_cut[ i1.isin(i2) ]
+
+    return pyterrier.apply.generic( filter_results )
 
 def main():
     # Process arguments
@@ -62,8 +81,9 @@ def main():
 
     print("Generating search engine...(BM25 with stop word removal and Porter stemming)")
     # Compiling example to make it faster (see https://pyterrier.readthedocs.io/en/latest/transformer.html)
-    bm25_engine = search_engine( index, 'BM25', TEXT_META_INDEX_FIELDS ) % 10
-    #alt_engine = search_engine( index, 'BM25', TEXT_META_INDEX_FIELDS ) % 10 & qrels_df
+    # * Filtering unasessed hits (w. prime_transformer) - also enforces maximum result list length.
+    prime_transformer = select_assessed_hits( qrels_df )
+    bm25_engine = search_engine( index, 'BM25', TEXT_META_INDEX_FIELDS ) >> prime_transformer 
 
     # First pass: two runs on retrieval, one for ndcg', one for binarized metrics
     # Saves results to current directory in file BM25.res.gz this prevents running
@@ -77,7 +97,7 @@ def main():
         [ bm25_engine ],
         query_df,
         qrels_df,
-        eval_metrics=[ "ndcg" ],
+        eval_metrics=[ "ndcg", "mrt" ],
         names=["BM25"],
         save_dir="./",
         save_mode="overwrite"
@@ -89,13 +109,13 @@ def main():
         [ bm25_engine ],
         query_df,
         qrels_thresholded,
-        eval_metrics=[ "P_10", "map" ],
+        eval_metrics=[ "P_10", "map", "mrt" ],
         names=["BM25"],
         save_dir="./"
         )
 
 
-    print("Results for nDCG' : used to rank ARQMath systems")
+    print("\nResults for nDCG' : used to rank ARQMath systems")
     print("----------------------------------------------------------")
     print( ndcg_metrics )
 

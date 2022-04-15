@@ -1,6 +1,5 @@
 arqmath-test
-run-topics-test
-run-topics-2020
+run-topics-*
 *.gz
 *.zip
 ARQMath_Collection
