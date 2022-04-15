@@ -27,7 +27,7 @@ TEXT_META_FIELDS = ['docno','title', 'text', 'origtext', 'tags', 'votes', 'paren
 TEXT_META_SIZES = [ 16, 256, 4096, 4096, 128, 8, 20, 20 ]
 
 MATH_RETRIEVAL_FIELDS = [ 'text', 'parentno' ]
-MATH_META_FIELDS = [ 'docno', 'text', 'origtext','postno','parentno']
+MATH_META_FIELDS = [ 'mathno', 'text', 'origtext','docno','parentno']
 MATH_META_SIZES = [ 20, 1024, 1024, 20, 20]
 
 EMPTY_DOCS = 0
@@ -124,10 +124,10 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
                         elif debug_out:
                             print_formula_record( math_tag, tokenized_formula, docno, parentno )
 
-                        yield { 'docno':     math_tag['id'],
+                        yield { 'mathno':     math_tag['id'],
                                 'text':      tokenized_formula,
                                 'origtext':  math_tag.get_text(),
-                                'postno':    docno,
+                                'docno':    docno,
                                 'parentno' : parentno
                             }
                 else:
@@ -264,7 +264,7 @@ def verbose_hit_summary( result, math_index=False ):
                 print('ANSWER')
         else:
             # Formula document
-            print('Docid:',row['docid'], 'Formula-no:', row['docno'],  'Post-no:', row['postno'], 'Parent-no:',row['parentno'])
+            print('Docid:',row['docid'], 'Formula-no:', row['mathno'],  'Post-no (docno):', row['docno'], 'Parent-no:',row['parentno'])
 
         # Show original text before token mapping
         print('TEXT:\n', row['text'])
@@ -290,11 +290,6 @@ def show_result( result, field_names=[], show_table=True, show_hits=False, math=
         verbose_hit_summary( result, math_index=math )
 
 def test_retrieval( k, post_index, math_index, model, tokens, debug=False ):
-    titles = [ 'qid', 'docid', 'docno', 'title', 'rank', 'score', 'query' ]
-    tags = [ 'qid', 'docid', 'docno', 'tags', 'rank', 'score' , 'query']
-    votes = [ 'qid', 'docid', 'docno', 'votes', 'rank', 'score' , 'query']
-    parentno = [ 'qid', 'docid', 'docno', 'parentno', 'rank', 'score' , 'query']
-    mathnos  = [ 'qid', 'docid', 'docno', 'mathnos', 'rank', 'score', 'query' ]
 
     if post_index != None:
         print("[ Testing post index retrieval ]")
@@ -322,7 +317,7 @@ def test_retrieval( k, post_index, math_index, model, tokens, debug=False ):
         print("[ Testing math index retrieval ]")
         
         # Return top k results (% k)
-        math_engine = search_engine( math_index, model, ['docno', 'text', 'origtext','postno', 'parentno' ], token_pipeline=tokens ) % k
+        math_engine = search_engine( math_index, model, ['mathno', 'text', 'origtext','docno', 'parentno' ], token_pipeline=tokens ) % k
         show_result( query( math_engine, '_pand sqrt _pand 2' ), show_hits=True, math=True )
         show_result( batch_query( math_engine, [ 'sqrt 2', '2' ] ), show_hits=True, math=True )
         show_result( batch_query( math_engine, [ 'sqrt 2 _pnot qpost' ] ), show_hits=True, math=True )
