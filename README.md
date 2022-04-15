@@ -5,9 +5,11 @@
 This code is provided to make getting started with ARQMath Task 1 (Answer Retrieval) a bit easier. The rest of this document covers:
 
 * Installation of the git package 
-* Getting started
+* Getting started: Indexing
+* Search and evaluation using the ARQMath collection
 * Important notes (especially for CSCI 539 students)
-* Search and evaluation using the full ARQMath collection
+* Acknowledgements and Author information
+
 
 ## Installation
 
