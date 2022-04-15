@@ -25,12 +25,23 @@ script:
 	#
 	# Indexing test script is ./arqmath-test
 
-data:
+data: collection post-data math-data
+	
+collection:
 	wget https://www.cs.rit.edu/~dprl/data/ARQMath/ARQMath_Collection.zip
-	wget https://www.cs.rit.edu/~dprl/data/ARQMath/ARQMath_Collection-post-ptindex.zip
 	unzip ARQMath_Collection.zip
+	rm ARQMath_Collection.zip
+
+post-data:
+	wget https://www.cs.rit.edu/~dprl/data/ARQMath/ARQMath_Collection-post-ptindex.zip
 	unzip ARQMath_Collection-post-ptindex.zip
-	rm *.zip
+	rm ARQMath_Collection-post-ptindex.zip
+
+
+math-data:
+	wget https://www.cs.rit.edu/~dprl/data/ARQMath/ARQMath_Collection-math-ptindex.zip
+	unzip ARQMath_Collection-math-ptindex.zip
+	rm ARQMath_Collection-math-ptindex.zip
 
 posts:
 	./arqmath-index test/indexTest.xml -s
