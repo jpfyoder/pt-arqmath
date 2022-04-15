@@ -2,12 +2,13 @@
 # (keep #!, then append that path)
 
 export PYTHONPATH=./src:$PYTHONPATH
+alias python=python3
 
 # Pass all arguments to arqmath
 if [ $# -lt 1 ]
 then
-	python3 src/index_arqmath.py --help
+	python src/index_arqmath.py --help
 else
-	python3 src/index_arqmath.py "$@"
+	python src/index_arqmath.py "$@"
 fi
 
