@@ -3,8 +3,6 @@ echo "Running **2021** (ARQMath-2) test topics for Task 1"
 echo ">> Open the 'run-topics' script in a text editor to see arguments used."
 echo ">> WARNING: PyTerrier requires './' in the front of every relative path."
 
-alias python=python3
-
-python src/run_topics.py ./ARQMath_Collection-post-ptindex \
+python3 src/run_topics.py ./ARQMath_Collection-post-ptindex \
 	./ARQMath_Evaluation/topics_task_1/2021_topics_task1.xml \
 	./ARQMath_Evaluation/qrels_task_1/2021_qrels_task1.tsv
