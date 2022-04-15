@@ -11,8 +11,8 @@ python-default: script
 script:
 	# Creating test scripts...
 	@echo "#!`which bash`" > exec_line
-	@cat exec_line bin/arqmath-test-TEMPLATE > arqmath-test
-	@chmod u+x arqmath-test
+	@cat exec_line bin/arqmath-index-TEMPLATE > arqmath-index
+	@chmod u+x arqmath-index
 	@cat exec_line bin/run-topics-test-TEMPLATE > run-topics-test
 	@cat exec_line bin/run-topics-2020-TEMPLATE > run-topics-2020
 	@cat exec_line bin/run-topics-2021-TEMPLATE > run-topics-2021
@@ -33,10 +33,10 @@ data:
 	rm *.zip
 
 posts:
-	./arqmath-test test/indexTest.xml -s
+	./arqmath-index test/indexTest.xml -s
 
 math:
-	./arqmath-test test/indexTest.xml -m
+	./arqmath-index test/indexTest.xml -m
 
 eval:
 	./run-topics-test

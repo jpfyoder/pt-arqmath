@@ -40,9 +40,9 @@ to select a specific package version (where X.Y.Z is a specific version number, 
 
 ## Getting Started: Indexing
 
-Some quick indexing and retrieval tests are provided by the `arqmath-test` bash script. The script has flags you can modify, for example to return index statistics, the lexicon produced after tokenization, whether to produce an index for posts/formulas/both, and a flag to control tokenization by PyTerrier  (e.g., stemming and stopword removal).
+Some quick indexing and retrieval tests are provided by the `arqmath-index` bash script. The script has flags you can modify, for example to return index statistics, the lexicon produced after tokenization, whether to produce an index for posts/formulas/both, and a flag to control tokenization by PyTerrier  (e.g., stemming and stopword removal).
 
-If you issue `./arqmath-test` without arguments, you should see the following:
+If you issue `./arqmath-index` without arguments, you should see the following:
 
 ```
 usage: index_arqmath.py [-h] [-m | -mp] [-l] [-s] [-t TOKENS] [-d] xmlFile
@@ -80,7 +80,7 @@ make math
 Again on the terminal, you will see information on indexing, along with results for a single query and a batch query.
 
 
-After running these tests, you can try passing different flags to `arqmath-test`, and observe the effect (e.g., using `-l none` to prevent stopword removal and stemming).
+After running these tests, you can try passing different flags to `arqmath-index`, and observe the effect (e.g., using `-l none` to prevent stopword removal and stemming).
 
 **The `src/index_arqmath.py` program has been written to make it easy to scan, modify, and reuse.** You are encouraged to do all three for your project!
 
