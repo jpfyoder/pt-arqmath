@@ -107,12 +107,12 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
                     ## Formula index entries   
                     #  One output per formula
                     for math_tag in all_formulas:
-                        EMPTY_DOCS += 1
                         raw_text = math_tag.get_text()
                         tokenized_formula = rewrite_symbols( math_tag.get_text(), latex_symbol_map )
 
                         # Skip empty formulas
                         if tokenized_formula.isspace():
+                            EMPTY_DOCS += 1
                             if debug_out:
                                 if raw_text.isspace():
                                     print('!!! WARNING: Empty "text" field for retrieval, formula id: ' + math_tag['id'] )
@@ -189,7 +189,9 @@ def create_XML_index( file_list, indexName, token_pipeline="Stopwords,PorterStem
     index_ref = indexer.index( generate_XML_post_docs( file_list, formula_index=formulas, debug_out=debug ), fields=field_names )
 
     if EMPTY_DOCS > 0:
-        print("*** WARNING: " + str(EMPTY_DOCS) + " documents/formulas empty before tokenization, and were skipped.")
+        count = str( EMPTY_DOCS )
+        print("*** WARNING: " + count + " documents/formulas empty before tokenization, and were skipped.")
+        print("    Additional documents/formulas may be empty after tokenization (PyTerrier message will report)")
     
     return pt.IndexFactory.of( index_ref )
 
