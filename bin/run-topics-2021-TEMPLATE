@@ -5,4 +5,4 @@ echo ">> WARNING: PyTerrier requires './' in the front of every relative path."
 
 python3 src/run_topics.py ./ARQMath_Collection-post-ptindex \
 	./ARQMath_Evaluation/topics_task_1/2021_topics_task1.xml \
-	./ARQMath_Evaluation/qrels_task_1/2021_qrels_task1.tsv
+	./ARQMath_Evaluation/qrels_task_1/2021_qrels_task1.tsv $@

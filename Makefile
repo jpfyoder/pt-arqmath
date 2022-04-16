@@ -25,17 +25,24 @@ script:
 	#
 	# Indexing test script is ./arqmath-test
 
-data: collection post-data math-data
+data: collection post-data raw-post-data math-data
 	
 collection:
 	wget https://www.cs.rit.edu/~dprl/data/ARQMath/ARQMath_Collection.zip
 	unzip ARQMath_Collection.zip
 	rm ARQMath_Collection.zip
 
+# Tokenized with Terrier defaults (stopwords + porter stemmer), English tokenizer
 post-data:
 	wget https://www.cs.rit.edu/~dprl/data/ARQMath/ARQMath_Collection-post-ptindex.zip
 	unzip ARQMath_Collection-post-ptindex.zip
 	rm ARQMath_Collection-post-ptindex.zip
+
+# No stopwords or stemming, using English tokenizer
+raw-post-data:
+	wget https://www.cs.rit.edu/~dprl/data/ARQMath/ARQMath_Collection-post-ptindex-rawtokens.zip
+	unzip ARQMath_Collection-post-ptindex-rawtokens.zip
+	rm ARQMath_Collection-post-ptindex-rawtokens.zip
 
 
 math-data:
