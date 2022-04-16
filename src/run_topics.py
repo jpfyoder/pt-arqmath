@@ -148,7 +148,7 @@ def main():
     #  ('overwrite' used to create new results for each run of this program for the first retrieval)
     print("Running topics...")
     ndcg_metrics = pt.Experiment(
-        [ bm25_engine ],
+        [ bm25_pipeline ],
         query_df,
         qrels_df,
         eval_metrics=[ "ndcg", "mrt" ],
