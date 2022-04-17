@@ -4,6 +4,8 @@ run-topics-*
 *.zip
 ARQMath_Collection
 ARQMath_Collection-post-ptindex
+ARQMath_Collection-math-ptindex
+ARQMath_Collection-post-ptindex-rawtokens
 indexTest-math-ptindex
 indexTest-post-ptindex
 __pycache__/
