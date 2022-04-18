@@ -148,12 +148,12 @@ and to run the model over all topics from ARQMath-2 (2021), issue:
 
 We thank Craig Macdonald, Nicola Tonellotto, and the many other PyTerrier and Terrier contributors for making this helpful framework available. 
 
-If you use this system, you should cite their paper lists below. An arXiv version of the paper may be found at this [link](https://arxiv.org/abs/2007.14271).
+If you use this system, you should cite their paper shown below. An arXiv version of the paper may be found at this [link](https://arxiv.org/abs/2007.14271).
 
 ```bibtex
 @inproceedings{pyterrier2020ictir,
     author = {Craig Macdonald and Nicola Tonellotto},
-    title = {Declarative Experimentation inInformation Retrieval using PyTerrier},
+    title = {Declarative Experimentation in Information Retrieval using PyTerrier},
     booktitle = {Proceedings of ICTIR 2020},
     year = {2020}
 }
