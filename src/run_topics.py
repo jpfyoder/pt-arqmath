@@ -57,7 +57,7 @@ def report_results( ndcg_metrics, binarized_metrics, top_k, prime ):
         prime_string ="'"
     print("[[ Evaluation  ]]")
     print(" * Top-k hits evaluated: " + str(top_k ) )
-    print(" * Prime metrics ('): " + str(prime)/ )
+    print(" * Prime metrics ('): " + str(prime) )
     print(" * !! Note that ARQMath uses prime metrics for official scores.")
     print("\nResults for nDCG" + prime_string )
     print("----------------------------------------------------------")
