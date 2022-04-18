@@ -301,7 +301,7 @@ def test_retrieval( k, post_index, math_index, model, tokens, debug=False ):
                 token_pipeline=tokens ) % k
         
         result = query( posts_engine, '_pand simplified _pand proof' )
-        show_result( result, [ 'mathnos' ], show_hits=True )
+        show_result( result, [], show_hits=True )
         # Added 'writing' to test matching tags, 'mean' in title field  for post number '1'
         show_result( batch_query( posts_engine, [
             'simplified proof', 
@@ -311,7 +311,7 @@ def test_retrieval( k, post_index, math_index, model, tokens, debug=False ):
             'qpost', 
             'proof _pnot qpost' 
             # 'man +TITLE:{intuition}'  # Trouble restricting to fields (?)
-            ] ), [ 'parentno' ], show_hits=True )
+            ] ), [], show_hits=True )
     
     if math_index != None:
         print("[ Testing math index retrieval ]")
