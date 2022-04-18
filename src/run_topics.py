@@ -1,8 +1,8 @@
 ################################################################
 # run_topics.py
 #
-# Example program running BM25 on ARQMath 
-# posts and topics with textualized formulas
+# Example program running term weighting models (e.g., TF-IDF,
+# BM25) on ARQMath posts and topics with textualized formulas
 #
 # Author:
 # R. Zanibbi, Apr 2022
@@ -106,6 +106,7 @@ def process_args():
     parser.add_argument('indexDir', help='Directory containing ARQMath index')
     parser.add_argument('xmlFile', help='ARQMath topics file (XML)')
     parser.add_argument('qrelFile', help='ARQMath qrels file (**needs to correspond to topic file)')
+    parser.add_argument('-m', '--model', default="BM25", help="term weight model (default: BM25; TF_IDF + other PyTerrier built-ins are available)" )
     parser.add_argument('-k', '--topk', type=int, default=1000, help="select top-k hits (default: 1000)" )
     parser.add_argument('-nop', '--noprime', default=False, help="compute non-prime metrics (default: False)", action="store_true" )
     parser.add_argument('-l', '--lexicon', help='show lexicon', action="store_true" )
@@ -127,7 +128,8 @@ def main():
     if args.tokens == 'none':
         args.tokens = ''
 
-    # Set evaluation parameters
+    # Set retrieval and evaluation parameters
+    weight_model = args.model
     prime = not args.noprime
     top_k = args.topk
 
@@ -153,15 +155,16 @@ def main():
     #token_pipeline = index_ref.getProperty("termpipelines")  # does not work.
     #print("Tokenization: " + token_pipeline)
 
-    print("Generating search engine...(BM25 with tokenization spec: '" + args.tokens + "')" )
+    print("Generating search engine...(" + weight_model + \
+            ") with tokenization spec: '" + args.tokens + "')" )
     # Compiling example to make it faster (see https://pyterrier.readthedocs.io/en/latest/transformer.html)
     # * Filtering unasessed hits (w. prime_transformer) - also enforces maximum result list length.
     prime_transformer = select_assessed_hits( qrels_df, top_k, prime )
-    bm25_engine = search_engine( index, 'BM25', TEXT_META_FIELDS, token_pipeline=args.tokens )
+    bm25_engine = search_engine( index, weight_model, TEXT_META_FIELDS, token_pipeline=args.tokens )
     bm25_pipeline = bm25_engine >> prime_transformer
 
     # First pass: two runs on retrieval, one for ndcg', one for binarized metrics
-    # Saves results to current directory in file BM25.res.gz this prevents running
+    # Saves results to current directory in file <weight_model>.res.gz this prevents running
     # the retrieval pipeline in the second call.
     #
     # **See warnings about accidentally reusing results and getting incorrect results here: 
@@ -173,7 +176,7 @@ def main():
         query_df,
         qrels_df,
         eval_metrics=[ "ndcg", "mrt" ],
-        names=["BM25"],
+        names=[ weight_model ],
         save_dir="./",
         save_mode="overwrite"
         )
@@ -185,7 +188,7 @@ def main():
         query_df,
         qrels_thresholded,
         eval_metrics=[ "P_10", "map", "mrt" ],
-        names=["BM25"],
+        names=[ weight_model ],
         save_dir="./"
         )
     
