@@ -1,8 +1,8 @@
 ################################################################
 # run_topics.py
 #
-# Example program running BM25 on ARQMath 
-# posts and topics with textualized formulas
+# Example program running term weighting models (e.g., TF-IDF,
+# BM25) on ARQMath posts and topics with textualized formulas
 #
 # Author:
 # R. Zanibbi, Apr 2022
@@ -13,7 +13,7 @@ from arqmath_topics_qrels import *
 import argparse
 import pyterrier as pt
 from pyterrier.measures import *
-import os
+import os, sys
 
 # Constants
 REL_THRESHOLD=2  # ARQMath convention, treat '2' in 0-3 scale as 'relevant' for binary relevance metrics
@@ -49,12 +49,21 @@ def load_index( index_dir, lexicon, stats ):
 
     return index
 
-def report_results( ndcg_metrics, binarized_metrics ):
-    print("\nResults for nDCG' : used to rank ARQMath systems")
+def report_results( ndcg_metrics, binarized_metrics, top_k, prime ):
+    # Make clear what we're using!
+    prime_string = ''
+
+    if prime:
+        prime_string ="'"
+    print("[[ Evaluation  ]]")
+    print(" * Top-k hits evaluated: " + str(top_k ) )
+    print(" * Prime metrics ('): " + str(prime) )
+    print(" * !! Note that ARQMath uses prime metrics for official scores.")
+    print("\nResults for nDCG" + prime_string )
     print("----------------------------------------------------------")
     print( ndcg_metrics )
 
-    print("\nResults for binarized relevance : mAP', Precision' at 10")
+    print("\nResults for binarized relevance : mAP" + prime_string + ", Precision at 10" + prime_string)
     print("----------------------------------------------------------")
     print( binarized_metrics )
 
@@ -65,18 +74,24 @@ def report_results( ndcg_metrics, binarized_metrics ):
 ################################################################
 # Used to remove unasessed hits in search results for prime (') metrics
 # Consider only up to MAX_HITS
-def select_assessed_hits( qrel_df ):
+def select_assessed_hits( qrel_df, top_k=1000, prime=True ):
     def filter_results( result_df ):
         #result_df.drop_duplicates( subset='docno' )  # esp. important for formula retrieval results
-        result_df_cut = result_df.iloc[0 : MAX_HITS ]
+        #result_df_cut = result_df.iloc[0 : MAX_HITS ]
+        result_df_cut = result_df.loc[ result_df[ 'rank' ] < top_k ]
+        out_results = result_df_cut
 
-        # Filter by ( qid, docno ) pairs in the qrel file.
-        keycols = qrel_df[ ['qid','docno'] ]
-        keys = list( keycols.columns.values )
-        i1 = result_df_cut.set_index(keys).index
-        i2 = qrel_df.set_index(keys).index
+        # Prime metrics
+        # If 'prime' is true, filter by ( qid, docno ) pairs in the qrel file, so that
+        # only assessed hits are included.
+        if prime:
+            keycols = qrel_df[ ['qid','docno'] ]
+            keys = list( keycols.columns.values )
+            i1 = result_df_cut.set_index(keys).index
+            i2 = qrel_df.set_index(keys).index
+            out_results = result_df_cut[ i1.isin(i2) ]
 
-        return result_df_cut[ i1.isin(i2) ]
+        return out_results
 
     return pyterrier.apply.generic( filter_results )
 
@@ -91,6 +106,9 @@ def process_args():
     parser.add_argument('indexDir', help='Directory containing ARQMath index')
     parser.add_argument('xmlFile', help='ARQMath topics file (XML)')
     parser.add_argument('qrelFile', help='ARQMath qrels file (**needs to correspond to topic file)')
+    parser.add_argument('-m', '--model', default="BM25", help="term weight model (default: BM25; TF_IDF + other PyTerrier built-ins are available)" )
+    parser.add_argument('-k', '--topk', type=int, default=1000, help="select top-k hits (default: 1000)" )
+    parser.add_argument('-nop', '--noprime', default=False, help="compute non-prime metrics (default: False)", action="store_true" )
     parser.add_argument('-l', '--lexicon', help='show lexicon', action="store_true" )
     parser.add_argument('-s', '--stats', help="show collection statistics", action="store_true" )
     parser.add_argument('-t', '--tokens', help="set tokenization property (none:  no stemming/stopword removal)", 
@@ -109,6 +127,11 @@ def main():
 
     if args.tokens == 'none':
         args.tokens = ''
+
+    # Set retrieval and evaluation parameters
+    weight_model = args.model
+    prime = not args.noprime
+    top_k = args.topk
 
     # Do not forget, or fields are undefined ('None' in error messages)
     print('\n>>> Initializing PyTerrier...')
@@ -132,15 +155,16 @@ def main():
     #token_pipeline = index_ref.getProperty("termpipelines")  # does not work.
     #print("Tokenization: " + token_pipeline)
 
-    print("Generating search engine...(BM25 with tokenization spec: '" + args.tokens + "')" )
+    print("Generating search engine...(" + weight_model + \
+            ") with tokenization spec: '" + args.tokens + "')" )
     # Compiling example to make it faster (see https://pyterrier.readthedocs.io/en/latest/transformer.html)
     # * Filtering unasessed hits (w. prime_transformer) - also enforces maximum result list length.
-    prime_transformer = select_assessed_hits( qrels_df )
-    bm25_engine = search_engine( index, 'BM25', TEXT_META_FIELDS, token_pipeline=args.tokens )
+    prime_transformer = select_assessed_hits( qrels_df, top_k, prime )
+    bm25_engine = search_engine( index, weight_model, TEXT_META_FIELDS, token_pipeline=args.tokens )
     bm25_pipeline = bm25_engine >> prime_transformer
 
     # First pass: two runs on retrieval, one for ndcg', one for binarized metrics
-    # Saves results to current directory in file BM25.res.gz this prevents running
+    # Saves results to current directory in file <weight_model>.res.gz this prevents running
     # the retrieval pipeline in the second call.
     #
     # **See warnings about accidentally reusing results and getting incorrect results here: 
@@ -152,7 +176,7 @@ def main():
         query_df,
         qrels_df,
         eval_metrics=[ "ndcg", "mrt" ],
-        names=["BM25"],
+        names=[ weight_model ],
         save_dir="./",
         save_mode="overwrite"
         )
@@ -164,12 +188,12 @@ def main():
         query_df,
         qrels_thresholded,
         eval_metrics=[ "P_10", "map", "mrt" ],
-        names=["BM25"],
+        names=[ weight_model ],
         save_dir="./"
         )
     
     # Report results at the command line.
-    report_results( ndcg_metrics, binarized_metrics )
+    report_results( ndcg_metrics, binarized_metrics, top_k, prime )
 
 main()
 
