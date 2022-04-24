@@ -27,7 +27,7 @@ TEXT_META_FIELDS = ['docno','title', 'text', 'origtext', 'tags', 'votes', 'paren
 TEXT_META_SIZES = [ 16, 256, 4096, 4096, 128, 8, 20, 20 ]
 
 MATH_RETRIEVAL_FIELDS = [ 'text', 'parentno' ]
-MATH_META_FIELDS = [ 'mathno', 'text', 'origtext','docno','parentno']
+MATH_META_FIELDS = [ 'postno', 'text', 'origtext','docno','parentno']   # changed 'mathno' to 'postno'
 MATH_META_SIZES = [ 20, 1024, 1024, 20, 20]
 
 EMPTY_DOCS = 0
@@ -124,7 +124,7 @@ def generate_XML_post_docs(file_name_list, formula_index=False, debug_out=False 
                         elif debug_out:
                             print_formula_record( math_tag, tokenized_formula, docno, parentno )
 
-                        yield { 'mathno':     math_tag['id'],
+                        yield { 'postno':     math_tag['id'],  # changed mathno to postno
                                 'text':      tokenized_formula,
                                 'origtext':  math_tag.get_text(),
                                 'docno':    docno,
@@ -221,7 +221,7 @@ def view_index( indexName, index, view_tokens, view_stats ):
 def search_engine( index, 
         model, 
         metadata_keys=[], 
-        token_pipeline="Stopwords,PorterStemmer" ):
+        token_pipeline="" ): # Stopwords,PorterStemmer
     return pt.BatchRetrieve( index, wmodel=model, 
             properties={ "termpipelines" : token_pipeline }, 
             metadata = metadata_keys )
@@ -264,7 +264,7 @@ def verbose_hit_summary( result, math_index=False ):
                 print('ANSWER')
         else:
             # Formula document
-            print('Docid:',row['docid'], 'Formula-no:', row['mathno'],  'Post-no (docno):', row['docno'], 'Parent-no:',row['parentno'])
+            print('Docid:',row['docid'], 'Formula-no:', row['postno'],  'Post-no (docno):', row['docno'], 'Parent-no:',row['parentno']) # made mathno to postno
 
         # Show original text before token mapping
         print('TEXT:\n', row['text'])
@@ -317,7 +317,7 @@ def test_retrieval( k, post_index, math_index, model, tokens, debug=False ):
         print("[ Testing math index retrieval ]")
         
         # Return top k results (% k)
-        math_engine = search_engine( math_index, model, ['mathno', 'text', 'origtext','docno', 'parentno' ], token_pipeline=tokens ) % k
+        math_engine = search_engine( math_index, model, ['postno', 'text', 'origtext','docno', 'parentno' ], token_pipeline=tokens ) % k  # changed mathno to postno
         show_result( query( math_engine, '_pand sqrt _pand 2' ), show_hits=True, math=True )
         show_result( batch_query( math_engine, [ 'sqrt 2', '2' ] ), show_hits=True, math=True )
         show_result( batch_query( math_engine, [ 'sqrt 2 _pnot qpost' ] ), show_hits=True, math=True )
