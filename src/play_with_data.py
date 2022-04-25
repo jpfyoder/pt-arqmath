@@ -164,6 +164,11 @@ def main():
     bm25_engine = search_engine(index, weight_model, MATH_META_FIELDS, token_pipeline=args.tokens)
     bm25_pipeline = bm25_engine >> prime_transformer
 
+    import pyterrier_colbert.ranking
+    colbert_factory = pyterrier_colbert.ranking.COLBERTFactory(
+    "http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", None, None)
+    bm25_colbert_pipe = bm25_engine >> colbert_factory.text_scorer() >> prime_transformer
+
     print(index.getCollectionStatistics().toString())
     print(index.getMetaIndex().getKeys())
     print(query_df)
@@ -174,21 +179,21 @@ def main():
 
     print("Running topics...")
     ndcg_metrics = pt.Experiment(
-        [bm25_pipeline],
+        [bm25_pipeline, bm25_colbert_pipe],
         query_df,
         qrels_df,
         eval_metrics=["ndcg", "mrt"],
-        names=[weight_model],
+        names=[weight_model, "BM25 to ColBERT"],
         save_dir="./",
         save_mode="overwrite"
     )
     print("ran ndcg metrics")
     binarized_metrics = pt.Experiment(
-        [bm25_engine],
+        [bm25_engine, bm25_colbert_pipe],
         query_df,
         qrels_thresholded,
         eval_metrics=["P_10", "map", "mrt"],
-        names=[weight_model],
+        names=[weight_model, "BM25 to ColBERT"],
         save_dir="./"
     )
     print("ran binary experiment")
