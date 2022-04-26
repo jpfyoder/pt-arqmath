@@ -70,9 +70,23 @@ baseline:
 	./run-topics-2020
 	./run-topics-2021
 
-experiment:
-	python3 src/play_with_data.py \
+experiment-short:
+	python3 src/run_topics_experiment.py \
 	./ARQMath_Collection-math-ptindex \
 	./ARQMath_Collection-post-ptindex \
 	./test/2020_topics_task1_short.xml \
+	./ARQMath_Evaluation/qrels_task_1/2020_qrels_task1.tsv
+
+experiment-2020:
+	python3 src/run_topics_experiment.py \
+	./ARQMath_Collection-math-ptindex \
+	./ARQMath_Collection-post-ptindex \
+	./ARQMath_Evaluation/topics_task_1/2020_topics_task1.xml \
+	./ARQMath_Evaluation/qrels_task_1/2020_qrels_task1.tsv
+
+experiment-2021:
+	python3 src/run_topics_experiment.py \
+	./ARQMath_Collection-math-ptindex \
+	./ARQMath_Collection-post-ptindex \
+	./ARQMath_Evaluation/topics_task_1/2021_topics_task1.xml \
 	./ARQMath_Evaluation/qrels_task_1/2020_qrels_task1.tsv
