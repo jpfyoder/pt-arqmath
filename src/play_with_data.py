@@ -12,6 +12,8 @@ from arqmath_topics_qrels import *
 import argparse
 import pyterrier as pt
 from pyterrier.measures import *
+from transformers import AutoTokenizer
+from sklearn.model_selection import train_test_split
 import os, sys
 
 # Constants
@@ -164,18 +166,31 @@ def main():
     print("Generating search engine...(" + weight_model + ") with tokenization spec: '" + args.tokens + "')")
     # Compiling example to make it faster (see https://pyterrier.readthedocs.io/en/latest/transformer.html)
     # * Filtering unasessed hits (w. prime_transformer) - also enforces maximum result list length.
+    tokenizer = AutoTokenizer.from_pretrained("vespa-engine/colbert-medium")
+    model = ColBERT.from_pretrained("vespa-engine/colbert-medium")
+
+    print("tokenizer and model created!")
+
     prime_transformer = select_assessed_hits(qrels_df, top_k, prime)
+
+    # bm25 engines and pipelines
+
     bm25_math_engine = search_engine(math_index, weight_model, MATH_META_FIELDS, token_pipeline=args.tokens)
     bm25_math_pipeline = bm25_math_engine >> prime_transformer
 
     bm25_post_engine = search_engine(math_index, weight_model, TEXT_META_FIELDS, token_pipeline=args.tokens)
     bm25_post_pipeline = bm25_post_engine >> prime_transformer
 
+    train_ds = pt.datasets.get_dataset('ARQMath_Collection-math-ptindex')
+    train_topics, valid_topics = train_test_split(train_ds.get_topics(), test_size=50, random_state=42) # split into training and validation sets
+
     import pyterrier_colbert.ranking
     colbert_factory = pyterrier_colbert.ranking.ColBERTFactory(
-    "http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", None, None)
-    bm25_colbert_math_pipe = bm25_math_engine >> colbert_factory.text_scorer() >> prime_transformer
-    bm25_colbert_post_pipe = bm25_post_engine >> colbert_factory.text_scorer() >> prime_transformer
+    "http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", "arq-math/pt-arqmath/ARQMath_Collection-math-ptindex", None)
+    
+    bm25_colbert_post_pipe = (pt.BatchRetrieve(post_index, wmodel="BM25") % 100 # get top 100 results using bm25
+            >> pt.text.get_text(train_ds, 'text') # fetch the document text
+            >> colbert_factory) # apply neural re-ranker
 
     print(math_index.getCollectionStatistics().toString())
     print(math_index.getMetaIndex().getKeys())
@@ -187,7 +202,7 @@ def main():
 
     print("Running topics...")
     ndcg_metrics = pt.Experiment(
-        [bm25_math_pipeline, bm25_colbert_math_pipe],
+        [bm25_post_pipeline, bm25_colbert_post_pipe],
         query_df,
         qrels_df,
         eval_metrics=["ndcg", "mrt"],
@@ -197,7 +212,7 @@ def main():
     )
     print("ran ndcg metrics")
     binarized_metrics = pt.Experiment(
-        [bm25_math_engine, bm25_colbert_math_pipe],
+        [bm25_post_engine, bm25_colbert_post_pipe],
         query_df,
         qrels_thresholded,
         eval_metrics=["P_10", "map", "mrt"],
