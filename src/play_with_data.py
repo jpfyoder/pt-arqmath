@@ -23,7 +23,8 @@ def process_args():
     # Process command line arguments
     parser = argparse.ArgumentParser(description="Retrieve and evaluate results for ARQMath data.")
 
-    parser.add_argument('indexDir', help='Directory containing ARQMath index')
+    parser.add_argument('mathIndexDir', help='Directory containing ARQMath math index')
+    parser.add_argument('postIndexDir', help='Directory containing ARQMath post index')
     parser.add_argument('xmlFile', help='ARQMath topics file (XML)')
     parser.add_argument('qrelFile', help='ARQMath qrels file (**needs to correspond to topic file)')
     parser.add_argument('-m', '--model', default="BM25",
@@ -150,8 +151,11 @@ def main():
     print("Loading qrels...")
     (qrels_df, qrels_thresholded) = load_qrels_with_binary(args.qrelFile)
 
-    print("Loading index defined at " + args.indexDir + "...")
-    index = load_index(args.indexDir, args.lexicon, args.stats)
+    print("Loading math index defined at " + args.mathIndexDir + "...")
+    math_index = load_index(args.mathIndexDir, args.lexicon, args.stats)
+
+    print("Loading post index defined at " + args.postIndexDir + "...")
+    post_index = load_index(args.postIndexDir, args.lexicon, args.stats)
 
     # Report tokenization
     # token_pipeline = index_ref.getProperty("termpipelines")  # does not work.
@@ -161,16 +165,20 @@ def main():
     # Compiling example to make it faster (see https://pyterrier.readthedocs.io/en/latest/transformer.html)
     # * Filtering unasessed hits (w. prime_transformer) - also enforces maximum result list length.
     prime_transformer = select_assessed_hits(qrels_df, top_k, prime)
-    bm25_engine = search_engine(index, weight_model, MATH_META_FIELDS, token_pipeline=args.tokens)
-    bm25_pipeline = bm25_engine >> prime_transformer
+    bm25_math_engine = search_engine(math_index, weight_model, MATH_META_FIELDS, token_pipeline=args.tokens)
+    bm25_math_pipeline = bm25_math_engine >> prime_transformer
+
+    bm25_post_engine = search_engine(math_index, weight_model, TEXT_META_FIELDS, token_pipeline=args.tokens)
+    bm25_post_pipeline = bm25_post_engine >> prime_transformer
 
     import pyterrier_colbert.ranking
     colbert_factory = pyterrier_colbert.ranking.ColBERTFactory(
     "http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", None, None)
-    bm25_colbert_pipe = bm25_engine >> colbert_factory.text_scorer() >> prime_transformer
+    bm25_colbert_math_pipe = bm25_math_engine >> colbert_factory.text_scorer() >> prime_transformer
+    bm25_colbert_post_pipe = bm25_post_engine >> colbert_factory.text_scorer() >> prime_transformer
 
-    print(index.getCollectionStatistics().toString())
-    print(index.getMetaIndex().getKeys())
+    print(math_index.getCollectionStatistics().toString())
+    print(math_index.getMetaIndex().getKeys())
     print(query_df)
     print(qrels_df)
     print(top_k)
@@ -179,7 +187,7 @@ def main():
 
     print("Running topics...")
     ndcg_metrics = pt.Experiment(
-        [bm25_pipeline, bm25_colbert_pipe],
+        [bm25_math_pipeline, bm25_colbert_math_pipe],
         query_df,
         qrels_df,
         eval_metrics=["ndcg", "mrt"],
@@ -189,7 +197,7 @@ def main():
     )
     print("ran ndcg metrics")
     binarized_metrics = pt.Experiment(
-        [bm25_engine, bm25_colbert_pipe],
+        [bm25_math_engine, bm25_colbert_math_pipe],
         query_df,
         qrels_thresholded,
         eval_metrics=["P_10", "map", "mrt"],
