@@ -153,8 +153,10 @@ def main():
     print("Loading index defined at " + args.indexDir + "...")
     index = load_index(args.indexDir, args.lexicon, args.stats)
 
+    # print(pt.BatchRetrieve(index).search("Rationals can be the set of continuity of a function question"))  # confirmed index works
+
     # Report tokenization
-    # token_pipeline = index_ref.getProperty("termpipelines")  # does not work.
+    # token_pipeline = index.getProperty("termpipelines")  # does not work.
     # print("Tokenization: " + token_pipeline)
 
     print("Generating search engine...(" + weight_model + ") with tokenization spec: '" + args.tokens + "')")
@@ -162,16 +164,26 @@ def main():
     # * Filtering unasessed hits (w. prime_transformer) - also enforces maximum result list length.
     prime_transformer = select_assessed_hits(qrels_df, top_k, prime)
     bm25_engine = search_engine(index, weight_model, MATH_META_FIELDS, token_pipeline=args.tokens)
+
+    print("Testing vroom vroom model")
+
+    print(query(bm25_engine, "Rationals can be the set of continuity of a function question"))
+    print(query(bm25_engine, "Finding value of c such that the range of the rational function f open parenthesis x close parenthesis   equals   backslash frac open brace"))
+    print(query(bm25_engine, "Approximation to  backslash sqrt open brace 5 close brace  correct to an exactitude of 10 power  open brace  minus 10 close brace"))
+    print(query(bm25_engine, "Is this set  double quote not closed double quote"))
+    print(query(bm25_engine, "what is the dimension of  backslash mathbb open brace R close brace  at a vector space over there field  backslash mathbb open brace Q"))
+
+
     bm25_pipeline = bm25_engine >> prime_transformer
 
-    print(index.getCollectionStatistics().toString())
-    print(index.getMetaIndex().getKeys())
+    # print(index.getCollectionStatistics().toString())
+    # print(index.getMetaIndex().getKeys())
     print(query_df)
     print(qrels_df)
-    print(top_k)
-    print(prime)
+    # print(top_k)
+    # print(prime)
     print(qrels_thresholded)
-
+    #
     print("Running topics...")
     ndcg_metrics = pt.Experiment(
         [bm25_pipeline],
@@ -194,10 +206,6 @@ def main():
     print("ran binary experiment")
     # Report results at the command line.
     report_results(ndcg_metrics, binarized_metrics, top_k, prime)
-
-
-
-
 
 
 main()
