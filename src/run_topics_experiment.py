@@ -168,59 +168,72 @@ def main():
     print("Generating search engine...(" + weight_model + ") with tokenization spec: '" + args.tokens + "')")
     # Compiling example to make it faster (see https://pyterrier.readthedocs.io/en/latest/transformer.html)
     # * Filtering unasessed hits (w. prime_transformer) - also enforces maximum result list length.
-    tokenizer = AutoTokenizer.from_pretrained("vespa-engine/colbert-medium")
-    model = ColBERT.from_pretrained("vespa-engine/colbert-medium")
+    #tokenizer = AutoTokenizer.from_pretrained("vespa-engine/colbert-medium")
+    #model = ColBERT.from_pretrained("vespa-engine/colbert-medium")
 
     print("tokenizer and model created!")
 
     prime_transformer = select_assessed_hits(qrels_df, top_k, prime)
 
-    # bm25 engines and pipelines
+    # Create BM25 engines for math and posts
 
-    bm25_math_engine = search_engine(math_index, weight_model, MATH_META_FIELDS, token_pipeline=args.tokens)
-    bm25_math_pipeline = bm25_math_engine >> prime_transformer
+    bm25_math_engine = search_engine(math_index, weight_model, MATH_META_FIELDS, token_pipeline="")
+    bm25_post_engine = search_engine(post_index, weight_model, TEXT_META_FIELDS, token_pipeline="Stopwords,PorterStemmer")
 
-    bm25_post_engine = search_engine(math_index, weight_model, TEXT_META_FIELDS, token_pipeline=args.tokens)
-    bm25_post_pipeline = bm25_post_engine >> prime_transformer
 
-    train_ds = pt.datasets.get_dataset('ARQMath_Collection-math-ptindex')
-    train_topics, valid_topics = train_test_split(train_ds.get_topics(), test_size=50, random_state=42) # split into training and validation sets
+    # Retraining ColBERT
+    #train_ds = pt.datasets.get_dataset('ARQMath_Collection-math-ptindex')
+    #train_topics, valid_topics = train_test_split(train_ds.get_topics(), test_size=50, random_state=42) # split into training and validation sets
 
-    import pyterrier_colbert.ranking
-    colbert_factory = pyterrier_colbert.ranking.ColBERTFactory(
-    "http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", "arq-math/pt-arqmath/ARQMath_Collection-math-ptindex", None)
+    #import pyterrier_colbert.ranking
+    #colbert_factory = pyterrier_colbert.ranking.ColBERTFactory(
+    #"http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", "arq-math/pt-arqmath/ARQMath_Collection-math-ptindex", None)
     # old ColBERT pipeline
     #bm25_colbert_post_pipe = (pt.BatchRetrieve(post_index, wmodel="BM25") % 100 # get top 100 results using bm25
     #        >> pt.text.get_text(train_ds, 'text') # fetch the document text
     #        >> colbert_factory) # apply neural re-ranker
 
-    bm25_math_engine = (bm25_math_engine >> pt.apply.generic(
+    # Manually set weights
+    math_pipeline_weight = 0.75
+    post_pipeline_weight = 0.25
+
+    ## Baseline Experiment
+    baseline = bm25_post_engine >> prime_transformer
+
+    ## Experiment 1: create math & post pipeline, no ColBERT, then linear interpolation
+    bm25_math_pipeline_base = (bm25_math_engine >> pt.apply.generic(
                 lambda df: df.rename(columns={'docno': 'formulano'}))  # rename columns
                 >> pt.apply.generic(
                 lambda df: df.rename(columns={'postno': 'docno'}))  # rename columns
                 >> pt.apply.generic(
                 lambda df: df.drop_duplicates(subset=['docno']))
                 )
+    bm25_post_pipeline_base = bm25_post_engine
+    experiment_1 = ((math_pipeline_weight * bm25_math_pipeline_base) + (post_pipeline_weight * bm25_post_pipeline_base)) >> prime_transformer
+    
+    ## Experiment 2: create math & post pipeline, ColBERT base model re-ranking, then linear interpolation
 
-    bm25_pipeline = bm25_math_engine >> prime_transformer
+    ## Experiment 3: create math & post pipeline, ColBERT re-trained model re-ranking, then linear interpolation
 
     print("Running topics...")
     ndcg_metrics = pt.Experiment(
-        [bm25_post_pipeline, bm25_colbert_post_pipe],
+        [baseline, experiment_1],
         query_df,
         qrels_df,
+        baseline=0,
         eval_metrics=["ndcg", "mrt"],
-        names=[weight_model, "BM25 to ColBERT"],
+        names=["Baseline", "Experiment 1"],
         save_dir="./",
         save_mode="overwrite"
     )
     print("ran ndcg metrics")
     binarized_metrics = pt.Experiment(
-        [bm25_post_engine, bm25_colbert_post_pipe],
+        [baseline, experiment_1],
         query_df,
         qrels_thresholded,
+        baseline=0,
         eval_metrics=["P_10", "map", "mrt"],
-        names=[weight_model, "BM25 to ColBERT"],
+        names=["Baseline", "Experiment 1"],
         save_dir="./"
     )
     print("ran binary experiment")
