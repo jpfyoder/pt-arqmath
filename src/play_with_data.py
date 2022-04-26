@@ -165,7 +165,7 @@ def main():
     bm25_pipeline = bm25_engine >> prime_transformer
 
     import pyterrier_colbert.ranking
-    colbert_factory = pyterrier_colbert.ranking.COLBERTFactory(
+    colbert_factory = pyterrier_colbert.ranking.ColBERTFactory(
     "http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", None, None)
     bm25_colbert_pipe = bm25_engine >> colbert_factory.text_scorer() >> prime_transformer
 
