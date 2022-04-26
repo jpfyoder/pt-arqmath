@@ -7,6 +7,7 @@ python-default: script
 	pip install --user numpy --upgrade
 	pip install --user packaging --upgrade
 	pip install --user python-terrier bs4 tqdm pandas lxml --upgrade
+	pip install --upgrade git+https://github.com/terrierteam/pyterrier_colbert
 
 script:
 	# Creating test scripts...
@@ -64,3 +65,10 @@ delete-results:
 
 delete-indices:
 	rm -rf *-ptindex 
+
+baseline:
+	./run-topics-2020
+	./run-topics-2021
+
+experiment:
+	python3 src/play_with_data.py ./ARQMath_Collection-math-ptindex ./ARQMath_Evaluation/topics_task_1/2020_topics_task1.xml ./ARQMath_Evaluation/qrels_task_1/2020_qrels_task1.tsv
