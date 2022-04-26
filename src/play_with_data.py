@@ -159,8 +159,10 @@ def main():
     print("Loading post index defined at " + args.postIndexDir + "...")
     post_index = load_index(args.postIndexDir, args.lexicon, args.stats)
 
+    # print(pt.BatchRetrieve(index).search("Rationals can be the set of continuity of a function question"))  # confirmed index works
+
     # Report tokenization
-    # token_pipeline = index_ref.getProperty("termpipelines")  # does not work.
+    # token_pipeline = index.getProperty("termpipelines")  # does not work.
     # print("Tokenization: " + token_pipeline)
 
     print("Generating search engine...(" + weight_model + ") with tokenization spec: '" + args.tokens + "')")
@@ -187,18 +189,20 @@ def main():
     import pyterrier_colbert.ranking
     colbert_factory = pyterrier_colbert.ranking.ColBERTFactory(
     "http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", "arq-math/pt-arqmath/ARQMath_Collection-math-ptindex", None)
-    
-    bm25_colbert_post_pipe = (pt.BatchRetrieve(post_index, wmodel="BM25") % 100 # get top 100 results using bm25
-            >> pt.text.get_text(train_ds, 'text') # fetch the document text
-            >> colbert_factory) # apply neural re-ranker
+    # old ColBERT pipeline
+    #bm25_colbert_post_pipe = (pt.BatchRetrieve(post_index, wmodel="BM25") % 100 # get top 100 results using bm25
+    #        >> pt.text.get_text(train_ds, 'text') # fetch the document text
+    #        >> colbert_factory) # apply neural re-ranker
 
-    print(math_index.getCollectionStatistics().toString())
-    print(math_index.getMetaIndex().getKeys())
-    print(query_df)
-    print(qrels_df)
-    print(top_k)
-    print(prime)
-    print(qrels_thresholded)
+    bm25_math_engine = (bm25_math_engine >> pt.apply.generic(
+                lambda df: df.rename(columns={'docno': 'formulano'}))  # rename columns
+                >> pt.apply.generic(
+                lambda df: df.rename(columns={'postno': 'docno'}))  # rename columns
+                >> pt.apply.generic(
+                lambda df: df.drop_duplicates(subset=['docno']))
+                )
+
+    bm25_pipeline = bm25_math_engine >> prime_transformer
 
     print("Running topics...")
     ndcg_metrics = pt.Experiment(
@@ -222,10 +226,6 @@ def main():
     print("ran binary experiment")
     # Report results at the command line.
     report_results(ndcg_metrics, binarized_metrics, top_k, prime)
-
-
-
-
 
 
 main()
