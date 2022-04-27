@@ -89,4 +89,4 @@ experiment-2021:
 	./ARQMath_Collection-math-ptindex \
 	./ARQMath_Collection-post-ptindex \
 	./ARQMath_Evaluation/topics_task_1/2021_topics_task1.xml \
-	./ARQMath_Evaluation/qrels_task_1/2020_qrels_task1.tsv
+	./ARQMath_Evaluation/qrels_task_1/2021_qrels_task1.tsv
