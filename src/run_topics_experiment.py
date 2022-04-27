@@ -16,6 +16,10 @@ from transformers import AutoTokenizer
 from sklearn.model_selection import train_test_split
 import os, sys
 
+import pandas as pd
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_rows', None)
+
 # Constants
 REL_THRESHOLD=2  # ARQMath convention, treat '2' in 0-3 scale as 'relevant' for binary relevance metrics
 MAX_HITS=1000    # TREC / CLEF / NTCIR / FIRE / ARQMath convention (max of 1000 hits per query)
