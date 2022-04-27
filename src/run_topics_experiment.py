@@ -123,6 +123,15 @@ def select_assessed_hits( qrel_df, top_k=1000, prime=True ):
 
     return pyterrier.apply.generic( filter_results )
 
+def generate_weighting_experiment(pipelineA, pipelineB, end_pipeline, nameA, nameB, prefix):
+    weights = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    result_pipelines = []
+    result_names = []
+    for weightA in weights:
+        weightB = 10 - weightA
+        result_pipelines.append( ((weightA * pipelineA) + (weightB * pipelineB)) >> end_pipeline )
+        result_names.append(f"{prefix}-{nameA}_{weightA}-{nameB}_{weightB}")
+    return result_pipelines, result_names
 
 def main():
     # Process arguments
@@ -162,129 +171,104 @@ def main():
     print("Loading post index defined at " + args.postIndexDir + "...")
     post_index = load_index(args.postIndexDir, args.lexicon, args.stats)
 
-    print("Generating search engine...(" + weight_model + ") with tokenization spec: '" + args.tokens + "')")
+    ############################
+    ### Setup Search Engines ###
+    ############################
+    ## Math and text token pipelines
+    math_token_pipeline = ""
+    text_token_pipeline = "Stopwords,PorterStemmer"
 
-    # Prime transformer
+    ## Prime transformer
     prime_transformer = select_assessed_hits(qrels_df, top_k, prime)
 
-    # Create BM25 engines for math and posts
-    bm25_math_engine = search_engine(math_index, weight_model, MATH_META_FIELDS, token_pipeline="")
-    bm25_post_engine = search_engine(post_index, weight_model, TEXT_META_FIELDS, token_pipeline="Stopwords,PorterStemmer")
+    ## Math processor pipeline stage
+    math_correct_data = (pt.apply.generic(
+                lambda df: df.rename(columns={'docno': 'formulano'}))  # rename columns
+                >> pt.apply.generic(
+                lambda df: df.rename(columns={'postno': 'docno'}))  # rename columns
+                >> pt.apply.generic(
+                lambda df: df.drop_duplicates(subset=['docno']))
+                )
 
-    ###############
-    ### ColBERT ###
-    ###############
-    print("Initializing ColBERT...")
+    ## Raw BM25 engines
+    bm25_math_engine = search_engine(math_index, weight_model, MATH_META_FIELDS, token_pipeline=math_token_pipeline) >> math_correct_data
+    bm25_post_engine = search_engine(post_index, weight_model, TEXT_META_FIELDS, token_pipeline=text_token_pipeline)
+
+    ## ColBERT
     import pyterrier_colbert.ranking
 
-    #train_topics, valid_topics = train_test_split(query_df, test_size=50, random_state=42) # split into training and validation sets
-
-    # ColBERT initialization without re weighting
-    colbert_base_math_factory = pyterrier_colbert.ranking.ColBERTFactory(
-        "http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip",
-        args.mathIndexDir,
-        "math_index")
-    colbert_base_math = colbert_base_math_factory.text_scorer()
+    # ColBERT Without Re-Weighting
+    print("Initializing ColBERT base model...")
+    colbert_base_factory = pyterrier_colbert.ranking.ColBERTFactory("http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", None, None)
+    bm25_colbert_rerank_base_math_engine = \
+        search_engine(math_index, weight_model, MATH_META_FIELDS, token_pipeline=math_token_pipeline) \
+            >> math_correct_data \
+            >> colbert_base_factory.text_scorer()
+    bm25_colbert_rerank_base_post_engine = \
+        search_engine(post_index, weight_model, TEXT_META_FIELDS, token_pipeline=text_token_pipeline) \
+            >> colbert_base_factory.text_scorer()
     
-    colbert_base_post_factory = pyterrier_colbert.ranking.ColBERTFactory(
-        "http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip",
-        args.postIndexDir,
-        "post_index")
-    colbert_base_post = colbert_base_post_factory.text_scorer()
-
-    # ColBERT initialization and re weighting
-    colbert_reweight_math_factory = pyterrier_colbert.ranking.ColBERTFactory(
-        "http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip",
-        args.mathIndexDir,
-        "math_index")
-    colbert_reweight_math = colbert_reweight_math_factory.text_scorer()
-    
-    colbert_reweight_post_factory = pyterrier_colbert.ranking.ColBERTFactory(
-        "http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip",
-        args.postIndexDir,
-        "post_index")
-    colbert_reweight_post = colbert_reweight_post_factory.text_scorer()
-
-    # old ColBERT pipeline
-    #bm25_colbert_post_pipe = (pt.BatchRetrieve(post_index, wmodel="BM25") % 100 # get top 100 results using bm25
-    #        >> pt.text.get_text(train_ds, 'text') # fetch the document text
-    #        >> colbert_factory) # apply neural re-ranker
+    # ColBERT Re-Weighting
+    """
+    print("Initializing ColBERT with re-weighting...")
+    train_topics, valid_topics = train_test_split(query_df, test_size=0.5, random_state=42)
+    colbert_reweight_factory = pyterrier_colbert.ranking.ColBERTFactory("http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", None, None)
+    bm25_colbert_rerank_reweight_math_engine = \
+        search_engine(math_index, weight_model, MATH_META_FIELDS, token_pipeline=math_token_pipeline) \
+        >> math_correct_data \
+        >> colbert_reweight_factory.text_scorer()
+    bm25_colbert_rerank_reweight_post_engine = \
+        search_engine(post_index, weight_model, TEXT_META_FIELDS, token_pipeline=text_token_pipeline) \
+        >> colbert_reweight_factory.text_scorer()
+    print("Training math model...")
+    bm25_colbert_rerank_reweight_math_engine.fit(train_topics, qrels_df, valid_topics, qrels_df)
+    print("Training post model...")
+    bm25_colbert_rerank_reweight_post_engine.fit(train_topics, qrels_df, valid_topics, qrels_df)
     print("Done initializing ColBERT!")
+    """
+
 
     #################
     ### PIPELINES ###
     #################
-    print("Initializing pipelines...")
-
     ## Baseline Experiment
     baseline = bm25_post_engine >> prime_transformer
 
     ## Experiment 1: create math & post pipeline, no ColBERT, then linear interpolation
-    experiment_1_math = (bm25_math_engine >> pt.apply.generic(
-                lambda df: df.rename(columns={'docno': 'formulano'}))  # rename columns
-                >> pt.apply.generic(
-                lambda df: df.rename(columns={'postno': 'docno'}))  # rename columns
-                >> pt.apply.generic(
-                lambda df: df.drop_duplicates(subset=['docno']))
-                )
-    experiment_1_post = bm25_post_engine
+    ex_1_pipelines, ex_1_titles = generate_weighting_experiment(bm25_math_engine, bm25_post_engine, prime_transformer, "math", "post", "BM25")
     
     ## Experiment 2: create math & post pipeline, ColBERT base model re-ranking, then linear interpolation
-    experiment_2_math = (bm25_math_engine >> pt.apply.generic(
-                lambda df: df.rename(columns={'docno': 'formulano'}))  # rename columns
-                >> pt.apply.generic(
-                lambda df: df.rename(columns={'postno': 'docno'}))  # rename columns
-                >> pt.apply.generic(
-                lambda df: df.drop_duplicates(subset=['docno']))
-                >> colbert_base_math
-                )
-    experiment_2_post = bm25_post_engine >> colbert_base_post
+    ex_2_pipelines, ex_2_titles = generate_weighting_experiment(bm25_colbert_rerank_base_math_engine, bm25_colbert_rerank_base_post_engine, prime_transformer, "math", "post", "BM25-ColBERT_Base")
 
     ## Experiment 3: create math & post pipeline, ColBERT re-trained model re-ranking, then linear interpolation
-    train_topics, valid_topics = train_test_split(query_df, test_size=0.5, random_state=42)
-    experiment_3_math = (bm25_math_engine >> pt.apply.generic(
-                lambda df: df.rename(columns={'docno': 'formulano'}))  # rename columns
-                >> pt.apply.generic(
-                lambda df: df.rename(columns={'postno': 'docno'}))  # rename columns
-                >> pt.apply.generic(
-                lambda df: df.drop_duplicates(subset=['docno']))
-                >> colbert_reweight_math
-                )
-    experiment_3_post = bm25_post_engine >> colbert_reweight_post
-    print("Fitting math model...")
-    experiment_3_math.fit(train_topics, qrels_df, valid_topics, qrels_df)
-    print("Fitting post model...")
-    experiment_3_post.fit(train_topics, qrels_df, valid_topics, qrels_df)
+    """
+    experiment_3 = (bm25_colbert_rerank_reweight_math_engine + bm25_colbert_rerank_reweight_post_engine) >> prime_transformer
+    """
 
-    ## Experiments 1,2,3: Add weights, finalize pipelines
-    # Manually set weights
-    math_pipeline_weight = 1
-    post_pipeline_weight = 1
-    experiment_1 = ((math_pipeline_weight * experiment_1_math) + (post_pipeline_weight * experiment_1_post)) >> prime_transformer
-    experiment_2 = ((math_pipeline_weight * experiment_2_math) + (post_pipeline_weight * experiment_2_post)) >> prime_transformer
-    experiment_3 = ((math_pipeline_weight * experiment_3_math) + (post_pipeline_weight * experiment_3_post)) >> prime_transformer
     print("Done initializing pipelines!")
 
     ## Run experiments 
     print("Running topics...")
+    experiments = [baseline] + ex_1_pipelines + ex_2_pipelines
+    experiment_names = ["Baseline"] + ex_1_titles + ex_2_titles
     ndcg_metrics = pt.Experiment(
-        [baseline, experiment_1, experiment_2, experiment_3],
+        experiments,
         query_df,
         qrels_df,
         baseline=0,
         eval_metrics=["ndcg", "mrt"],
-        names=["Baseline", "BM25 to Linear Interp", "BM25 to ColBERT Pre-Trained", "BM25 to ColBERT Re-Weighted"],
+        names=experiment_names,
         save_dir="./",
         save_mode="overwrite"
     )
     print("ran ndcg metrics")
     binarized_metrics = pt.Experiment(
-        [baseline, experiment_1, experiment_2, experiment_3],
+        experiments,
         query_df,
         qrels_thresholded,
         baseline=0,
         eval_metrics=["P_10", "map", "mrt"],
-        names=["Baseline", "BM25 to Linear Interp", "BM25 to ColBERT Pre-Trained", "BM25 to ColBERT Re-Weighted"],
+        names=experiment_names,
         save_dir="./"
     )
     print("ran binary experiment")
