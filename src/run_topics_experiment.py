@@ -200,6 +200,8 @@ def main():
 
     ## ColBERT
     import pyterrier_colbert.ranking
+    #BERT
+    import onir_pt
 
     # ColBERT Without Re-Weighting
     print("Initializing ColBERT base model...")
@@ -212,24 +214,22 @@ def main():
         search_engine(post_index, weight_model, TEXT_META_FIELDS, token_pipeline=text_token_pipeline) \
             >> colbert_base_factory.text_scorer()
     
-    # ColBERT Re-Weighting
-    """
-    print("Initializing ColBERT with re-weighting...")
+    # BERT No-weighting
+    vbert = onir_pt.reranker('vanilla_transformer', 'bert', text_field='origtext', vocab_config={'train': True})
+    print("Initializing BERT...")
     train_topics, valid_topics = train_test_split(query_df, test_size=0.5, random_state=42)
-    colbert_reweight_factory = pyterrier_colbert.ranking.ColBERTFactory("http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", None, None)
-    bm25_colbert_rerank_reweight_math_engine = \
+    vanilla_bert_rerank_math_engine = \
         search_engine(math_index, weight_model, MATH_META_FIELDS, token_pipeline=math_token_pipeline) \
         >> math_correct_data \
-        >> colbert_reweight_factory.text_scorer()
-    bm25_colbert_rerank_reweight_post_engine = \
+        >> vbert
+    vanilla_bert_rerank__post_engine = \
         search_engine(post_index, weight_model, TEXT_META_FIELDS, token_pipeline=text_token_pipeline) \
-        >> colbert_reweight_factory.text_scorer()
-    print("Training math model...")
-    bm25_colbert_rerank_reweight_math_engine.fit(train_topics, qrels_df, valid_topics, qrels_df)
-    print("Training post model...")
-    bm25_colbert_rerank_reweight_post_engine.fit(train_topics, qrels_df, valid_topics, qrels_df)
-    print("Done initializing ColBERT!")
-    """
+        >> vbert
+    # print("running math model...")
+    # bm25_colbert_rerank_reweight_math_engine.fit(train_topics, qrels_df, valid_topics, qrels_df)
+    # print("running post model...")
+    # bm25_colbert_rerank_reweight_post_engine.fit(train_topics, qrels_df, valid_topics, qrels_df)
+    # print("Done initializing ColBERT!")
 
 
     #################
@@ -244,17 +244,16 @@ def main():
     ## Experiment 2: create math & post pipeline, ColBERT base model re-ranking, then linear interpolation
     ex_2_pipelines, ex_2_titles = generate_weighting_experiment(bm25_colbert_rerank_base_math_engine, bm25_colbert_rerank_base_post_engine, prime_transformer, "math", "post", "BM25-ColBERT_Base")
 
-    ## Experiment 3: create math & post pipeline, ColBERT re-trained model re-ranking, then linear interpolation
-    """
-    experiment_3 = (bm25_colbert_rerank_reweight_math_engine + bm25_colbert_rerank_reweight_post_engine) >> prime_transformer
-    """
+    ## Experiment 3: create math & post pipeline, vanilla BERT, then linear interpolation
+    experiment_3 = (vanilla_bert_rerank_math_engine + vanilla_bert_rerank__post_engine) >> prime_transformer
+
 
     print("Done initializing pipelines!")
 
     ## Run experiments 
     print("Running topics...")
-    experiments = [baseline] + ex_1_pipelines + ex_2_pipelines
-    experiment_names = ["Baseline"] + ex_1_titles + ex_2_titles
+    experiments = [baseline] + ex_1_pipelines + ex_2_pipelines + experiment_3
+    experiment_names = ["Baseline"] + ex_1_titles + ex_2_titles + ["BERT"]
     ndcg_metrics = pt.Experiment(
         experiments,
         query_df,

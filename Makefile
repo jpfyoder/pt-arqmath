@@ -8,6 +8,7 @@ python-default: script
 	pip install --user packaging --upgrade
 	pip install --user python-terrier bs4 tqdm pandas lxml --upgrade
 	pip install --upgrade git+https://github.com/terrierteam/pyterrier_colbert
+	pip install --upgrade git+https://github.com/Georgetown-IR-Lab/OpenNIR.git
 
 script:
 	# Creating test scripts...
