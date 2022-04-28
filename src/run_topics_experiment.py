@@ -204,14 +204,12 @@ def main():
     import onir_pt
 
     # ColBERT Without Re-Weighting
+    
     print("Initializing ColBERT base model...")
     colbert_base_factory = pyterrier_colbert.ranking.ColBERTFactory("http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", None, None)
-    bm25_colbert_rerank_base_math_engine = \
-        search_engine(math_index, weight_model, MATH_META_FIELDS, token_pipeline=math_token_pipeline) \
-            >> math_correct_data \
+    bm25_colbert_rerank_base_math_engine = bm25_math_engine \
             >> colbert_base_factory.text_scorer()
-    bm25_colbert_rerank_base_post_engine = \
-        search_engine(post_index, weight_model, TEXT_META_FIELDS, token_pipeline=text_token_pipeline) \
+    bm25_colbert_rerank_base_post_engine = bm25_post_engine \
             >> colbert_base_factory.text_scorer()
     
     # BERT No-weighting
@@ -252,7 +250,7 @@ def main():
 
     ## Run experiments 
     print("Running topics...")
-    experiments = [baseline] + ex_1_pipelines + ex_2_pipelines + experiment_3
+    experiments = [baseline] + ex_1_pipelines + ex_2_pipelines + [experiment_3]
     experiment_names = ["Baseline"] + ex_1_titles + ex_2_titles + ["BERT"]
     ndcg_metrics = pt.Experiment(
         experiments,
