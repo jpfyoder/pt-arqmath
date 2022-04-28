@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="64471652-64db-4801-9af4-1da0b84167ae" name="kvc9128@greyjoy.cs.rit.edu:22 password">
+        <fileTransfer rootFolder="/home/stu4/s17/kvc9128/Courses" accessType="SFTP" host="greyjoy.cs.rit.edu" port="22" sshConfigId="b98497dc-c8de-4da4-9e30-f86f31bb2c36" sshConfig="kvc9128@greyjoy.cs.rit.edu:22 password" />
+      </webServer>
+    </option>
+  </component>
+</project>
