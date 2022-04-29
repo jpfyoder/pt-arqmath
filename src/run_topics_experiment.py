@@ -7,6 +7,11 @@
 # Sri Kamal V. Chillarage, Apr 2022
 ################################################################
 
+# Which experiments to run? #
+RUN_BERT=True
+RUN_COLBERT=False
+#############################
+
 import imp
 from index_arqmath import *
 from arqmath_topics_qrels import *
@@ -215,22 +220,10 @@ def main():
     experiments.append(experiment_1)
     experiment_names.append("BM25 to Linear Interpolation")
 
-    ## Experiment 3: create math & post pipeline, vanilla BERT, then linear interpolation
     import tokenizers
-    if tokenizers.__version__ > '3.0.2':
-        import onir_pt
-        print("Initializing BERT base model...")
-        vbert = onir_pt.reranker('vanilla_transformer', 'bert', text_field='origtext', vocab_config={'train': True})
-        vanilla_bert_rerank_math_engine = bm25_math_engine >> vbert
-        vanilla_bert_rerank_post_engine = bm25_post_engine >> vbert
-        experiment_3 = ((vanilla_bert_rerank_math_engine * math_engine_weight) + (vanilla_bert_rerank_post_engine * post_engine_weight)) >> prime_transformer
-        experiments.append(experiment_3)
-        experiment_names.append("BM25 to VBERT to Linear Interpolation")
-    else:
-        print("########################### BERT DISABLED, REQUIREMENTS NOT SATISFIED ###########################")
     
     ## Experiment 2: create math & post pipeline, ColBERT base model re-ranking, then linear interpolation
-    if tokenizers.__version__ < '3.0.2':
+    if RUN_COLBERT:
         print("Initializing ColBERT base model...")
         import pyterrier_colbert.ranking
         colbert_base_factory = pyterrier_colbert.ranking.ColBERTFactory("http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", None, None)
@@ -240,7 +233,20 @@ def main():
         experiments.append(experiment_2)
         experiment_names.append("BM25 to ColBERT to Linear Interpolation")
     else:
-        print("########################### ColBERT DISABLED, REQUIREMENTS NOT SATISFIED ###########################")
+        print("########################### ColBERT DISABLED ###########################")
+    
+    ## Experiment 3: create math & post pipeline, vanilla BERT, then linear interpolation
+    if RUN_BERT:
+        import onir_pt
+        print("Initializing BERT base model...")
+        vbert = onir_pt.reranker('vanilla_transformer', 'bert', text_field='origtext', vocab_config={'train': True})
+        vanilla_bert_rerank_math_engine = bm25_math_engine >> vbert
+        vanilla_bert_rerank_post_engine = bm25_post_engine >> vbert
+        experiment_3 = ((vanilla_bert_rerank_math_engine * math_engine_weight) + (vanilla_bert_rerank_post_engine * post_engine_weight)) >> prime_transformer
+        experiments.append(experiment_3)
+        experiment_names.append("BM25 to VBERT to Linear Interpolation")
+    else:
+        print("########################### BERT DISABLED ###########################")
 
     ## Run experiments
     print("Running topics...")

@@ -6,10 +6,13 @@ Code can be run by installing requirements as normal, just run the `make` comman
 - `make-experiment-2020` will run the experiment over the 2020 collection.
 - `make-experiment-2021` will run the experiment over the 2021 collection.
 
+All of our code is in the `run_topics_experiment.py` file.
+
 **Note about BERT and ColBERT**: The BERT and ColBERT implementations used in pyterrier require different versions of the `transformers` library to run properly. To fix this, the code will only run one of the experiments at a time, you must switch libraries to run BERT.
 
-- ColBERT runs right out of the box after running `make` to install the dependencies.
-- BERT will run after `pip install transformers -U` is run: you must run that command to switch to the BERT experiment.
+*Global variables* at the top of the `run_topics_experiment.py` file control weather BERT or ColBERT is being run. By default, it is BERT. To swicth to ColBERT you must update the `RUN_COLBERT` variable to `True` and `RUN_BERT` variable to `False`.
+
+- 
 
 As always, `make-experiment-*` will run the respective experiments.
 
