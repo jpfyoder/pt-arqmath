@@ -8,6 +8,8 @@
 ################################################################
 
 # Which experiments to run? #
+RUN_BASELINE=False
+RUN_BM25=False
 RUN_BERT=True
 RUN_COLBERT=False
 #############################
@@ -209,19 +211,19 @@ def main():
     post_engine_weight = 10 - math_engine_weight
 
     ## Baseline Experiment
-    baseline = bm25_post_engine >> prime_transformer
-    experiments.append(baseline)
-    experiment_names.append("Baseline")
+    if RUN_BASELINE:
+        baseline = bm25_post_engine >> prime_transformer
+        experiments.append(baseline)
+        experiment_names.append("Baseline")
 
     ## Experiment 1: BM25 math & post pipeline with linear interpolation
     # following comment out was used to generate experiments to find the correct BM25 weightings for math and posts
     #ex_1_pipelines, ex_1_titles = generate_weighting_experiment(bm25_math_engine, bm25_post_engine, prime_transformer, "math", "post", "BM25")
-    experiment_1 = ((bm25_post_engine * post_engine_weight) + (bm25_math_engine * math_engine_weight)) >> prime_transformer
-    experiments.append(experiment_1)
-    experiment_names.append("BM25 to Linear Interpolation")
+    if RUN_BM25:
+        experiment_1 = ((bm25_post_engine * post_engine_weight) + (bm25_math_engine * math_engine_weight)) >> prime_transformer
+        experiments.append(experiment_1)
+        experiment_names.append("BM25 to Linear Interpolation")
 
-    import tokenizers
-    
     ## Experiment 2: create math & post pipeline, ColBERT base model re-ranking, then linear interpolation
     if RUN_COLBERT:
         print("Initializing ColBERT base model...")

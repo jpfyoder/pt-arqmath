@@ -12,8 +12,6 @@ All of our code is in the `run_topics_experiment.py` file.
 
 *Global variables* at the top of the `run_topics_experiment.py` file control weather BERT or ColBERT is being run. By default, it is BERT. To swicth to ColBERT you must update the `RUN_COLBERT` variable to `True` and `RUN_BERT` variable to `False`.
 
-- 
-
 As always, `make-experiment-*` will run the respective experiments.
 
 ## PyTerrier Framework for ARQMath Task 1
