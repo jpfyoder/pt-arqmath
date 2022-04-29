@@ -3,13 +3,13 @@
 #
 # Test program and experiment data to better understand it
 #
-# Author:
-# Sri Kamal V. Chillarage, Apr 2022
+# Authors:
+# Kirsten Auble, Joshua Yoder, Sri Kamal Chillarage
 ################################################################
 
 # Which experiments to run? #
-RUN_BASELINE=False
-RUN_BM25=False
+RUN_BASELINE=True
+RUN_BM25=True
 RUN_BERT=True
 RUN_COLBERT=False
 #############################

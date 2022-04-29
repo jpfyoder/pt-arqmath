@@ -12,6 +12,9 @@ All of our code is in the `run_topics_experiment.py` file.
 
 *Global variables* at the top of the `run_topics_experiment.py` file control weather BERT or ColBERT is being run. By default, it is BERT. To swicth to ColBERT you must update the `RUN_COLBERT` variable to `True` and `RUN_BERT` variable to `False`.
 
+- BERT should be working by default. If not, run `pip install 'transformers==4.18.10'` (it needs to have the latest version of `transformers`)
+- For ColBERT, you should run `pip install 'transformers==3.0.2'` before running the experiments.
+
 As always, `make-experiment-*` will run the respective experiments.
 
 ## PyTerrier Framework for ARQMath Task 1
