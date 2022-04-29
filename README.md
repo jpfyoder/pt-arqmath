@@ -1,3 +1,18 @@
+## Group 1 RIT CSCI-539 Information Retrieval Modifications to Code
+
+Code can be run by installing requirements as normal, just run the `make` command. To run our experiment, do the following:
+
+- `make-experiment-short` will run the short experiment (subset of the 2020 as provided in class)
+- `make-experiment-2020` will run the experiment over the 2020 collection.
+- `make-experiment-2021` will run the experiment over the 2021 collection.
+
+**Note about BERT and ColBERT**: The BERT and ColBERT implementations used in pyterrier require different versions of the `transformers` library to run properly. To fix this, the code will only run one of the experiments at a time, you must switch libraries to run BERT.
+
+- ColBERT runs right out of the box after running `make` to install the dependencies.
+- BERT will run after `pip install transformers -U` is run: you must run that command to switch to the BERT experiment.
+
+As always, `make-experiment-*` will run the respective experiments.
+
 ## PyTerrier Framework for ARQMath Task 1
 
 `pt-arqmath` was created for the Information Retrieval course at the Rochester Institute of Technology in Spring 2022. PyTerrier provides a flexible framework for building, running, and comparing a variety of different search engines, including neural retrieval models. 

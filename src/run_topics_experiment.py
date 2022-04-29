@@ -7,14 +7,12 @@
 # Sri Kamal V. Chillarage, Apr 2022
 ################################################################
 
+import imp
 from index_arqmath import *
 from arqmath_topics_qrels import *
 import argparse
 import pyterrier as pt
 from pyterrier.measures import *
-from transformers import AutoTokenizer
-from sklearn.model_selection import train_test_split
-import os, sys
 
 import pandas as pd
 pd.set_option('display.max_columns', None)
@@ -158,9 +156,6 @@ def main():
 
     print("\n>>> Starting up ")
     
-    # pyterrier colbert
-    import pyterrier_colbert.ranking
-
     # Collect topics, qrels index
     print("Loading topics (queries)...")
     (num_topics, query_df) = load_topics(args.xmlFile)
@@ -198,48 +193,57 @@ def main():
     bm25_math_engine = search_engine(math_index, weight_model, MATH_META_FIELDS, token_pipeline=math_token_pipeline) >> math_correct_data % 1000
     bm25_post_engine = search_engine(post_index, weight_model, TEXT_META_FIELDS, token_pipeline=text_token_pipeline) % 1000
 
-    ## ColBERT
-    import pyterrier_colbert.ranking
-    #BERT
-    import onir_pt
-
-    # ColBERT Without Re-Weighting
-    
-    print("Initializing ColBERT base model...")
-    colbert_base_factory = pyterrier_colbert.ranking.ColBERTFactory("http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", None, None)
-    bm25_colbert_rerank_base_math_engine = bm25_math_engine >> colbert_base_factory.text_scorer()
-    bm25_colbert_rerank_base_post_engine = bm25_post_engine >> colbert_base_factory.text_scorer()
-    
-    # BERT No-weighting
-    vbert = onir_pt.reranker('vanilla_transformer', 'bert', text_field='origtext', vocab_config={'train': True})
-    print("Initializing BERT...")
-    # train_topics, valid_topics = train_test_split(query_df, test_size=0.5, random_state=42)
-    vanilla_bert_rerank_math_engine = bm25_math_engine >> vbert
-    vanilla_bert_rerank_post_engine = bm25_post_engine >> vbert
-
-
     #################
     ### PIPELINES ###
     #################
+    experiments = []
+    experiment_names = []
+
+    ## Manually set math and post weights
+    math_engine_weight = 8
+    post_engine_weight = 10 - math_engine_weight
+
     ## Baseline Experiment
     baseline = bm25_post_engine >> prime_transformer
+    experiments.append(baseline)
+    experiment_names.append("Baseline")
 
-    ## Experiment 1: create math & post pipeline, no ColBERT, then linear interpolation
-    ex_1_pipelines, ex_1_titles = generate_weighting_experiment(bm25_math_engine, bm25_post_engine, prime_transformer, "math", "post", "BM25")
-    
-    ## Experiment 2: create math & post pipeline, ColBERT base model re-ranking, then linear interpolation
-    ex_2_pipelines, ex_2_titles = generate_weighting_experiment(bm25_colbert_rerank_base_math_engine, bm25_colbert_rerank_base_post_engine, prime_transformer, "math", "post", "BM25-ColBERT_Base")
+    ## Experiment 1: BM25 math & post pipeline with linear interpolation
+    # following comment out was used to generate experiments to find the correct BM25 weightings for math and posts
+    #ex_1_pipelines, ex_1_titles = generate_weighting_experiment(bm25_math_engine, bm25_post_engine, prime_transformer, "math", "post", "BM25")
+    experiment_1 = ((bm25_post_engine * post_engine_weight) + (bm25_math_engine * math_engine_weight)) >> prime_transformer
+    experiments.append(experiment_1)
+    experiment_names.append("BM25 to Linear Interpolation")
 
     ## Experiment 3: create math & post pipeline, vanilla BERT, then linear interpolation
-    experiment_3 = (vanilla_bert_rerank_math_engine + vanilla_bert_rerank_post_engine) >> prime_transformer
+    import tokenizers
+    if tokenizers.__version__ > '3.0.2':
+        import onir_pt
+        print("Initializing BERT base model...")
+        vbert = onir_pt.reranker('vanilla_transformer', 'bert', text_field='origtext', vocab_config={'train': True})
+        vanilla_bert_rerank_math_engine = bm25_math_engine >> vbert
+        vanilla_bert_rerank_post_engine = bm25_post_engine >> vbert
+        experiment_3 = ((vanilla_bert_rerank_math_engine * math_engine_weight) + (vanilla_bert_rerank_post_engine * post_engine_weight)) >> prime_transformer
+        experiments.append(experiment_3)
+        experiment_names.append("BM25 to VBERT to Linear Interpolation")
+    else:
+        print("########################### BERT DISABLED, REQUIREMENTS NOT SATISFIED ###########################")
+    
+    ## Experiment 2: create math & post pipeline, ColBERT base model re-ranking, then linear interpolation
+    if tokenizers.__version__ < '3.0.2':
+        print("Initializing ColBERT base model...")
+        import pyterrier_colbert.ranking
+        colbert_base_factory = pyterrier_colbert.ranking.ColBERTFactory("http://www.dcs.gla.ac.uk/~craigm/colbert.dnn.zip", None, None)
+        vanilla_colbert_rerank_math_engine = (bm25_math_engine * math_engine_weight) >> colbert_base_factory.text_scorer()
+        vanilla_colbert_rerank_post_engine = (bm25_post_engine * post_engine_weight) >> colbert_base_factory.text_scorer()
+        experiment_2 = ((vanilla_colbert_rerank_math_engine) + (vanilla_colbert_rerank_post_engine)) >> prime_transformer
+        experiments.append(experiment_2)
+        experiment_names.append("BM25 to ColBERT to Linear Interpolation")
+    else:
+        print("########################### ColBERT DISABLED, REQUIREMENTS NOT SATISFIED ###########################")
 
-
-    print("Done initializing pipelines!")
-
-    ## Run experiments 
+    ## Run experiments
     print("Running topics...")
-    experiments = [baseline] + ex_1_pipelines + ex_2_pipelines + [experiment_3]
-    experiment_names = ["Baseline"] + ex_1_titles + ex_2_titles + ["BERT"]
     ndcg_metrics = pt.Experiment(
         experiments,
         query_df,
