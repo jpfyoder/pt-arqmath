@@ -8,9 +8,9 @@
 ################################################################
 
 # Which experiments to run? #
-RUN_BASELINE=True
+RUN_BASELINE=False
 RUN_BM25=True
-RUN_BERT=True
+RUN_BERT=False
 RUN_COLBERT=False
 #############################
 
@@ -111,7 +111,7 @@ def report_results( ndcg_metrics, binarized_metrics, top_k, prime ):
 ################################################################
 # Used to remove unasessed hits in search results for prime (') metrics
 # Consider only up to MAX_HITS
-def select_assessed_hits( qrel_df, top_k=1000, prime=True ):
+def select_assessed_hits( qrel_df, top_k=1000, prime=False ):
     def filter_results( result_df ):
         #result_df.drop_duplicates( subset='docno' )  # esp. important for formula retrieval results
         #result_df_cut = result_df.iloc[0 : MAX_HITS ]
@@ -153,7 +153,8 @@ def main():
 
     # Set retrieval and evaluation parameters
     weight_model = args.model
-    prime = not args.noprime
+    prime = args.noprime
+    print(prime)
     top_k = args.topk
 
     # Do not forget, or fields are undefined ('None' in error messages)
@@ -256,6 +257,8 @@ def main():
         experiments,
         query_df,
         qrels_df,
+        filter_by_topics=False,
+        filter_by_qrels=False,
         baseline=0,
         eval_metrics=["ndcg", "mrt"],
         names=experiment_names,
@@ -267,6 +270,8 @@ def main():
         experiments,
         query_df,
         qrels_thresholded,
+        filter_by_topics=False,
+        filter_by_qrels=False,
         baseline=0,
         eval_metrics=["P_10", "map", "mrt"],
         names=experiment_names,
